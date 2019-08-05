@@ -1,1 +1,2 @@
-# custosales
+# SteviaCRM
+Code repository for SteviaCRM

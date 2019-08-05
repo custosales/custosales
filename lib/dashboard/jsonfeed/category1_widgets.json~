@@ -1,0 +1,23 @@
+{
+"result" :
+  {
+  "data" : [
+    {
+      "id" : "w01",
+      "title" : "Documentation",
+      "description" : "Documentation widget",
+      "creator" : "Mark Machielsen",
+      "url" : "lib/dashboard/widgets/widget1.html",
+      "image": "lib/dashboard/widgets/widget1.png"
+    },
+    {
+      "id" : "w02",
+      "title" : "Download plugin",
+      "description" : "This is download plugin widget",
+      "creator" : "Mark Machielsen",
+      "url" : "lib/dashboard/widgets/widget2.html",
+      "image": "lib/dashboard/widgets/widget2.png"
+    }
+  ]
+  }
+}

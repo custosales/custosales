@@ -1,0 +1,59 @@
+.dhx_combo_img{
+	position:absolute;
+	top:0px;
+	right:0px;
+	width:17px;
+	height:15px;
+}
+
+.dhx_combo_option_img{
+	position:relative;
+	top:1px;
+	margin-left:2px;
+	left:0px;
+	width:15px; height:15px;
+}
+
+.dhx_combo_input{
+	color:#333333;
+	font-family: Arial;
+	font-size: 8pt;
+	border:0px;
+	padding:1px 1px 1px 1px;
+	position:absolute;
+}
+
+.dhx_combo_box{
+	font-family: Arial;
+	font-size: 8pt;
+	position:relative;
+	padding:2px 0px 0px 3px;
+	border:1px solid #7F9DB9;
+	height:15px;
+	_height:15px;
+	overflow:hidden;
+    background-color: white;	
+}
+
+.dhx_combo_list{
+   position:absolute;
+   z-index:30;
+   overflow-y:auto;
+   overflow-x:hidden;
+   border:1px solid black;
+   height:100px;
+   font-family: Arial;
+   font-size: 8pt;
+   background-color: white;
+}
+
+.dhx_combo_list div{
+	cursor:default;
+	padding:1px 1px 1px 1px;
+}
+
+.dhx_selected_option{
+	background-color:navy;
+	color:white;
+}
+

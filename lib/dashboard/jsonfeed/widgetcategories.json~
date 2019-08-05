@@ -1,0 +1,19 @@
+{
+"categories" :
+  {
+  "category": [
+    {
+      "id":1,
+      "title" : "Salg",
+      "amount" : 3,
+      "url" : "lib/dashboard/jsonfeed/sales_widgets.json"
+    },
+    {
+      "id":2,
+      "title" : "Ordre",
+      "amount": 3,
+      "url" : "lib/dashboard/jsonfeed/orders_widgets.json"
+    }
+  ]
+  }
+}

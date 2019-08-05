@@ -1,0 +1,31 @@
+{
+"result" :
+  {
+  "data" : [
+    {
+      "id" : "w01",
+      "title" : "Liste over salgsmapper",
+      "description" : "Liste over leads, muligheter, salg og tapte",
+      "creator" : "Terje Berg-Hansen",
+      "url" : "widgets/sales_list_widget.php",
+      "image": "widgets/sales_list.png"
+    },
+    {
+      "id" : "w02",
+      "title" : "Månedlig salg - Graf",
+      "description" : "Diagram med Salg per måned",
+      "creator" : "Terje Berg-Hansen",
+      "url" : "widgets/monthly_sales_widget.php",
+      "image": "widgets/monthly_sales.png"
+    },
+    {
+      "id" : "w03",
+      "title" : "Salg per selger - Graf",
+      "description" : "Diagram med Salg per selger",
+      "creator" : "Terje Berg-Hansen",
+      "url" : "widgets/salesrep_widget.php",
+      "image": "widgets/sales_rep.png"
+    }
+  ]
+  }
+}

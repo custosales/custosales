@@ -1,0 +1,89 @@
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * General page setup
+ */
+body {
+	font:  90%/1.0em Arial, Helvetica, sans-serif;
+	}
+
+#list {
+	width:100%;
+	}
+ 
+#main_table {
+	font: 90%/1.0em Arial, Helvetica, sans-serif;
+	width: 98%;
+	margin-left: 8px;
+	margin-right: 8px; 
+	margin-top: 0px;
+	padding: 0;
+	}
+
+
+input {
+	border: solid 1px #cccccc;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+#	background-color: #efefef;
+	
+	}
+
+select {
+	border: solid 1px #cccccc;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	background-color: #efefef;
+	}
+	
+input.button {
+	border: solid 3px #cccccc;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+
+#main_table .clear {
+	clear: both;
+}
+
+#main_table pre {
+	padding: 15px;
+	border: 1px solid #CCCCCC;
+}
+
+#main_table h1 {
+	margin-right: 5px;
+	margin-left: 5px;
+	margin-top: 0px;
+	font-size: 1.3em;
+	font-weight: normal;
+	line-height: 1.2em;
+	clear: both;
+}
+
+#main_table h2 {
+	font-size: 1.2em;
+	font-weight: normal;
+	line-height: 1.6em;
+	clear: both;
+}
+
+#main_table a {
+	text-decoration: none;
+}
+
+#main_table a:hover {
+	text-decoration: underline;
+}
+
+#main_table ul {
+	
+}
+
+.css_right {
+	float: right;
+}
+
+.css_left {
+	float: left;
+}
