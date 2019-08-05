@@ -1,4 +1,4 @@
 # CustoSales
-Code repository for CustuSales
+## Code repository for CustoSales  
 Open Source 
 CRM and Sales Management System 
