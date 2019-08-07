@@ -44,8 +44,7 @@ input {
 	border: solid 1px #cccccc;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
-#	background-color: #efefef;
-	
+   
 	}
 
 select {
@@ -96,9 +95,6 @@ input.button {
 	text-decoration: underline;
 }
 
-#main_table ul {
-	
-}
 
 .css_right {
 	float: right;
