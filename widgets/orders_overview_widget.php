@@ -6,7 +6,7 @@ header("Location: ../index.php"); // if not go to login
 require_once "../modules/system/db.php"; 
 require_once "../lang/".$_SESSION['lang'].".php";
 ?>
-<table summary="" class="ui-widget-content ui-corner-all" style="width:100%" >
+<table class="ui-widget-content ui-corner-all main_table" style="width:100%" >
 <tr>
 <td><img src="images/spreadsheet_file_22.png" alt="" ></td>
 <td><?php print $LANG['total'];?></td>
@@ -76,7 +76,7 @@ print $s_currency_symbol." ".number_format($orderValue[0], 0, ',', ' ');
 </table>	
 
 <br>
-<table summary="" class="ui-widget-content ui-corner-all" style="width:100%">
+<table class="ui-widget-content ui-corner-all main_table" style="width:100%">
 <tr>
 <?php
 $queryn = "SELECT sum(unitPrice) as orderValue FROM ".$orders." WHERE orderDate=DATE(NOW())";

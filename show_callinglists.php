@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8" />
 <title></title>
+</head>
+<body style="font-size:12px">
 <?php 
 include_once "menu.php";
 ?>
-</head>
-<body style="font-size:12px">
 <div id="main_table">
 
 <h1 class="ui-widget-header ui-corner-all" style="padding:3px;">&nbsp; <?php print $LANG['calling_lists']; ?> <input id="allButton" style="visibility:hidden" type="button" onclick="showAllLists(document.getElementById('callingLists').value)" value="<?php print $LANG['show_all'];?>"> 
@@ -15,10 +15,12 @@ include_once "menu.php";
 &nbsp;
 <select id="callingLists" onchange="if(this.value!='') { showAllLists(this.value,'',''); }">
 <option value=""><?php print $LANG['select_callinglist']; ?></option>
+
 <?php 
 
 // Find Calling List connected to users roles
 $queryRoles = "SELECT roles FROM ".$users." WHERE userID=".$_SESSION['userID'];
+
 if (!$ResultRoles= mysql_query($queryRoles, $Link)) {
            print "No database connection <br>".mysql_error();
         }

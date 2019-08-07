@@ -116,7 +116,7 @@ try {
 // end sales
 ?>
 <div id="salesListWidgetArea">
-    <table style="border:0px;">
+    <table class="main_table" style="border:0px;">
         <tr>
             <td valign="top" width="180">
 <?php

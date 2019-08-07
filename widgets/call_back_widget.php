@@ -58,16 +58,12 @@ try {
 }
 
 ?>
-<html>
-<head>
 
-</head>
-<body>
-<table summary="" border="0" style="cell-spacing:0px;width:100%">
+<table class="main_table" style="cell-spacing:0px;width:100%">
 <tr>
-<td><b><?php print $LANG['company_name']; ?></b></td>
-<td><b><?php print $LANG['call_back']; ?></b></td>
-<td><b><?php print $LANG['delete']; ?></b></td>
+<th><?php print $LANG['company_name']; ?></th>
+<th><?php print $LANG['call_back']; ?></th>
+<th><?php print $LANG['delete']; ?></th>
 
 </tr>
 
@@ -111,7 +107,5 @@ echo '</a>';
 </tr>
 <?php } ?>
 </table>
-<div id="lastContacted" style="visibility:hidden" ></div>
-</body>
 
-</html>
+<div id="lastContacted" style="visibility:hidden" ></div>

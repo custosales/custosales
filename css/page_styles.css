@@ -10,7 +10,7 @@ body {
 	width:100%;
 	}
  
-#main_table {
+#main_table  {
 	font: 90%/1.0em Arial, Helvetica, sans-serif;
 	width: 98%;
 	margin-left: 8px;
@@ -19,6 +19,26 @@ body {
 	padding: 0;
 	}
 
+
+.main_table {
+		font: 90%/1.0em Arial, Helvetica, sans-serif;
+		width: 100%;
+		margin-left: 0px;
+		margin-right: 0px; 
+		margin-top: 0px;
+		padding: 0;
+		}
+	
+
+.main_table,th {
+	text-align: left;
+	font-size: 115%
+}
+
+.main_table,td {
+	text-align: left;
+	font-size: 105%
+}
 
 input {
 	border: solid 1px #cccccc;
