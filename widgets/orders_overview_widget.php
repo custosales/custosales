@@ -12,9 +12,21 @@ require_once "../lang/".$_SESSION['lang'].".php";
 <td><?php print $LANG['total'];?></td>
 </tr>
 <tr>
-<td><?php print $LANG['order_value_total'];?>:</td>
+<td style="width:50%"><?php print $LANG['order_value_total'];?>:</td>
 <td>
 <?php
+$query_symbol = "SELECT currencySymbol FROM ".$currencies ." where defaultCurrency = 1";
+
+try {
+        $stmt = $pdo->prepare($query_symbol);
+        $stmt->execute();
+        $ResultSymbol = $stmt->fetch(PDO::FETCH_ASSOC);
+        $currencySymbol = $ResultSymbol['currencySymbol'];
+    } catch (PDOException $e) {
+        echo "1 -CurrencySumbol was not fetched, because: " . $e->getMessage();
+    }
+
+
 $query = "SELECT sum(unitPrice) as orderValue FROM ".$orders;
 
 try {
@@ -26,7 +38,9 @@ try {
         echo "3 - Data was not fetched, because: " . $e->getMessage();
     }
 
-print $s_currency_symbol." ".number_format($orderValue, 0, ',', ' '); 
+
+
+print $currencySymbol." ".number_format($orderValue, 0, ',', ' '); 
 ?>
 </td>
 </tr>
@@ -47,7 +61,7 @@ try {
     }
 
 
-print $s_currency_symbol." ".number_format($orderValue, 0, ',', ' '); 
+print $currencySymbol." ".number_format($orderValue, 0, ',', ' '); 
 ?>
 </td>
 </tr>
@@ -68,7 +82,7 @@ try {
     }
 
 
-print $s_currency_symbol." ".number_format($orderValue_out, 0, ',', ' '); 
+print $currencySymbol." ".number_format($orderValue_out, 0, ',', ' '); 
 ?>
 </td>
 </tr>
@@ -101,14 +115,14 @@ if($orderValue_today > 0 && $orderValue_today < 10000) {
 	$iconfile="spreadsheet_file_22.png";
 	}
 ?>
-<td><img src="images/<?php print $iconfile;?>" alt="" ></td>
+<td style="width:50%"><img src="images/<?php print $iconfile;?>" alt="" ></td>
 <td><?php print $LANG['order_value_total'];?></td>
 </tr>
 <tr>
 <td><?php print $LANG['today'];?>:</td>
 <td>
 <?php
-print $s_currency_symbol." ".number_format($orderValue_today, 0, ',', ' '); 
+print $currencySymbol." ".number_format($orderValue_today, 0, ',', ' '); 
 ?>
 </td>
 </tr>
@@ -127,7 +141,7 @@ try {
         echo "3 - Data was not fetched, because: " . $e->getMessage();
     }
 
-print $s_currency_symbol." ".number_format($orderValue_week, 0, ',', ' '); 
+print $currencySymbol." ".number_format($orderValue_week, 0, ',', ' '); 
 ?>
 </td>
 </tr>
@@ -146,7 +160,7 @@ try {
         echo "3 - Data was not fetched, because: " . $e->getMessage();
     }
 
-print $s_currency_symbol." ".number_format($orderValue_month, 0, ',', ' '); 
+print $currencySymbol." ".number_format($orderValue_month, 0, ',', ' '); 
 ?>
 </td>
 </tr>
@@ -165,7 +179,7 @@ try {
         echo "3 - Data was not fetched, because: " . $e->getMessage();
     }
 
-print $s_currency_symbol." ".number_format($orderValue_year, 0, ',', ' '); 
+print $currencySymbol." ".number_format($orderValue_year, 0, ',', ' '); 
 ?>
 </td>
 </tr>
