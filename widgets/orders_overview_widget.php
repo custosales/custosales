@@ -79,23 +79,23 @@ print $s_currency_symbol." ".number_format($orderValue_out, 0, ',', ' ');
 <table class="ui-widget-content ui-corner-all main_table" style="width:100%">
 <tr>
 <?php
-$queryn = "SELECT sum(unitPrice) as orderValue FROM ".$orders." WHERE orderDate=DATE(NOW())";
+$query_today = "SELECT sum(unitPrice) as orderValue FROM ".$orders." WHERE orderDate=DATE(NOW())";
 
 
 try {
-        $stmt = $pdo->prepare($queryn);
+        $stmt = $pdo->prepare($query_today);
         $stmt->execute();
-        $Resultn = $stmt->fetch(PDO::FETCH_ASSOC);
-        $orderValue = $RowOrders['orderValue'];
+        $Result_today = $stmt->fetch(PDO::FETCH_ASSOC);
+        $orderValue_today = $Result_today['orderValue'];
     } catch (PDOException $e) {
         echo "3 - Data was not fetched, because: " . $e->getMessage();
     }
 
 
 
-if($orderValue > 0 && $orderValue < 10000) {
+if($orderValue_today > 0 && $orderValue_today < 10000) {
 	$iconfile="emotes_22/face-cool.png";
-	} else if($orderValue[0] > 10000) {
+	} else if($orderValue_today > 10000) {
 	$iconfile="emotes_22/face-smile-big.png";
 	} else {
 	$iconfile="spreadsheet_file_22.png";
@@ -108,7 +108,7 @@ if($orderValue > 0 && $orderValue < 10000) {
 <td><?php print $LANG['today'];?>:</td>
 <td>
 <?php
-print $s_currency_symbol." ".number_format($orderValue, 0, ',', ' '); 
+print $s_currency_symbol." ".number_format($orderValue_today, 0, ',', ' '); 
 ?>
 </td>
 </tr>
@@ -117,17 +117,17 @@ print $s_currency_symbol." ".number_format($orderValue, 0, ',', ' ');
 <td><?php print $LANG['this_week'];?>:</td>
 <td>
 <?php
-$queryn = "SELECT sum(unitPrice) as orderValue FROM ".$orders." WHERE WEEK(orderDate)=WEEK(NOW()) && YEAR(orderDate)=YEAR(NOW())";
+$query_week = "SELECT sum(unitPrice) as orderValue FROM ".$orders." WHERE WEEK(orderDate)=WEEK(NOW()) && YEAR(orderDate)=YEAR(NOW())";
 try {
-        $stmt = $pdo->prepare($queryn);
+        $stmt = $pdo->prepare($query_week);
         $stmt->execute();
-        $Resultn = $stmt->fetch(PDO::FETCH_ASSOC);
-        $orderValue = $RowOrders['orderValue'];
+        $Result_week = $stmt->fetch(PDO::FETCH_ASSOC);
+        $orderValue_week = $Result_week['orderValue'];
     } catch (PDOException $e) {
         echo "3 - Data was not fetched, because: " . $e->getMessage();
     }
 
-print $s_currency_symbol." ".number_format($orderValue, 0, ',', ' '); 
+print $s_currency_symbol." ".number_format($orderValue_week, 0, ',', ' '); 
 ?>
 </td>
 </tr>
@@ -136,17 +136,17 @@ print $s_currency_symbol." ".number_format($orderValue, 0, ',', ' ');
 <td><?php print $LANG['this_month'];?>:</td>
 <td>
 <?php
-$queryn = "SELECT sum(unitPrice) as orderValue FROM ".$orders." WHERE MONTH(orderDate)=MONTH(NOW()) && YEAR(orderDate)=YEAR(NOW()) ";
+$query_month = "SELECT sum(unitPrice) as orderValue FROM ".$orders." WHERE MONTH(orderDate)=MONTH(NOW()) && YEAR(orderDate)=YEAR(NOW()) ";
 try {
-        $stmt = $pdo->prepare($queryn);
+        $stmt = $pdo->prepare($query_month);
         $stmt->execute();
-        $Resultn = $stmt->fetch(PDO::FETCH_ASSOC);
-        $orderValue = $RowOrders['orderValue'];
+        $Result_month = $stmt->fetch(PDO::FETCH_ASSOC);
+        $orderValue_month = $Result_month['orderValue'];
     } catch (PDOException $e) {
         echo "3 - Data was not fetched, because: " . $e->getMessage();
     }
 
-print $s_currency_symbol." ".number_format($orderValue, 0, ',', ' '); 
+print $s_currency_symbol." ".number_format($orderValue_month, 0, ',', ' '); 
 ?>
 </td>
 </tr>
@@ -155,17 +155,17 @@ print $s_currency_symbol." ".number_format($orderValue, 0, ',', ' ');
 <td><?php print $LANG['this_year'];?>:</td>
 <td>
 <?php
-$queryn = "SELECT sum(unitPrice) as orderValue FROM ".$orders." WHERE YEAR(orderDate)=YEAR(NOW())";
+$query_year = "SELECT sum(unitPrice) as orderValue FROM ".$orders." WHERE YEAR(orderDate)=YEAR(NOW())";
 try {
-        $stmt = $pdo->prepare($queryn);
+        $stmt = $pdo->prepare($query_year);
         $stmt->execute();
-        $Resultn = $stmt->fetch(PDO::FETCH_ASSOC);
-        $orderValue = $RowOrders['orderValue'];
+        $Result_year = $stmt->fetch(PDO::FETCH_ASSOC);
+        $orderValue_year = $Result_year['orderValue'];
     } catch (PDOException $e) {
         echo "3 - Data was not fetched, because: " . $e->getMessage();
     }
 
-print $s_currency_symbol." ".number_format($orderValue, 0, ',', ' '); 
+print $s_currency_symbol." ".number_format($orderValue_year, 0, ',', ' '); 
 ?>
 </td>
 </tr>
