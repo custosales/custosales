@@ -15,18 +15,18 @@ require_once "../lang/".$_SESSION['lang'].".php";
 <td><?php print $LANG['order_value_total'];?>:</td>
 <td>
 <?php
-$queryn = "SELECT sum(unitPrice) as orderValue FROM ".$orders;
+$query = "SELECT sum(unitPrice) as orderValue FROM ".$orders;
 
 try {
-        $stmt = $pdo->prepare($queryn);
+        $stmt = $pdo->prepare($query);
         $stmt->execute();
-        $Resultn = $stmt->fetch(PDO::FETCH_ASSOC);
+        $RowOrders = $stmt->fetch(PDO::FETCH_ASSOC);
         $orderValue = $RowOrders['orderValue'];
     } catch (PDOException $e) {
         echo "3 - Data was not fetched, because: " . $e->getMessage();
     }
 
-print $s_currency_symbol." ".number_format($orderValue[0], 0, ',', ' '); 
+print $s_currency_symbol." ".number_format($orderValue, 0, ',', ' '); 
 ?>
 </td>
 </tr>
@@ -35,19 +35,19 @@ print $s_currency_symbol." ".number_format($orderValue[0], 0, ',', ' ');
 <td><?php print $LANG['order_value_paid'];?>:</td>
 <td>
 <?php
-$queryn = "SELECT sum(unitPrice) as orderValue FROM ".$orders." WHERE orderStatusID = '7'";
+$query_paid = "SELECT sum(unitPrice) as orderValue FROM ".$orders." WHERE orderStatusID = '7'";
 
 try {
-        $stmt = $pdo->prepare($queryn);
+        $stmt = $pdo->prepare($query_paid);
         $stmt->execute();
-        $Resultn = $stmt->fetch(PDO::FETCH_ASSOC);
-        $orderValue = $RowOrders['orderValue'];
+        $Row_paid = $stmt->fetch(PDO::FETCH_ASSOC);
+        $orderValue = $Row_paid['orderValue'];
     } catch (PDOException $e) {
         echo "3 - Data was not fetched, because: " . $e->getMessage();
     }
 
 
-print $s_currency_symbol." ".number_format($orderValue[0], 0, ',', ' '); 
+print $s_currency_symbol." ".number_format($orderValue, 0, ',', ' '); 
 ?>
 </td>
 </tr>
@@ -56,19 +56,19 @@ print $s_currency_symbol." ".number_format($orderValue[0], 0, ',', ' ');
 <td><?php print $LANG['order_value_outstanding'];?>:</td>
 <td>
 <?php
-$queryn = "SELECT sum(unitPrice) as orderValue FROM ".$orders." WHERE orderStatusID != '7'";
+$query_out = "SELECT sum(unitPrice) as orderValue FROM ".$orders." WHERE orderStatusID != '7'";
 
 try {
-        $stmt = $pdo->prepare($queryn);
+        $stmt = $pdo->prepare($query_out);
         $stmt->execute();
-        $Resultn = $stmt->fetch(PDO::FETCH_ASSOC);
-        $orderValue = $RowOrders['orderValue'];
+        $RowOrders_out = $stmt->fetch(PDO::FETCH_ASSOC);
+        $orderValue_out = $RowOrders_out['orderValue'];
     } catch (PDOException $e) {
         echo "3 - Data was not fetched, because: " . $e->getMessage();
     }
 
 
-print $s_currency_symbol." ".number_format($orderValue[0], 0, ',', ' '); 
+print $s_currency_symbol." ".number_format($orderValue_out, 0, ',', ' '); 
 ?>
 </td>
 </tr>
@@ -93,7 +93,7 @@ try {
 
 
 
-if($orderValue[0] > 0 && $orderValue[0] < 10000) {
+if($orderValue > 0 && $orderValue < 10000) {
 	$iconfile="emotes_22/face-cool.png";
 	} else if($orderValue[0] > 10000) {
 	$iconfile="emotes_22/face-smile-big.png";
@@ -108,7 +108,7 @@ if($orderValue[0] > 0 && $orderValue[0] < 10000) {
 <td><?php print $LANG['today'];?>:</td>
 <td>
 <?php
-print $s_currency_symbol." ".number_format($orderValue[0], 0, ',', ' '); 
+print $s_currency_symbol." ".number_format($orderValue, 0, ',', ' '); 
 ?>
 </td>
 </tr>
@@ -127,7 +127,7 @@ try {
         echo "3 - Data was not fetched, because: " . $e->getMessage();
     }
 
-print $s_currency_symbol." ".number_format($orderValue[0], 0, ',', ' '); 
+print $s_currency_symbol." ".number_format($orderValue, 0, ',', ' '); 
 ?>
 </td>
 </tr>
@@ -146,7 +146,7 @@ try {
         echo "3 - Data was not fetched, because: " . $e->getMessage();
     }
 
-print $s_currency_symbol." ".number_format($orderValue[0], 0, ',', ' '); 
+print $s_currency_symbol." ".number_format($orderValue, 0, ',', ' '); 
 ?>
 </td>
 </tr>
@@ -165,7 +165,7 @@ try {
         echo "3 - Data was not fetched, because: " . $e->getMessage();
     }
 
-print $s_currency_symbol." ".number_format($orderValue[0], 0, ',', ' '); 
+print $s_currency_symbol." ".number_format($orderValue, 0, ',', ' '); 
 ?>
 </td>
 </tr>
