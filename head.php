@@ -1,116 +1,111 @@
 <?php
-ini_set('session.gc_maxlifetime', 360*60);
-setlocale(LC_ALL,'nb_NO.utf8');
+ini_set('session.gc_maxlifetime', 360 * 60);
+setlocale(LC_ALL, 'nb_NO.utf8');
 
-
-if(!isset($_SESSION['userID'])) { // check if user is logged in
-header("Location:login.php");
+if (!isset($_SESSION['userID'])) { // check if user is logged in
+    header("Location:login.php");
 }
 
-if($_GET['project']=="all") {
-session_unregister('project'); 
+if ($_GET['project'] == "all") {
+    session_unregister('project');
 }
 
-if(isset($_COOKIE['style'])) {
-		$_SESSION['style'] = $_COOKIE['style'];
-	} else if(!isset($_SESSION['style'])) {
-		$_SESSION['style'] = "smoothness";
-	}	
+if (isset($_COOKIE['style'])) {
+    $_SESSION['style'] = $_COOKIE['style'];
+} else if (!isset($_SESSION['style'])) {
+    $_SESSION['style'] = "smoothness";
+}
 
-if($_GET['style']!="") {
-	$_SESSION['style'] = $_GET['style'];
-	setcookie('style',$_GET['style']);
-	}
+if ($_GET['style'] != "") {
+    $_SESSION['style'] = $_GET['style'];
+    setcookie('style', $_GET['style']);
+}
 
-if(!isset($_SESSION['lang'])) {
-	$_SESSION['lang'] = "nb_NO";
-	} 
+if (!isset($_SESSION['lang'])) {
+    $_SESSION['lang'] = "nb_NO";
+}
 
-include_once "lang/".$_SESSION['lang'].".php";
+include_once "lang/" . $_SESSION['lang'] . ".php";
 include_once "modules/system/db.php";
 
-if($_GET['project']!="") {
-$_SESSION['project'] = $_GET['project']; 
+if ($_GET['project'] != "") {
+    $_SESSION['project'] = $_GET['project'];
 
-$queryPN = "SELECT projectName, projectFirstSalesStage, projectFirstOrderStage from ".$projects." WHERE projectID=:project";
+    $queryPN = "SELECT projectName, projectFirstSalesStage, projectFirstOrderStage from " . $projects . " WHERE projectID=:project";
 
-try {
-    $stmt = $pdo->prepare($queryPN);
-    $stmt->bindParam(':project', $_GET['project']);
-    $stmt->execute();
-    $RowPN = $stmt->fetch(PDO::FETCH_ASSOC);
+    try {
+        $stmt = $pdo->prepare($queryPN);
+        $stmt->bindParam(':project', $_GET['project']);
+        $stmt->execute();
+        $RowPN = $stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        echo "Data was not fetched, because: " . $e->getMessage();
+    }
 
-} catch (PDOException $e) {
-    echo "Data was not fetched, because: ".$e->getMessage();
+    $_SESSION['projectName'] = $RowPN['projectName'];
+    $_SESSION['projectFirstSalesStage'] = $RowPN['projectFirstSalesStage'];
+    $_SESSION['projectFirstOrderStage'] = $RowPN['projectFirstOrderStage'];
 }
 
-
-$_SESSION['projectName'] = $RowPN['projectName'];
-$_SESSION['projectFirstSalesStage'] = $RowPN['projectFirstSalesStage'];
-$_SESSION['projectFirstOrderStage'] = $RowPN['projectFirstOrderStage'];
-} 
-
-if($_GET['project']=="all" || $_SESSION['project']=="")  {
-$_SESSION['projectName'] = $LANG['all_projects'];
+if ($_GET['project'] == "all" || $_SESSION['project'] == "") {
+    $_SESSION['projectName'] = $LANG['all_projects'];
 }
 
 ?>
-
-
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title><?php print "CustoSales - " . $_SESSION['companyName']; ?></title>
 <meta charset="UTF-8">
 
-  <script type="text/javascript" language="javascript" src="lib/datatables/media/js/jquery.js"></script>
- 		<script type="text/javascript" language="javascript" src="lib/datatables/media/js/jquery.dataTables.js"></script>
-		<script type="text/javascript" src="lib/jquery/js/jquery-ui-1.8.5.custom.min.js"></script>
-	
-	 <script src="lib/jquery/development-bundle/ui/jquery.ui.core.js"></script>
-	 <script src="lib/jquery/development-bundle/ui/jquery.ui.widget.js"></script>
-	 <script src="lib/jquery/development-bundle/ui/jquery.ui.datepicker.js"></script>
-	 <script src="lib/jquery/development-bundle/ui/i18n/jquery.ui.datepicker-<?php print strtolower(substr($_SESSION['lang'],3,2)); ?>.js"></script>
-	 <script src="lib/jquery/jquery.alerts.js"></script>	
+<script type="text/javascript" language="javascript" src="lib/datatables/media/js/jquery.js"></script>
+<script type="text/javascript" language="javascript" src="lib/datatables/media/js/jquery.dataTables.js"></script>
+<script type="text/javascript" src="lib/jquery/js/jquery-ui-1.8.5.custom.min.js"></script>
 
-  <script language="javascript" type="text/javascript" src="lib/jquery/jquery.jqplot.js"></script> 
-  <script language="javascript" type="text/javascript" src="lib/jquery/plugins/jqplot.barRenderer.js"></script>
-  <script language="javascript" type="text/javascript" src="lib/jquery/plugins/jqplot.pieRenderer.js"></script>
-  <script language="javascript" type="text/javascript" src="lib/jquery/plugins/jqplot.categoryAxisRenderer.js"></script>
-  <script language="javascript" type="text/javascript" src="lib/jquery/plugins/jqplot.highlighter.js"></script>
-  <script language="javascript" type="text/javascript" src="lib/jquery/plugins/jqplot.pointLabels.js"></script>	
-	
-	 <script language="javascript" type="text/javascript" src="lib/indexFunctions.js"></script> 
-  	<script language="javascript" type="text/javascript" src="modules/orders/js/orderFunctions.js"></script> 
-  	<script language="javascript" type="text/javascript" src="modules/reports/js/reportFunctions.js"></script> 
-	 <script language="javascript" type="text/javascript" src="modules/invoices/js/invoiceFunctions.js"></script> 
+<script src="lib/jquery/development-bundle/ui/jquery.ui.core.js"></script>
+<script src="lib/jquery/development-bundle/ui/jquery.ui.widget.js"></script>
+<script src="lib/jquery/development-bundle/ui/jquery.ui.datepicker.js"></script>
+<script src="lib/jquery/development-bundle/ui/i18n/jquery.ui.datepicker-<?php print strtolower(substr($_SESSION['lang'], 3, 2)); ?>.js"></script>
+<script src="lib/jquery/jquery.alerts.js"></script>
+
+<script language="javascript" type="text/javascript" src="lib/jquery/jquery.jqplot.js"></script>
+<script language="javascript" type="text/javascript" src="lib/jquery/plugins/jqplot.barRenderer.js"></script>
+<script language="javascript" type="text/javascript" src="lib/jquery/plugins/jqplot.pieRenderer.js"></script>
+<script language="javascript" type="text/javascript" src="lib/jquery/plugins/jqplot.categoryAxisRenderer.js"></script>
+<script language="javascript" type="text/javascript" src="lib/jquery/plugins/jqplot.highlighter.js"></script>
+<script language="javascript" type="text/javascript" src="lib/jquery/plugins/jqplot.pointLabels.js"></script>
+
+<script language="javascript" type="text/javascript" src="lib/indexFunctions.js"></script>
+<script language="javascript" type="text/javascript" src="modules/orders/js/orderFunctions.js"></script>
+<script language="javascript" type="text/javascript" src="modules/reports/js/reportFunctions.js"></script>
+<script language="javascript" type="text/javascript" src="modules/invoices/js/invoiceFunctions.js"></script>
 
 
-	 <link rel="stylesheet" href="lib/jquery/development-bundle/themes/<?php print $_SESSION['style'] ?>/jquery.ui.all.css">
-		<link rel="stylesheet" href="lib/jquery/jquery.alerts.css">
-	<link rel="shortcut icon" href="images/stevia.ico" type="image/x-icon" />
+<link rel="stylesheet" href="lib/jquery/development-bundle/themes/<?php print $_SESSION['style'] ?>/jquery.ui.all.css">
+<link rel="stylesheet" href="lib/jquery/jquery.alerts.css">
+<link rel="shortcut icon" href="images/stevia.ico" type="image/x-icon" />
 
 <style type="text/css" title="currentStyle">
-			@import "css/page_styles.css";
-			@import "css/table_styles.css";
-			@import "css/table_jui.css";
+    @import "css/page_styles.css";
+    @import "css/table_styles.css";
+    @import "css/table_jui.css";
 </style>
 
-		 <link href="css/menu_styles.css" type="text/css" rel="stylesheet">
+<link href="css/menu_styles.css" type="text/css" rel="stylesheet">
 
 
 <script type="text/javascript">
-var lang = "<?php print strtolower(substr($_SESSION['lang'],3,2)); ?>"; // to be used in indexFunctions.js
-// Table Language variables
-var lLengthMenu = "<?php print $LANG['LengthMenu']; ?>";
-var lZeroRecords ="<?php print $LANG['ZeroRecords']; ?>";
-var lInfo = "<?php print $LANG['Info']; ?>";
-var lInfoEmpty = "<?php print $LANG['InfoEmpty']; ?>";
-var lInfoFiltered ="<?php print $LANG['InfoFiltered']; ?>";
-var lSearch = "<?php print $LANG['search']; ?>";
-var lFirst = "<?php print $LANG['First']; ?>";
-var lPrevious = "<?php print $LANG['Previous']; ?>";
-var lNext = "<?php print $LANG['Next']; ?>";
-var lLast =  "<?php print $LANG['Last']; ?>";
+    var lang = "<?php print strtolower(substr($_SESSION['lang'], 3, 2)); ?>"; // to be used in indexFunctions.js
+    // Table Language variables
+    var lLengthMenu = "<?php print $LANG['LengthMenu']; ?>";
+    var lZeroRecords = "<?php print $LANG['ZeroRecords']; ?>";
+    var lInfo = "<?php print $LANG['Info']; ?>";
+    var lInfoEmpty = "<?php print $LANG['InfoEmpty']; ?>";
+    var lInfoFiltered = "<?php print $LANG['InfoFiltered']; ?>";
+    var lSearch = "<?php print $LANG['search']; ?>";
+    var lFirst = "<?php print $LANG['First']; ?>";
+    var lPrevious = "<?php print $LANG['Previous']; ?>";
+    var lNext = "<?php print $LANG['Next']; ?>";
+    var lLast = "<?php print $LANG['Last']; ?>";
 </script>
 
 <script type="text/javascript" src="lib/dashboard/js/lib/jquery.dashboard.min.js"></script>
@@ -119,7 +114,7 @@ var lLast =  "<?php print $LANG['Last']; ?>";
     // This is the code for definining the dashboard
     $(document).ready(function() {
 
-        // Tabs 
+        // Tabs
         $('#tabs').tabs();
 
 
@@ -253,4 +248,3 @@ var lLast =  "<?php print $LANG['Last']; ?>";
 
 
 </script>
-
