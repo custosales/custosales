@@ -243,8 +243,3 @@ if ($_GET['project'] == "all" || $_SESSION['project'] == "") {
 
     var dataSaved = "<?php print $LANG['data_saved']; ?>"
 </script>
-
-
-
-
-</script>
