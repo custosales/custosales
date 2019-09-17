@@ -216,8 +216,9 @@ try {
         <div class="clear">&nbsp;</div>
         <h1 class="ui-widget-header ui-corner-all" style="width:100%;text-align:center;font-weight:bold"><?php print $LANG['sales']; ?></h1>
 
-                                
+        <!--  Add Register Sales Button  -->                        
 
+        <!-- Display sales in a table, if there are orders in the orders table -->
 
         <?php
         // Get Order entries, if any
