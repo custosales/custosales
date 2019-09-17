@@ -216,12 +216,11 @@ try {
         <div class="clear">&nbsp;</div>
         <h1 class="ui-widget-header ui-corner-all" style="width:100%;text-align:center;font-weight:bold"><?php print $LANG['sales']; ?></h1>
 
-
+                                
 
 
         <?php
-        // Update me
-
+        // Get Order entries, if any
 
         $querys = "SELECT orderID, orderDate, productName, fullName, " . $orders . ".unitPrice FROM " . $orders . " , " . $products . " , " . $users . " WHERE " . $orders . ".productID=" . $products . ".productID and " . $orders . ".salesRepID=" . $users . ".userID and regNumber=" . $Row['regNumber'];
 
@@ -231,10 +230,7 @@ try {
             echo "Data was not fetched, because: " . $e->getMessage();
         }
 
-
-
-
-        if ($Results > 0) {  // Show sales if exist 
+        if ($Results->rowCount()>0) {  // Show sales if there are orders
 
             ?>
             <table id="sales" class="display" style="font-size:1.1em">
