@@ -928,6 +928,7 @@ try {
 <?php 
 foreach($resultr as $Rowr) {
 	
+// Update me!!	
 if( strstr($Rowd['roles'], $Rowr['roleID']) ) {
 	$selected = "selected";
 	} else {

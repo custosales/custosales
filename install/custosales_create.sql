@@ -1,3 +1,5 @@
+create database if not exists custosales;
+use custosales;
 -- MariaDB dump 10.17  Distrib 10.4.7-MariaDB, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: stevia
@@ -820,4 +822,10 @@ CREATE TABLE `Workplaces` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-08-07 11:23:42
+CREATE TABLE user_role (
+userID int not null,
+roleID int not null,
+from_date date not null,
+to_date date not null,
+primary key(userID,roleID,from_date)
+);
