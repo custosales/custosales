@@ -926,14 +926,21 @@ try {
 ?>
 <select style="width:250px;font-size:13px" name="roles" id="<?php print "value".$i;?>" multiple="multiple" size="<?php print $count; ?>">
 <?php 
+
+$Roles = explode(",",$Rowd['roles']);
+
 foreach($resultr as $Rowr) {
 	
-// Update me!!	
-if( strstr($Rowd['roles'], $Rowr['roleID']) ) {
-	$selected = "selected";
-	} else {
-	$selected = "";	
+// Update me!! Virker ikke nå - bruk ny tabell: user_role	
+
+		for ($role = 0; $role < count($Roles); $role++) {
+			if($Roles[$role]==$Rowr['roleID']) {
+				$selected = "selected";
+			}  else {
+				$selected = "";	
+			}
 		}	
+
 ?>
 <option value="<?php print $Rowr['roleID'];?>" <?php print $selected;?>  ><?php print $Rowr['roleName'];?></option>
 <?php 
