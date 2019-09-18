@@ -4,8 +4,7 @@ if (!isset($_SESSION['userID'])) { // check if user is logged in
     header("Location: ../index.php"); // if not go to login
 }
 require_once "../system/db.php";  // get pdo connection settings
-// require_once "../lang/" . $_SESSION['lang'] . ".php"; // get language array
-
+include_once "../../lang/".$_SESSION['lang'].".php";
 
 if (!isset($_GET['year'])) {
     // $year = date('Y');
@@ -55,8 +54,6 @@ $valuesM = substr($valuesM, 1);
 $x_axisM = substr($x_axisM, 1);
 ?>
 
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 
 <head>
