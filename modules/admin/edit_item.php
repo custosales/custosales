@@ -676,7 +676,7 @@ try {
 }
 ?>
 <select name="supervisorID" id="<?php print "value".$i;?>">
-<option value=""><?php print $LANG['nobody'];?></option>
+<option value="0"><?php print $LANG['nobody'];?></option>
 <?php 
 foreach($resultsu as $Rowsu) {
 if($Rowsu['userID']==$Rowd['supervisorID']) {
@@ -792,7 +792,7 @@ try {
 }
 ?>
 <select name="contractID" id="<?php print "value".$i;?>">
-<option value=""><?php print $LANG['none'];?></option>
+<option value="0"><?php print $LANG['none'];?></option>
 <?php 
 foreach($resultcon as $Rowcon) {
 if($Rowcon['contractID']==$Rowd['contractID']) {
