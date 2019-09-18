@@ -930,20 +930,21 @@ try {
 $Roles = explode(",",$Rowd['roles']);
 
 foreach($resultr as $Rowr) {
+$selected = "";	
 	
-// Update me!! Virker ikke nå - bruk ny tabell: user_role	
+// Update me!! Bruk ny tabell: user_role	
 
 		for ($role = 0; $role < count($Roles); $role++) {
 			if($Roles[$role]==$Rowr['roleID']) {
 				$selected = "selected";
-			}  else {
-				$selected = "";	
-			}
-		}	
+				$rolle = $Roles[$role]; 
 
+		}
+	}
 ?>
 <option value="<?php print $Rowr['roleID'];?>" <?php print $selected;?>  ><?php print $Rowr['roleName'];?></option>
 <?php 
+
 } // end Rowr loop
 ?>
 </select>

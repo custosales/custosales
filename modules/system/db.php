@@ -1,8 +1,8 @@
 <?php
 $server = "localhost";
-$username = "stevia";
-$password= "stevia432a";
-$DBName = "stevia";
+$username = "custosales";
+$password= "custo432a";
+$DBName = "custosales";
 
 try {
 
