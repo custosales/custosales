@@ -46,5 +46,6 @@ $projects = " `Projects`";
 $contracts = " `Contracts`";
 $workplaces = " `Workplaces`";
 $modules = " `modules`";
-
+$user_role = " `user_role`";
+$role_project = " `role_project`";
 ?>

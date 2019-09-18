@@ -25,8 +25,28 @@ if (!isset($_SESSION['lang'])) {
     $_SESSION['lang'] = "nb_NO";
 }
 
+// include language file
 include_once "lang/" . $_SESSION['lang'] . ".php";
+
+// include database connection
 include_once "modules/system/db.php";
+
+// Get number of user projects
+$queryUserProjects = "Select count(projectID) as noUserProjects from " . $user_role . " as ur inner join ". $role_project ." as rp
+ON ur.roleID = rp.roleID WHERE userID=:userID and ur.to_date = '9999-01-01' and rp.to_date = '9999-01-01' ";
+
+try {
+    $stmt = $pdo->prepare($queryUserProjects);
+    $stmt->bindParam(':userID', $_SESSION['userID']);
+    $stmt->execute();
+    $RowPN = $stmt->fetch(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    echo "Number of user projects was not fetched, because: " . $e->getMessage();
+}
+
+// Set session['noUserPojects'] as number of user projects
+$_SESSION['noUserProjects'] = $RowPN['noUserProjects'];
+
 
 if ($_GET['project'] != "") {
     $_SESSION['project'] = $_GET['project'];

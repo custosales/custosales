@@ -1,4 +1,3 @@
-
 <!--  Show Logo -->
 <a href="index.php" ><img src="images/logo/logo1.png" style="border:0px;vertical-align:top;margin-left:15px;margin-bottom:0px;margin-top:11px" alt="" ></a>
 <!--  End Logo -->
@@ -8,8 +7,8 @@
 <ul id="menu" class="ui-widget-header ui-corner-all">
 			<li><a href="index.php"><?php print $LANG['home']; ?></a></li>
 <?php 
-if(strstr($_SESSION['userProjects'], ",") || isset($_SESSION['admin']) ) {
-// User is  admin or has more than one project, so show projects menu	
+if(($_SESSION['noUserProjects'] > 1) || isset($_SESSION['admin']) ) {
+// User is admin or has more than one project, so show projects menu	
 ?>	
 			<li><a href="index.php"><?php print $LANG['projects']; ?></a>
 
@@ -26,16 +25,16 @@ if(isset($_SESSION['admin'])) {   // check for admin rights
 <?php // Get list of user's projects
 
 if(isset($_SESSION['admin'])) { // list all projects for admin
-	$userProjects = "";
-} else { // list user's projects			
-	if(strstr($_SESSION['userProjects'], ",")) {
-	$userProjects = "WHERE projectID = ".str_replace(",", " OR projectID = ", $_SESSION['userProjects']);
-	} else {
-	$userProjects = "WHERE projectID = ".$_SESSION['userProjects'];		
-	}
+
+	$queryProj = "SELECT projectID, projectName FROM ".$projects."  ORDER by projectName";
+
+} else { // list user's projects
+	
+	$queryProj = "SELECT p.projectID, projectName FROM ".$role_project." as rp INNER JOIN ".$projects." as p ON rp.projectID=p.projectID INNER JOIN " .$user_role." as ur 
+	 ON ur.roleID = rp.roleID WHERE ur.userID = ".$_SESSION['userID']." AND ur.to_date = '9999-01-01' AND rp.to_date = '9999-01-01' ORDER by projectName";
+
 } 
 
-$queryProj = "SELECT projectID, projectName FROM ".$projects." ".$userProjects." ORDER by projectName";
 
 try {
     $resultProj = $pdo->query($queryProj);

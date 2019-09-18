@@ -829,3 +829,11 @@ from_date date not null,
 to_date date not null,
 primary key(userID,roleID,from_date)
 );
+
+create table role_project (
+roleID int,
+projectID int,
+from_date date,
+to_date date,
+primary key (roleID,projectID,from_date)
+);
