@@ -1,8 +1,10 @@
+<?php session_start(); ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
 <meta charset="utf-8" />
 <title></title>
+<?php include_once 'head.php'; ?>
 </head>
 <body style="font-size:12px">
 <?php 
@@ -23,8 +25,10 @@ $queryRoles = "SELECT roles FROM ".$users." WHERE userID=".$_SESSION['userID'];
 
 if (!$ResultRoles= mysql_query($queryRoles, $Link)) {
            print "No database connection <br>".mysql_error();
-        }
+		}
+		
 $RowRoles = MySQL_fetch_array($ResultRoles);
+
 $userRoles = explode(",", $RowRoles['roles']); // make array of roles
 
 $length = count($userRoles);
