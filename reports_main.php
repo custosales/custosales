@@ -1,8 +1,10 @@
+<?php session_start(); ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
     <head>
         <meta charset="utf-8" />
         <title></title>
+        <?php include_once 'head.php'; ?>
         <script language="javascript" type="text/javascript" src="modules/reports/reportFunctions.js"></script> 
     </head>
     <body style="font-size:12px;">
