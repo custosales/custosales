@@ -54,6 +54,7 @@ if($action=="edit" || $action =="add" ) {
 // Edit or Add Item  
 
 if($action=="edit") { 
+
 // Get Data
 
     $queryd = "SELECT * FROM `".$itemType."` WHERE ".$IDField."=".$itemID;
@@ -67,6 +68,7 @@ try {
     
 }   
 ?>
+
 <center>
     
 <body style="font-size:13px">
@@ -608,8 +610,6 @@ if($Rowu['userID']==$Rowd['productCategoryOwnerID']) {
 </select>
 
 
-
-
 <?php // List Calling List Owners
 } else if(strstr($Row[0], "callingListOwnerID") ) {
 $queryu = "SELECT userID, fullName FROM ".$users;
@@ -909,43 +909,8 @@ if($Rowdep['departmentID']!=$Rowd['departmentID']) { // don't list own departmen
 ?>
 <option value="<?php print $Rowdep['departmentID'];?>"  <?php print $selected;?> ><?php print $Rowdep['departmentName'];?></option>
 <?php 
-} // emd if
+} // end if
 } // end Rowdep loop
-?>
-</select>
-
-<?php // List Roles
-} else if(strstr($Row[0], "roles") ) {
-$queryr = "SELECT * FROM ".$roles;
-try {
-    $resultr = $pdo->query($queryr);
-     $count = $resultr->rowCount();
-} catch (PDOException $e) {
-    echo "Data was not fetched, because: " . $e->getMessage();
-}
-?>
-<select style="width:250px;font-size:13px" name="roles" id="<?php print "value".$i;?>" multiple="multiple" size="<?php print $count; ?>">
-<?php 
-
-$Roles = explode(",",$Rowd['roles']);
-
-foreach($resultr as $Rowr) {
-$selected = "";	
-	
-// Update me!! Bruk ny tabell: user_role	
-
-		for ($role = 0; $role < count($Roles); $role++) {
-			if($Roles[$role]==$Rowr['roleID']) {
-				$selected = "selected";
-				$rolle = $Roles[$role]; 
-
-		}
-	}
-?>
-<option value="<?php print $Rowr['roleID'];?>" <?php print $selected;?>  ><?php print $Rowr['roleName'];?></option>
-<?php 
-
-} // end Rowr loop
 ?>
 </select>
 
@@ -1172,7 +1137,7 @@ if($itemType=="CallingLists") {
 </table>
 
 <?php 
-if($itemType=="Users" && $itemID!="") { // Show user photo if available
+if($itemType=="Users" && $itemID!="") { // Show user photo if available and user roles
 // Check if userphoto is present
 $dir    = "../../documents/users/".$itemID."/userphoto/thumbnails/";
 $files = scandir($dir);
@@ -1188,7 +1153,46 @@ if(is_file($dir.$userPhoto)) {
 </table>
 <?php 
 } // end if photo present
-} // end show user photo
+
+// List Roles
+
+$queryr = "SELECT * FROM ".$roles;
+try {
+    $resultr = $pdo->query($queryr);
+     $count = $resultr->rowCount();
+} catch (PDOException $e) {
+    echo "Data was not fetched, because: " . $e->getMessage();
+}
+?>
+<select style="width:250px;font-size:13px" name="roles" id="<?php print "value".$i;?>" multiple="multiple" size="<?php print $count; ?>">
+<?php 
+
+$roleQuery = "SELECT roleID from ".$user_role." WHERE userID = ".$itemID;
+// $Roles = explode(",",$Rowd['roles']);
+
+
+foreach($resultr as $Rowr) {
+$selected = "";	
+	
+// Update me!! Bruk ny tabell: user_role	
+
+		for ($role = 0; $role < count($Roles); $role++) {
+			if($Roles[$role]==$Rowr['roleID']) {
+				$selected = "selected";
+				$rolle = $Roles[$role]; 
+
+		}
+	}
+?>
+<option value="<?php print $Rowr['roleID'];?>" <?php print $selected;?>  ><?php print $Rowr['roleName'];?></option>
+<?php 
+} // end Rowr loop
+?>
+</select>
+
+
+<?php 
+} // end show user photo and roles
 ?>
 
 
