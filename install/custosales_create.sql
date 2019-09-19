@@ -1,4 +1,6 @@
-create database if not exists custosales;
+drop database IF exists custosales;
+create database  custosales;
+grant all on custosales.* to 'custosales'@'localhost' identified by 'custo432a';  
 use custosales;
 -- MariaDB dump 10.17  Distrib 10.4.7-MariaDB, for debian-linux-gnu (x86_64)
 --
@@ -845,3 +847,5 @@ from_date date,
 to_date DATE,
 primary key (roleID, callingListID, from_date)
 );
+
+
