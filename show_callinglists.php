@@ -21,31 +21,19 @@ include_once "menu.php";
 <?php 
 
 // Find Calling List connected to users roles
-$queryRoles = "SELECT roles FROM ".$users." WHERE userID=".$_SESSION['userID'];
+$query = "SELECT callingListName, callingListTableName FROM ".$callinglists." WHERE listID IN (SELECT roleID FROM ".$user_role." WHERE userID=".$_SESSION['userID']." AND to_date = '9999-01-01')";
 
-if (!$ResultRoles= mysql_query($queryRoles, $Link)) {
-           print "No database connection <br>".mysql_error();
-		}
-		
-$RowRoles = MySQL_fetch_array($ResultRoles);
-
-$userRoles = explode(",", $RowRoles['roles']); // make array of roles
-
-$length = count($userRoles);
-
-if ($length>1) {
-for($i=1;$i<$length;$i++) {
-$resStr = $resStr." OR listID = (SELECT roleCallingLists FROM Roles WHERE roleID = ".$userRoles[$i].")";
+try {
+	$result = $pdo->query($query);
+} catch (PDOException $e) {
+	echo "Data was not fetched, because: " . $e->getMessage();
 }
-}
-	$Result = mysql_query("SELECT callingListName, callingListTableName  
-	FROM ".$callinglists." 
-	WHERE listID = (SELECT roleCallingLists FROM Roles WHERE roleID = ".$userRoles[0].") ".$resStr."  " , 
-	$Link) or die(mysql_error()); 
-   
-   
+	
 $listnumber = 1;
-while($Row = mysql_fetch_array($Result) ) { // list Callinglists for this user
+
+foreach ($result as $Rows) {  // list Callinglists for this user   
+  
+
 ?>
 <option  id="<?php print $Row['callingListTableName'];?>" value="<?php print $Row['callingListTableName'];?>"><?php print $Row['callingListName'];?></option>
 <?php

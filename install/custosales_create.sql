@@ -837,3 +837,11 @@ from_date date,
 to_date date,
 primary key (roleID,projectID,from_date)
 );
+
+create table role_callinglist (
+roleID int,
+callingListID int,
+from_date date,
+to_date DATE,
+primary key (roleID, callingListID, from_date)
+);
