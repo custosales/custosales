@@ -26,9 +26,12 @@ if($search=="yes") {   // Display searched records
 
 // Get Field Names
 $queryF = "SHOW FIELDS FROM `".$tableName."`";
-if (!$ResultF= mysql_query($queryF, $Link)) {
-         	print "No database connection <br>".mysql_error();
-    } 
+
+try {
+	$ResultF = $pdo->query($queryF);
+} catch (PDOException $e) {
+	echo "Data was not fetched, because: " . $e->getMessage();
+}
 
 
 $phrase = $_GET['phrase'];
@@ -36,25 +39,35 @@ $field = $_GET['field'];
 
 $query = "SELECT * FROM ".$tableName." WHERE `".$field."` like '%".$phrase."%' AND salesRepID=0 LIMIT ".$limitStart.",500";
 
-		if (!$Result= mysql_query($query, $Link)) {
-           print "No database connection <br>".mysql_error();
-        } 
-               
-} else {  // Display all records
+
+try {
+	$result = $pdo->query($query);
+} catch (PDOException $e) {
+	echo "Data was not fetched, because: " . $e->getMessage();
+}
+
+
+ } else {  // Display all records
+
+foreach ($result as $Row) {
+
 
 // Get Field Names
-$queryF = "SHOW FIELDS FROM `".$tableName."`";
-if (!$ResultF= mysql_query($queryF, $Link)) {
-         	print "No database connection <br>".mysql_error();
-    } 
+$queryFields = "SHOW FIELDS FROM `".$tableName."`";
+
+try {
+	$resultFields = $pdo->query($queryFields);
+} catch (PDOException $e) {
+	echo "Data was not fetched, because: " . $e->getMessage();
+}
 
 
-$query = "SELECT * FROM `".$tableName."` WHERE salesRepID=0 LIMIT ".$limitStart.",500";
+$queryList = "SELECT * FROM `".$tableName."` WHERE salesRepID=0 LIMIT ".$limitStart.",500";
 		
-		if (!$Result= mysql_query($query, $Link)) {
-           print "No database connection <br>".mysql_error();
-        }
-
+try {
+	$resultList = $pdo->query($queryList);
+} catch (PDOException $e) {
+	echo "Data was not fetched, because: " . $e->getMessage();
 }
 
 
@@ -77,7 +90,7 @@ echo '<th style="width:25px"> </th>';
 
 $aa=0;
 
-while($RowF=MySQL_fetch_array($ResultF)) { // list field names
+foreach ($resultFields as $RowF) {
 
 if($RowF[0]=="AccountYear") {
 $RowF[0] = $LANG['year'];
@@ -110,7 +123,8 @@ echo '</thead>';
 
 $i=0;
 
-while($Row=MySQL_fetch_array($Result)) {
+
+foreach ($resultList as $Row) {
 
  
 if($Row['salesRepID']!=0) {
@@ -129,13 +143,21 @@ if($Row['salesRepID']==0) {
 echo '<a href="javascript:loadInfo(\''.$Row[0].'\')">'.$Row[1];
 } else {
 
-$queryS = "SELECT fullName FROM ".$users." WHERE userID=".$Row['salesRepID'];
-if (!$ResultS= mysql_db_query($DBName, $queryS, $Link)) {
-	print "No user name".mysql_error();
-	} else {
-	$RowS = MySQL_fetch_array($ResultS);
+$queryS = "SELECT fullName FROM ".$users." WHERE userID=:userID";
+
+
+try {
+	$stmt = $pdo->prepare($queryS);
+	$stmt->bindParam(':userID', $Row['salesRepID']);
+	$stmt->execute();
+	$RowS = $stmt->fetch(PDO::FETCH_ASSOC);
 	$salesRep = $RowS['fullName'];	
-		}
+} catch (PDOException $e) {
+	echo "Data was not fetched, because: " . $e->getMessage();
+}
+
+
+} // end else
 
 echo $Row['Firmanavn'].' ('.$salesRep.')';
 
@@ -159,12 +181,9 @@ $i++;
 
 }
     
-
     
 echo '</table>';
 echo '</form>';
 
 echo '</span>';		
 
-
-?>

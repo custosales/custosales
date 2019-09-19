@@ -20,8 +20,12 @@ include_once "menu.php";
 
 <?php 
 
-// Find Calling List connected to users roles
-$query = "SELECT callingListName, callingListTableName FROM ".$callinglists." WHERE listID IN (SELECT roleID FROM ".$user_role." WHERE userID=".$_SESSION['userID']." AND to_date = '9999-01-01')";
+// Find Calling List connected to user 
+$query = "SELECT callingListName, callingListTableName FROM ".$callinglists." cl 
+INNER JOIN ".$role_callinglist." rc ON cl.listID = rc.callingListID
+INNER JOIN ".$user_role." ur ON ur.roleID = rc.roleID
+WHERE ur.userID = ".$_SESSION['userID']." AND ur.to_date = '9999-01-01' AND rc.to_date = '9999-01-01'"; 
+
 
 try {
 	$result = $pdo->query($query);
@@ -31,7 +35,7 @@ try {
 	
 $listnumber = 1;
 
-foreach ($result as $Rows) {  // list Callinglists for this user   
+foreach ($result as $Row) {  // list Callinglists for this user   
   
 
 ?>

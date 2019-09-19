@@ -48,4 +48,5 @@ $workplaces = " `Workplaces`";
 $modules = " `modules`";
 $user_role = " `user_role`";
 $role_project = " `role_project`";
+$role_callinglist = " `role_callinglist`";
 ?>
