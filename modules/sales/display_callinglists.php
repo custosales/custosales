@@ -49,7 +49,6 @@ try {
 
  } else {  // Display all records
 
-foreach ($result as $Row) {
 
 
 // Get Field Names
@@ -131,7 +130,7 @@ if($Row['salesRepID']!=0) {
 	$disabled = "disabled";
 	} else {
 	$disabled = "";
-			}
+	}
 			
 echo '<tr>
 <td><input type="checkbox" '.$disabled.' name="makeLead" value="'.$Row[0].'"></td>';
@@ -155,13 +154,11 @@ try {
 } catch (PDOException $e) {
 	echo "Data was not fetched, because: " . $e->getMessage();
 }
+echo $Row['Firmanavn'].' ('.$salesRep.')';
 
 
 } // end else
 
-echo $Row['Firmanavn'].' ('.$salesRep.')';
-
-}
 
 if($Row['salesRepID']>0) {
 echo '</a>';
@@ -181,7 +178,7 @@ $i++;
 
 }
     
-    
+}    
 echo '</table>';
 echo '</form>';
 
