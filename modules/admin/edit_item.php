@@ -1145,11 +1145,10 @@ $userPhoto = $files[2]; // select the first file after . and ..
 if(is_file($dir.$userPhoto)) {
 ?>
 <table style="float:center" >
-<tr>
-<td >
+<tr><td style="text-align:center;font-weight:bold"><?php print $LANG['profile_image'];?></td></tr>
+<tr><td>
 <img src="documents/users/<?php print $itemID; ?>/userphoto/thumbnails/<?php print $userPhoto; ?>" alt="" style="border: solid 6px #CCCCCC;border-radius:7px" >
 </td></tr>
-<tr><td style="text-align:center;font-weight:bold"><?php print $LANG['profile_image'];?></td></tr>
 </table>
 <?php 
 } // end if photo present
@@ -1164,9 +1163,12 @@ try {
     echo "Data was not fetched, because: " . $e->getMessage();
 }
 ?>
-<select style="width:250px;font-size:13px" name="roles" id="<?php print "value".$i;?>" multiple="multiple" size="<?php print $count; ?>">
-<?php 
 
+<table style="float:center" >
+<tr><td style="text-align:center;font-weight:bold"><?php print $LANG['roles'];?></td></tr>
+<tr><td>
+<select style="width:150px;font-size:13px" name="roles" id="<?php print "value".$i;?>" multiple="multiple" size="<?php print $count; ?>">
+<?php 
 $roleQuery = "SELECT roleID from ".$user_role." WHERE userID = ".$itemID;
 // $Roles = explode(",",$Rowd['roles']);
 
@@ -1189,7 +1191,8 @@ $selected = "";
 } // end Rowr loop
 ?>
 </select>
-
+</td></tr>
+</table>
 
 <?php 
 } // end show user photo and roles
