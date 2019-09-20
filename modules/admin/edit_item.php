@@ -1156,7 +1156,7 @@ if(is_file($dir.$userPhoto)) {
 // List Roles
 
 // Get roles
-$queryr = "SELECT * FROM ".$roles;
+$queryr = "SELECT roleID, roleName FROM ".$roles;
 try {
     $resultr = $pdo->query($queryr);
      $count = $resultr->rowCount();
