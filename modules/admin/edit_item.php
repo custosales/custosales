@@ -1155,6 +1155,7 @@ if(is_file($dir.$userPhoto)) {
 
 // List Roles
 
+// Get roles
 $queryr = "SELECT * FROM ".$roles;
 try {
     $resultr = $pdo->query($queryr);
@@ -1169,6 +1170,15 @@ try {
 <tr><td>
 <select style="width:150px;font-size:13px" name="roles" id="<?php print "value".$i;?>" multiple="multiple" size="<?php print $count; ?>">
 <?php 
+
+
+
+// Loop through roles
+foreach($resultr as $Rowr) {
+
+$selected = "";	
+
+// Get ID of users roles
 $roleQuery = "SELECT roleID from ".$user_role." WHERE userID = ".$itemID." AND to_date = '9999-01-01'";
 
 try {
@@ -1176,12 +1186,8 @@ try {
 } catch (PDOException $e) {
 	echo "User roles were not fetched, because: " . $e->getMessage();
 }
-
-
-foreach($resultr as $Rowr) {
-$selected = "";	
-
 		foreach($roleResult as $userRole) {
+			// echo "<option>".$userRole['roleID']."-".$Rowr['roleID']."</option>";
 			if($userRole['roleID'] == $Rowr['roleID']) {
 				$selected = "selected";
 			}
