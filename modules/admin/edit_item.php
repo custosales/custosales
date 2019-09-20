@@ -1169,22 +1169,23 @@ try {
 <tr><td>
 <select style="width:150px;font-size:13px" name="roles" id="<?php print "value".$i;?>" multiple="multiple" size="<?php print $count; ?>">
 <?php 
-$roleQuery = "SELECT roleID from ".$user_role." WHERE userID = ".$itemID;
-// $Roles = explode(",",$Rowd['roles']);
+$roleQuery = "SELECT roleID from ".$user_role." WHERE userID = ".$itemID." AND to_date = '9999-01-01'";
+
+try {
+	$roleResult = $pdo->query($roleQuery);
+} catch (PDOException $e) {
+	echo "User roles were not fetched, because: " . $e->getMessage();
+}
 
 
 foreach($resultr as $Rowr) {
 $selected = "";	
-	
-// Update me!! Bruk ny tabell: user_role	
 
-		for ($role = 0; $role < count($Roles); $role++) {
-			if($Roles[$role]==$Rowr['roleID']) {
+		foreach($roleResult as $userRole) {
+			if($userRole['roleID'] == $Rowr['roleID']) {
 				$selected = "selected";
-				$rolle = $Roles[$role]; 
-
+			}
 		}
-	}
 ?>
 <option value="<?php print $Rowr['roleID'];?>" <?php print $selected;?>  ><?php print $Rowr['roleName'];?></option>
 <?php 
