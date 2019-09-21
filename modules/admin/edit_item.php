@@ -1172,7 +1172,6 @@ try {
 <?php 
 
 
-
 // Loop through roles
 foreach($resultr as $Rowr) {
 
