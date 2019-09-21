@@ -13,7 +13,7 @@ $_SESSION['lang']="nb_NO";
 
 
 
-$query = "SELECT userID, fullName, roles, userEmail, phone, active, mobilePhone from ".$users." WHERE userName = :userName and pwd=:pwd";
+$query = "SELECT userID, fullName, userEmail, phone, active, mobilePhone from ".$users." WHERE userName = :userName and pwd=:pwd";
 
 try {
     $stmt = $pdo->prepare($query);
@@ -33,7 +33,6 @@ if($Row['active']) { // user is active, set variables
 	
 $_SESSION['userID'] = $Row['userID'];
 $_SESSION['fullName'] = $Row['fullName'];
-$_SESSION['roles'] = $Row['roles'];
 $_SESSION['userEmail'] = $Row['userEmail'];
 $_SESSION['phone'] = $Row['phone'];
 $_SESSION['mobilePhone'] = $Row['mobilePhone'];
@@ -61,7 +60,10 @@ $_SESSION['companyBankAccount'] = $Rowc['companyBankAccount'];
 
 
 // SET SESSION ROLE AND MODULE RIGHTS
+
+
 $Roles = explode(',', $Row['roles']);
+
 foreach ($Roles as $Role) {
 if($Role==1) { // set Admin rights - admin is always roleID 1
 	$_SESSION['admin'] = "yes";
