@@ -12,8 +12,7 @@ $_SESSION['lang']="nb_NO";
 }	
 
 
-
-$query = "SELECT userID, fullName, roles, userEmail, phone, active, mobilePhone from ".$users." WHERE userName = :userName and pwd=:pwd";
+$query = "SELECT userID, fullName, userEmail, phone, active, mobilePhone from ".$users." WHERE userName = :userName and pwd=:pwd";
 
 try {
     $stmt = $pdo->prepare($query);
@@ -23,7 +22,7 @@ try {
     $Row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 } catch (PDOException $e) {
-    echo "Data was not fetched, because: ".$e->getMessage();
+    echo "User data was not fetched, because: ".$e->getMessage();
 }
 
 
@@ -46,7 +45,7 @@ try {
     $stmt->execute();
     $Rowc = $stmt->fetch();
 } catch (PDOException $e) {
-    echo "Data was not fetched, because: ".$e->getMessage();
+    echo "Company data was not fetched, because: ".$e->getMessage();
  }
 
 
@@ -61,26 +60,40 @@ $_SESSION['companyBankAccount'] = $Rowc['companyBankAccount'];
 
 
 // SET SESSION ROLE AND MODULE RIGHTS
-$Roles = explode(',', $Row['roles']);
-foreach ($Roles as $Role) {
-if($Role==1) { // set Admin rights - admin is always roleID 1
-	$_SESSION['admin'] = "yes";
-	}
-// Get user's roles
-$Rolestr .= $Role." OR roleID like ";
+$queryRoles = "SELECT roleID from ".$user_role." WHERE userID=:userID and to_date = '9999-01-01'";
+
+$userID = $Row['userID'];
+
+try {
+    $stmt = $pdo->prepare($queryRoles);
+    $stmt->bindParam(':userID', $userID);
+    $stmt->execute();
+    $rowRoles = $stmt->fetch(PDO::FETCH_ASSOC);
+
+} catch (PDOException $e) {
+    echo "Role IDs were not fetched, because: ".$e->getMessage();
 }
-$Rolestr = substr($Rolestr, 0, strlen($Rolestr)-15);
 
-$_SESSION['roleStr'] = $Rolestr;
 
-$queryr = "SELECT * from ".$roles." WHERE roleID like ".$Rolestr;
+
+foreach ($rowRoles as $Role) {  // loop roles
+
+// Set admin rights - admin is always roleID 1
+
+    if($Role['roleID']==1) { 
+	    $_SESSION['admin'] = "yes";
+	}
+
+// Get user's roles
+
+$queryr = "SELECT * from ".$roles." WHERE roleID like ".$Role['roleID'];
 
 try {
     $stmt = $pdo->prepare($queryr);
     $stmt->execute();
     $Rowr = $stmt->fetch();
 } catch (PDOException $e) {
-    echo "Data was not fetched, because: ".$e->getMessage();
+    echo "Role Data was not fetched, because: ".$e->getMessage();
 }
 
 $userProjects = $userProjects.",".$Rowr['roleProjectID'];
@@ -122,6 +135,8 @@ $_SESSION['projectFirstSalesStage'] = $RowPN['projectFirstSalesStage'];
 $_SESSION['projectFirstOrderStage'] = $RowPN['projectFirstOrderStage'];
  
 } // end if user has one project
+
+} // end loop roles
 
 print $_SESSION['fullName'];   // Send full name to login form 
 
