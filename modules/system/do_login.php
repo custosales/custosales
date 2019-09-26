@@ -12,6 +12,7 @@ $_SESSION['lang']="nb_NO";
 }	
 
 
+
 $query = "SELECT userID, fullName, userEmail, phone, active, mobilePhone from ".$users." WHERE userName = :userName and pwd=:pwd";
 
 try {
