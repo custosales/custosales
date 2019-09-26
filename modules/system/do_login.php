@@ -11,8 +11,6 @@ if(!isset($_SESSION['lang'])) {
 $_SESSION['lang']="nb_NO";
 }	
 
-
-
 $query = "SELECT userID, fullName, userEmail, phone, active, mobilePhone from ".$users." WHERE userName = :userName and pwd=:pwd";
 
 try {
@@ -27,7 +25,7 @@ try {
 }
 
 
-if($Row['userID']!="") {  // user ecists
+if($Row['userID']!="") {  // user exists
 
 if($Row['active']) { // user is active, set variables
 	
@@ -60,7 +58,7 @@ $_SESSION['companyBankAccount'] = $Rowc['companyBankAccount'];
 
 
 // SET SESSION ROLE AND MODULE RIGHTS
-$queryRoles = "SELECT roleID from ".$user_role." WHERE userID=:userID and to_date = '9999-01-01'";
+$queryRoles = "SELECT ur.userID as userID, r.roleID as roleID from ".$user_role." as ur INNER JOIN ".$roles." as r ON ur.roleID=r.roleID WHERE ur.userID=:userID and ur.to_date = '9999-01-01'";
 
 $userID = $Row['userID'];
 
@@ -73,7 +71,6 @@ try {
 } catch (PDOException $e) {
     echo "Role IDs were not fetched, because: ".$e->getMessage();
 }
-
 
 
 foreach ($rowRoles as $Role) {  // loop roles
@@ -127,7 +124,7 @@ try {
     $stmt->execute(); 
     $RowPN = $stmt->fetch();
 } catch (PDOException $e) {
-    echo "Data was not fetched, because: ".$e->getMessage();
+    echo "Project Data was not fetched, because: ".$e->getMessage();
  }
 
 $_SESSION['projectName'] = $RowPN['projectName'];
