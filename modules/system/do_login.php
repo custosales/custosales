@@ -32,7 +32,6 @@ if($Row['active']) { // user is active, set variables
 	
 $_SESSION['userID'] = $Row['userID'];
 $_SESSION['fullName'] = $Row['fullName'];
-$_SESSION['roles'] = $Row['roles'];
 $_SESSION['userEmail'] = $Row['userEmail'];
 $_SESSION['phone'] = $Row['phone'];
 $_SESSION['mobilePhone'] = $Row['mobilePhone'];
