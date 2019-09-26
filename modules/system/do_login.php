@@ -60,7 +60,7 @@ $_SESSION['companyBankAccount'] = $Rowc['companyBankAccount'];
 // SET SESSION ROLE AND MODULE RIGHTS
 $queryRoles = "SELECT ur.userID as userID, r.roleID as roleID from ".$user_role." as ur INNER JOIN ".$roles." as r ON ur.roleID=r.roleID WHERE ur.userID=:userID and ur.to_date = '9999-01-01'";
 
-$userID = $Row['userID'];
+$userID = $_SESSION['userID'];
 
 try {
     $stmt = $pdo->prepare($queryRoles);

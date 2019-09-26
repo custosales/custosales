@@ -10,7 +10,7 @@
 if(($_SESSION['noUserProjects'] > 1) || isset($_SESSION['admin']) ) {
 // User is admin or has more than one project, so show projects menu	
 ?>	
-			<li><a href="index.php"><?php print $LANG['projects']; ?></a>
+			<li><a href="index.php"><?php print $LANG['projects']. " - ".$_SESSION['admin']; ?></a>
 
 <!--  List Projects -->				
 <ul>

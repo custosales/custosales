@@ -1,9 +1,11 @@
 <?php 
 session_start();
+// Login procedure - first unset previous session 
 if($_GET['logout']!="yes") {
 session_unset();  // unset all session variables
 session_destroy();
 }	
+
 if(isset($_COOKIE['style'])) {
 		$_SESSION['style'] = $_COOKIE['style'];
 	} else {
@@ -97,13 +99,16 @@ http.send(params);
 	<div id="loginResponse" style="width:100%; height=40px;text-align:center;"> </div>
 	</td></tr>
 </table>
+
 <?php
 if($_GET['logout']=="yes") {
 print "<script language=\"JavaScript\">";
 print "document.getElementById(\"loginResponse\").innerHTML=\"".$_SESSION['fullName']." ".$LANG['logged_out']."\"";
 print "</script>";
 
-session_unset();  // unset all session variables
+unset($_SESSION['admin']);  // unset admin session variable
+session_unregister($_SESSION['admin']);
+session_unset();
 session_destroy();
 }
 }
