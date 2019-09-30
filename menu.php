@@ -10,7 +10,7 @@
 if(($_SESSION['noUserProjects'] > 1) || isset($_SESSION['admin']) ) {
 // User is admin or has more than one project, so show projects menu	
 ?>	
-			<li><a href="index.php"><?php print $LANG['projects']. " - ".$_SESSION['admin']; ?></a>
+			<li><a href="index.php"><?php print $LANG['projects']; ?></a>
 
 <!--  List Projects -->				
 <ul>
@@ -39,7 +39,7 @@ if(isset($_SESSION['admin'])) { // list all projects for admin
 try {
     $resultProj = $pdo->query($queryProj);
 } catch (PDOException $e) {
-    echo "Data was not fetched, because: ".$e->getMessage();
+    echo "Project Data was not fetched, because: ".$e->getMessage();
 }
 
 foreach($resultProj as $rowProj) {

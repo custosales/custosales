@@ -21,27 +21,34 @@ if ($_GET['type'] == "") {
 $projectID = $_SESSION['project'];
 
 $valuesS = "";
-if (isset($_SESSION['admin'])) {
+
 // check for admin rights and select all sales 
-    $querys = "SELECT salesRepID, sum(unitPrice) as orderValue 
-FROM " . $orders . " 
+if (isset($_SESSION['admin'])) {
+$querys = "SELECT salesRepID, fullName, sum(unitPrice) as orderValue 
+FROM " . $orders . " o INNER JOIN ".$users." u ON o.salesRepID = u.userId  
 WHERE YEAR(orderDate)=" . $year . " 
 GROUP by salesRepID 
 ORDER BY orderValue desc";
-} else if (isset($_SESSION['supervisor'])) {
+
 // check for supervisor rights and select sales from subordinates 
-    $querys = "SELECT salesRepID, sum(unitPrice) as orderValue 
-FROM " . $orders . " 
+
+} else if (isset($_SESSION['supervisor'])) {
+
+$querys = "SELECT salesRepID, fullName, sum(unitPrice) as orderValue 
+FROM " . $orders . " o INNER JOIN ".$users." u ON o.salesRepID = u.userId  
 WHERE YEAR(orderDate)=" . $year . " && salesRepID IN (SELECT userID FROM " . $users . " WHERE supervisorID=" . $_SESSION['userID'] . ") 
 OR salesRepID=" . $_SESSION['userID'] . " 
 GROUP by salesRepID 
 ORDER BY orderValue desc";
-} else {
+
 // select users own sales 
-    $querys = "SELECT salesRepID, sum(" . $orders . ".unitPrice) as orderValue, countBased, productName   
-FROM " . $orders . ", " . $products . "  
+
+} else {
+
+$querys = "SELECT salesRepID, fullName, sum(" . $orders . ".unitPrice) as orderValue, countBased, productName   
+FROM " . $orders . "  o INNER JOIN " . $products . " p ON o.productID = p.productID
+INNER JOIN ".$users." u ON o.salesRepID = u.userId    
 WHERE YEAR(orderDate)=" . $year . " && salesRepID=" . $_SESSION['userID'] . " 
-AND " . $orders . ".productID = " . $products . ".productID
 GROUP by productName 
 ORDER BY orderValue desc";
 }
@@ -60,11 +67,11 @@ foreach ($Results as $Rows) {
 
     try {
         $stmt = $pdo->prepare($queryName);
-        $stmt->bindParam(':userID', $_SESSION['userID']);
+        $stmt->bindParam(':userID', $Rows['salesRepID']);
         $stmt->execute();
         $Rowname = $stmt->fetch(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
-        echo "3 - Data was not fetched, because: " . $e->getMessage();
+        echo "Name Data was not fetched, because: " . $e->getMessage();
     }
 
 // Get y-axis values for different chart types 
@@ -77,6 +84,8 @@ foreach ($Results as $Rows) {
             //Show product Names for own sale
             $valuesS = $valuesS . ",['" . $Rows['productName'] . "'," . $Rows['orderValue'] . "]";
         }
+    
+// Get y-axis values for all other charts 
     } else {
         $valuesS = $valuesS . "," . $Rows['orderValue'];
     }

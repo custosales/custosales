@@ -67,7 +67,6 @@ try {
 }
 
 
-
 foreach ($resultRoles as $Role) {  // loop roles
 
 // Set admin rights - admin is always roleID 1
