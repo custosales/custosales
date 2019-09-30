@@ -58,12 +58,12 @@ $_SESSION['companyBankAccount'] = $Rowc['companyBankAccount'];
 
 
 // SET SESSION ROLE AND MODULE RIGHTS
-$queryRoles = "SELECT ur.userID as userID, r.roleID as roleID, supervisorRights from ".$user_role." as ur INNER JOIN ".$roles." as r ON ur.roleID=r.roleID WHERE ur.userID=".$_SESSION['userID']." AND ur.to_date = '9999-01-01'";
+$queryRoles = "SELECT ur.userID as userID, r.roleID as roleID, supervisorRights,salesModule,orderModule,reportModule from ".$user_role." as ur INNER JOIN ".$roles." as r ON ur.roleID=r.roleID WHERE ur.userID=".$_SESSION['userID']." AND ur.to_date = '9999-01-01'";
 
 try {
     $resultRoles = $pdo->query($queryRoles);
 } catch (PDOException $e) {
-    echo "Sales Data was not fetched, because: " . $e->getMessage();
+    echo "Roles Data was not fetched, because: " . $e->getMessage();
 }
 
 
@@ -76,18 +76,18 @@ foreach ($resultRoles as $Role) {  // loop roles
 	}
 
 
-$userProjects = $userProjects.",".$Rowr['roleProjectID'];
+$userProjects = $userProjects.",".$Role['roleProjectID'];
 
-if($Rowr['supervisorRights']==1) {
+if($Role['supervisorRights']==1) {
 	$_SESSION['supervisor'] = "yes";
 	}
-if($Rowr['salesModule']==1) {
+if($Role['salesModule']==1) {
 	$_SESSION['salesModule'] = "yes";
 	}
-if($Rowr['orderModule']==1) {
+if($Role['orderModule']==1) {
 	$_SESSION['orderModule'] = "yes";
 	}
-if($Rowr['reportModule']==1) {
+if($Role['reportModule']==1) {
 	$_SESSION['reportModule'] = "yes";
 	}
 
