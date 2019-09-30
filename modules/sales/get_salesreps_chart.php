@@ -45,7 +45,7 @@ ORDER BY orderValue desc";
 
 } else {
 
-$querys = "SELECT salesRepID, fullName, sum(" . $orders . ".unitPrice) as orderValue, countBased, productName   
+$querys = "SELECT salesRepID, fullName, sum(o.unitPrice) as orderValue, countBased, productName   
 FROM " . $orders . "  o INNER JOIN " . $products . " p ON o.productID = p.productID
 INNER JOIN ".$users." u ON o.salesRepID = u.userId    
 WHERE YEAR(orderDate)=" . $year . " && salesRepID=" . $_SESSION['userID'] . " 
