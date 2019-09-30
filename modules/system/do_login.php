@@ -58,22 +58,17 @@ $_SESSION['companyBankAccount'] = $Rowc['companyBankAccount'];
 
 
 // SET SESSION ROLE AND MODULE RIGHTS
-$queryRoles = "SELECT ur.userID as userID, r.roleID as roleID from ".$user_role." as ur INNER JOIN ".$roles." as r ON ur.roleID=r.roleID WHERE ur.userID=:userID and ur.to_date = '9999-01-01'";
-
-$userID = $_SESSION['userID'];
+$queryRoles = "SELECT ur.userID as userID, r.roleID as roleID, supervisorRights from ".$user_role." as ur INNER JOIN ".$roles." as r ON ur.roleID=r.roleID WHERE ur.userID=".$_SESSION['userID']." AND ur.to_date = '9999-01-01'";
 
 try {
-    $stmt = $pdo->prepare($queryRoles);
-    $stmt->bindParam(':userID', $userID);
-    $stmt->execute();
-    $rowRoles = $stmt->fetch(PDO::FETCH_ASSOC);
-
+    $resultRoles = $pdo->query($queryRoles);
 } catch (PDOException $e) {
-    echo "Role IDs were not fetched, because: ".$e->getMessage();
+    echo "Sales Data was not fetched, because: " . $e->getMessage();
 }
 
 
-foreach ($rowRoles as $Role) {  // loop roles
+
+foreach ($resultRoles as $Role) {  // loop roles
 
 // Set admin rights - admin is always roleID 1
 
@@ -81,17 +76,6 @@ foreach ($rowRoles as $Role) {  // loop roles
 	    $_SESSION['admin'] = "yes";
 	}
 
-// Get user's roles
-
-$queryr = "SELECT * from ".$roles." WHERE roleID like ".$Role['roleID'];
-
-try {
-    $stmt = $pdo->prepare($queryr);
-    $stmt->execute();
-    $Rowr = $stmt->fetch();
-} catch (PDOException $e) {
-    echo "Role Data was not fetched, because: ".$e->getMessage();
-}
 
 $userProjects = $userProjects.",".$Rowr['roleProjectID'];
 

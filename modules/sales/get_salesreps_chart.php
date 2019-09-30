@@ -49,7 +49,7 @@ ORDER BY orderValue desc";
 try {
     $Results = $pdo->query($querys);
 } catch (PDOException $e) {
-    echo "1 - Data was not fetched, because: " . $e->getMessage();
+    echo "Sales Data was not fetched, because: " . $e->getMessage();
 }
 
 foreach ($Results as $Rows) {
