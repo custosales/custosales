@@ -4,17 +4,13 @@ if(!isset($_SESSION['userID'])) {
 header("Location: ../../index.php");
 }
 
-require_once "../system/db.php";
-require_once "../../lang/".$_SESSION['lang'].".php";
+include_once "../system/db.php";
+include_once "../../lang/".$_SESSION['lang'].".php";
 include_once "createLeadsClass.php";
 
 $length = strlen($_GET['list'])-1;
 
 $callingListTable = $_GET['tableName'];
-
-
-
-
 
 $regNumberList = substr($_GET['list'], 0, $length); 
 
@@ -30,8 +26,7 @@ foreach ($listArray as $regNumber) {
 
 $lead = new Leads;
 $lead -> regNumber = $regNumber;
-$lead -> DBName = $DBName;
-$lead -> conn = $Link;
+$lead -> pdo = $pdo;
 $lead -> companies = $companies;
 $lead -> callingListTable = $callingListTable; 
 $lead -> userID = $_SESSION['userID'];
