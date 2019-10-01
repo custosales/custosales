@@ -90,7 +90,7 @@ if (isset($_SESSION['admin'])) {  // Check for admin rights
     // Get User's sales
     $sales_title = $LANG['my_sales'];
     
-    if ($projectID != "all" || $projectID =="") {
+    if ($projectID != "all" && $projectID !="") {
         $projectString = "AND " . $companies . ".projectID =".$projectID ;
     } else {
         $projectString ="";
@@ -101,7 +101,7 @@ if (isset($_SESSION['admin'])) {  // Check for admin rights
     $resultQuery = "SELECT count(ID) as number , companyStatus, salesStageIcon as icon, salesStageName as name 
 	FROM " . $salesstages . ", " . $companies . "  
     " . $projectIncstr . " 	
-    " . $projectStr . " 	
+    " . $projectString . " 	
     AND regNumber not in (SELECT regNumber FROM " . $orders . ")  
 	AND salesRepID=" . $_SESSION['userID'] . " 
 	GROUP BY companyStatus";
@@ -112,8 +112,10 @@ if (isset($_SESSION['admin'])) {  // Check for admin rights
         echo "5 - Data was not fetched, because: " . $e->getMessage() . $resultQuery;
     }
 
-    // Get number of customers 
-    $queryOrders = "SELECT count(DISTINCT regNumber) as number FROM " . $orders . " WHERE salesRepID=:userID";
+    // Get number of customers for selected project or all projects 
+    $queryOrders = "SELECT count(DISTINCT ".$orders.".regNumber) as number FROM " . $orders . " 
+    INNER JOIN ".$companies." ON ".$orders.".regNumber = ".$companies.".regNumber 
+    WHERE ".$orders.".salesRepID=:userID " . $projectString;
     try {
         $stmt = $pdo->prepare($queryOrders);
         $stmt->bindParam(':userID', $_SESSION['userID']);
@@ -121,7 +123,7 @@ if (isset($_SESSION['admin'])) {  // Check for admin rights
         $RowOrders = $stmt->fetch(PDO::FETCH_ASSOC);
         $customerNumber = $RowOrders['number'];
     } catch (PDOException $e) {
-        echo "3 - Data was not fetched, because: " . $e->getMessage();
+        echo "Number of Customers was not fetched, because: " . $e->getMessage();
     }
 } // End roles and modules sales 
 // end sales
@@ -137,10 +139,12 @@ if (isset($_SESSION['admin'])) {  // Check for admin rights
                     <span style="color:#777777">(<?php print $Row['number']; ?>)</span>
                     <br>
                 <?php
-                } // end list numbers of companies that are not customers  
+                } // end list numbers of companies that are not customers
+                
+                // List number of customers  
                 ?>
                 <a href="show_companies.php?status=<?php print $LANG['customer']; ?>"><img src="images/folder_yellow_22.png" style="border:0px;vertical-align:middle;" alt="" /></a> <a href="show_companies.php?status=<?php print $LANG['customer']; ?>"><?php print $LANG['customers']; ?></a>
-                <span style="color:#777777">(<?php print $customerNumber; ?>)</span>
+                <span style="color:#777777">(<?php print $customerNumber;?>)</span>
                 <br>
                 <a href="show_callinglists.php"><img src="images/folder_blue_22.png" style="border:0px;vertical-align:middle;" alt="" /></a> <a href="show_callinglists.php"><?php print $LANG['calling_lists']; ?></a>
             </td>
