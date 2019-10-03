@@ -10,10 +10,12 @@ require_once "../../lang/".$_SESSION['lang'].".php";
 $orderID = $_GET['orderID'];
 
 $query = "DELETE FROM ".$orders." WHERE orderID=".$orderID;
-if (!$Result= mysql_db_query($DBName, $query, $Link)) {
-           	print "No database connection <br>".mysql_error();
-        } else {
-			print $LANG['order_deleted'];
-		  }
+
+try {
+	$Result = $pdo->query($query);
+	print $LANG['order_deleted'];
+} catch (PDOException $e) {
+	echo "Order was not deleted, because: " . $e->getMessage() . $resultQuery;
+}
 
 ?>

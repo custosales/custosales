@@ -62,7 +62,7 @@ try {
 
     $orderID = $stmt->lastInsertId();  //get OrderID 
 } catch (PDOException $e) {
-    echo "1 - Data was not saved, because: " . $e->getMessage();
+    echo "Order was not saved, because: " . $e->getMessage();
 }
 
 if ($formAction == "Insert") {   // new sales registered, now get orderID and change companyStatus    	
@@ -72,7 +72,7 @@ if ($formAction == "Insert") {   // new sales registered, now get orderID and ch
         $stmt->bindParam(':regNumber', $regNumber);
         $stmt->execute();
     } catch (PDOException $e) {
-        echo "2 - Data was not saved, because: " . $e->getMessage();
+        echo "Company Status was not changed, because: " . $e->getMessage();
     }
     ?>				
     <script type="text/javascript" >
