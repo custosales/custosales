@@ -20,12 +20,17 @@ $userID = $_GET['userID'];
 $queryM = "SELECT MONTH(orderDate) as orderMonth, sum(unitPrice) as orderValue, fullName FROM ".$orders.",".$users." WHERE ".$users.".userID=".$userID." AND salesRepID=".$userID." and year(orderDate)=".$year." GROUP by orderMonth";
 
 
-if (!$ResultM= mysql_query($queryM, $Link)) {
-           print "No database connection <br>".mysql_error();
-        } 
-        
-while($RowM = mysql_fetch_array($ResultM)) {
-$valuesM = $valuesM.",".$RowM['orderValue'];
+try {
+    $ResultM = $pdo->query($queryM);
+} catch (PDOException $e) {
+    echo "User Sales Data was not fetched, because: " . $e->getMessage() . $resultQuery;
+}
+
+       
+foreach($ResultM as $RowM) {
+
+
+    $valuesM = $valuesM.",".$RowM['orderValue'];
 $x_axisM = $x_axisM.",'".$LANG['MS'][$RowM['orderMonth']]."'";
 $fullName = $RowM['fullName'];
 }

@@ -19,9 +19,9 @@ try {
 <h1><select id="year" style="font-size:12px" onchange="document.getElementById('repGraphArea').src = 'modules/sales/get_salesreps_chart.php?year=' + (this.value) + '&type=' + document.getElementById('graphType').value;">
         <?php
         foreach ($ResultYear as $RowYear) {
-            ?>
+        ?>
             <option value="<?php print $RowYear['year']; ?>"><?php print $RowYear['year']; ?></option>
-            <?php
+        <?php
         }
         ?>
 
