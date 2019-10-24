@@ -14,7 +14,6 @@ if($orderStatusID=="") { $orderStatusID="all"; }
 <?php include_once("head.php"); ?>
 
 <script language="javascript" type="text/javascript" src="lib/indexFunctions.js"></script> 
-<script type="text/javascript" src="modules/orders/orderFunctions.js"></script>
 </head>
 <body style="font-size:12px" >
 <script type="text/javascript" >
@@ -30,7 +29,7 @@ $querys = "SELECT * FROM ".$products." ORDER by productName desc";
 try {
     $results = $pdo->query($querys);
 } catch (PDOException $e) {
-    echo "Data was not fetched, because: ".$e->getMessage();
+    echo "Product Data was not fetched, because: ".$e->getMessage();
 }
 
 foreach($results as $Rows) {
@@ -59,7 +58,7 @@ $querys = "SELECT * FROM ".$orderstatus." ORDER by orderStatusID";
 try {
     $results = $pdo->query($querys);
 } catch (PDOException $e) {
-    echo "Data was not fetched, because: ".$e->getMessage();
+    echo "Order Status Data was not fetched, because: ".$e->getMessage();
 }
 foreach($results as $Rows) {
 

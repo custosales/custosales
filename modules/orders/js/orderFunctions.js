@@ -1,4 +1,3 @@
-
 function sendOrderConfirmation() {
 	
 if (document.getElementById('recipient').value=="") {
@@ -68,15 +67,13 @@ xmlhttpi.open("GET","modules/orders/process_order.php"+queryString,true);
 xmlhttpi.send();
 
 
-	}
-
+	} // end save order
 
 
 	$(function() {
 		$.datepicker.setDefaults( $.datepicker.regional[ "no" ] );
 		$( "#orderDate" ).datepicker( $.datepicker.regional[ "no" ] );	
 		});
-
 
 
 

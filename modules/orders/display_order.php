@@ -46,14 +46,12 @@ try {
 	$stmt->execute();
 	$Row = $stmt->fetch();
 } catch (PDOException $e) {
-	echo "Data was not fetched, because: " . $e->getMessage();
+	echo "Order Data was not fetched, because: " . $e->getMessage();
 }
 
 // if(!$Row) {
 //       print "No order found <br>".$query;
 // 	}
-
-
 
 
 if($Row['creditDays']=="") {
@@ -72,7 +70,8 @@ if($Row['customerContact']=="") {
 			$stmt->execute();
 			$Rowc = $stmt->fetch();
 		} catch (PDOException $e) {
-			echo "Data was not fetched, because: " . $e->getMessage();
+			// No manager available - di nothing - or TO DO - get from contacts?
+			// echo "Company Manager Data was not fetched, because: " . $e->getMessage();
 		}
 
 
@@ -163,7 +162,7 @@ $queryu = "SELECT userID, fullName FROM ".$users." ORDER by fullName";
 try {
     $resultu = $pdo->query($queryu);
 } catch (PDOException $e) {
-    echo "Data was not fetched, because: " . $e->getMessage();
+    echo "Sales Rep Data was not fetched, because: " . $e->getMessage();
 }
         
 foreach ($resultu as $Rowu) {	
@@ -197,7 +196,7 @@ $querys = "SELECT * FROM ".$products." ORDER by productName desc";
 try {
     $results = $pdo->query($querys);
 } catch (PDOException $e) {
-    echo "Data was not fetched, because: " . $e->getMessage();
+    echo "Product Data was not fetched, because: " . $e->getMessage();
 }
         
 foreach ($results as $Rows) {		

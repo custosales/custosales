@@ -10,12 +10,18 @@ require_once "../../lang/".$_SESSION['lang'].".php";
 $tableName = $_GET['tableName'];
 
 $query = "SHOW FIELDS FROM `".$tableName."`";
-if (!$Result= mysql_query($query, $Link)) {
-         	print "No database connection <br>".mysql_error();
-    } 
 
-while($Row = mysql_fetch_row($Result) ) {
-$fields .= $Row[0].",";
+
+try {
+	$Result = $pdo->query($query);
+} catch (PDOException $e) {
+	echo "Data was not fetched, because: " . $e->getMessage();
+}
+
+
+foreach($Result as $Row)  {
+
+    $fields .= $Row[0].",";
 }
 print substr($fields, 0, strlen($fields)-1);
 ?>
