@@ -7,10 +7,22 @@
 require_once "../../lang/".$_SESSION['lang'].".php";
 
 $query = "SELECT userID, fullName from ".$users."";
-$Result = mysql_query($query) or die(MySql_error());
+
+try {
+	$Result = $pdo->query($query);
+} catch (PDOException $e) {
+	echo "Data was not fetched, because: " . $e->getMessage();
+}
+
 
 $queryYear = "SELECT YEAR(orderDate) as year from ".$orders." Group by year ORDER BY year desc";
-$ResultYear = mysql_query($queryYear) or die(MySql_error());
+
+
+try {
+	$ResultYear = $pdo->query($queryYear);
+} catch (PDOException $e) {
+	echo "Data was not fetched, because: " . $e->getMessage();
+}
 
 
 ?>
@@ -21,7 +33,8 @@ $ResultYear = mysql_query($queryYear) or die(MySql_error());
 
 <select id="year" style="font-size:12px" onchange="if(document.getElementById('seluser').value!='') { showRepSales(document.getElementById('seluser').value,this.value) }">
 <?php 
-while($RowYear=MySQL_fetch_array($ResultYear)) {
+
+foreach ($ResultYear as $RowYear) {
 ?>
 <option value="<?php print $RowYear['year'];?>"><?php print $RowYear['year'];?></option>
 <?php 
@@ -34,7 +47,7 @@ while($RowYear=MySQL_fetch_array($ResultYear)) {
 <select id="seluser" style="font-size:12px" onchange="if(this.value!='') { showRepSales(this.value,document.getElementById('year').value) }" >
 <option value=""><?php print $LANG['sales_rep']; ?></option>
 <?php 
-while($Row=MySQL_fetch_array($Result)) {
+foreach ($Result as $Row) {
 ?>
 <option value="<?php print $Row['userID'];?>"><?php print $Row['fullName'];?></option>
 <?php 

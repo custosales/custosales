@@ -18,11 +18,11 @@ $year = date("Y");
 
 $SalesReport = new SalesReport();
 
-$SalesReport->userMonthlySales($userID,'month',$year,'tr',$Link,$LANG);
+$SalesReport->userMonthlySales($userID,'month',$year,'tr',$pdo,$LANG);
 print "<br>";
-$SalesReport->userMonthlySales($userID,'week',$year,'tr',$Link,$LANG);
+$SalesReport->userMonthlySales($userID,'week',$year,'tr',$pdo,$LANG);
 print "<br>";
-$SalesReport->userMonthlySales($userID,'day',$year,'tr',$Link,$LANG);
+$SalesReport->userMonthlySales($userID,'day',$year,'tr',$pdo,$LANG);
 
 
 ?>
