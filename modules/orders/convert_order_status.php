@@ -13,9 +13,14 @@ $orderStatusID = $_GET['orderStatusID'];
 
 
 $query = "UPDATE ".$orders." SET orderStatusID='".$orderStatusID."' WHERE orderID=".$orderID;
-if (!$Result= mysql_db_query($DBName, $query, $Link)) {
-           	print "No database connection <br>".mysql_error();
-        } else {
-				print $LANG['order_status_changed'];
-		  }
+
+try {
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(':orderStatusIDID', $orderStatusID );
+    $stmt->bindParam(':orderID', $orderID );
+    $stmt->execute();
+	print $LANG['order_status_changed'];
+} catch (PDOException $e) {
+    echo "Order Status not changed, because: ".$e->getMessage();
+}
 
