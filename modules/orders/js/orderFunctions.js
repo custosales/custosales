@@ -15,7 +15,7 @@ function sendOrderConfirmation() {
 		return;
 	}
 
-	// what is this referencing?
+	// This is referencing the form used to create order confirmations
 document.orderConfirmationForm.submit();
 	
 }
