@@ -1,12 +1,23 @@
+let statusBar = document.getElementById("statusBar");
+let reportArea = document.getElementById("reportArea");
+
 function showRepSales(repID, year) {
 
 	// Show user Graphs	
-	document.getElementById('repGraphArea').style.height = '1750px';
-	document.getElementById('repGraphArea').style.width = '550px';
-	document.getElementById('repGraphArea').style.visibility = 'visible';
-	document.getElementById('repGraphArea').src = "modules/reports/get_salesrep_charts.php?year=" + year + "&userID=" + repID;
+	let graphArea = document.getElementById("repGraphArea");
+	// Rewrite styles to use a CSS class instead
+	graphArea.style.height = '1750px';
+	graphArea.style.width = '550px';
+	graphArea.style.visibility = 'visible';
+	
+	graphArea.src = "modules/reports/get_salesrep_charts.php?year=" + year + "&userID=" + repID;
 
 	// Show User Tables	
+	// rewrite to fetch
+	let rep = document.getElementById("repArea");
+	fetch(`modules/reports/rep_monthly_sales.php?userID=${repID}&year=${year}`)
+	.then(res => rep.innerHTML = res);
+
 	xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function () {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -21,8 +32,13 @@ function showRepSales(repID, year) {
 
 
 function showTimeSheet(userID) {
-
+	// update to strict equality?
+	// where does displaySheet come from?
 	if (displaySheet == false) {
+		
+		// rewrite to fetch
+		fetch(`modules/reports/display_time_sheet.php?userID=${userID}`)
+		.then(res => reportArea.innerHTML = res);
 
 		xmlhttp = new XMLHttpRequest();
 		xmlhttp.onreadystatechange = function () {
@@ -34,8 +50,8 @@ function showTimeSheet(userID) {
 		xmlhttp.send();
 		displaySheet = true;
 	} else {
-		document.getElementById("reportArea").innerHTML = "";
-		document.getElementById("statusBar").innerHTML = ""; // clean Status Bar
+		reportArea.innerHTML = "";
+		statusBar.innerHTML = ""
 		displaySheet = false;
 	}
 
@@ -43,10 +59,13 @@ function showTimeSheet(userID) {
 
 function showSalesReport() {
 
-	document.getElementById("statusBar").innerHTML = ""; // clean Status Bar
+	statusBar.innerHTML = ""; // clean Status Bar
 
 	if (salesReport == false) {
-
+		// rewrite to fetch
+		fetch(`modules/reports/display_sales_report.php`)
+		.then(res => reportArea = res);
+		
 		xmlhttp = new XMLHttpRequest();
 		xmlhttp.onreadystatechange = function () {
 			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -57,7 +76,8 @@ function showSalesReport() {
 		xmlhttp.send();
 		salesReport = true;
 	} else {
-		document.getElementById("reportArea").innerHTML = "";
+		reportArea.innerHTML = "";
+		// document.getElementById("reportArea").innerHTML = "";
 		salesReport = false;
 	}
 
