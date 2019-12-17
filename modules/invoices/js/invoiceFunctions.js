@@ -1,55 +1,51 @@
+let statusBar = document.getElementById("statusBar");
 
 function sendInvoice() {
-	
-if (document.getElementById('recipient').value=="") {
-	alert("obs: Ingen mottaker");
-	document.getElementById('recipient').focus()
-	exit;
-}
+	let recipient = document.getElementById("recipient");
+	if (recipient.value === '') {
+		alert("obs: Ingen mottaker");
+		recipient.focus()
+		return;
+	}
+	let recipientEmail = document.getElementById("recipientEmail");
+	if (recipientEmail.value === "") {
+		alert("obs: Ingen Epostadresse...");
+		recipientEmail.focus()
+		return;
+	}
 
-if (document.getElementById('recipientEmail').value=="") {
-	alert("obs: Ingen Epostadresse...");
-	document.getElementById('recipientEmail').focus()
-	exit;
-}
-
+	// 
 document.orderConfirmationForm.submit();
 	
 }
 
 function getOrder (orderID) {
-	document.getElementById("allButton").style.visibility='visible';
-		 
-xmlhttp=new XMLHttpRequest();
-xmlhttp.onreadystatechange=function()  {
-  if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-    document.getElementById("list").innerHTML=xmlhttp.responseText;
-	
-		$( "#datepicker" ).datepicker();
-	   
-   
-    }
-  }
-xmlhttp.open("GET","modules/orders/display_order.php?orderID="+orderID,true);
-xmlhttp.send();
-document.getElementById("statusBar").innerHTML="";
+	// avoid in-line styles. rewrite to class.
+	// document.getElementById("allButton").style.visibility='visible';
+	let allBtn = document.getElementById("allButton");
+		allBtn.classList.add("visible-class");
+
+	let list = document.getElementById("list");
+	fetch(`modules/orders/display_order.php?orderID=${orderID}`)
+	.then(res => list.innerHTML = res)
+	// rewrite to fetch
+	xmlhttp=new XMLHttpRequest();
+	xmlhttp.onreadystatechange=function()  {
+	if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+		document.getElementById("list").innerHTML=xmlhttp.responseText;
+			$( "#datepicker" ).datepicker();
+		}
+	}
+	xmlhttp.open("GET","modules/orders/display_order.php?orderID="+orderID,true);
+	xmlhttp.send();
+	statusBar.innerHTML = "";
 
 }	
 
 
 
 function saveInvoice() {
-	
-xmlhttpi=new XMLHttpRequest();
-xmlhttpi.onreadystatechange=function()
-  {
-  if (xmlhttpi.readyState==4 && xmlhttpi.status==200)
-    {
-    document.getElementById("statusBar").innerHTML=xmlhttpi.responseText;
-    }
-  }
-  
-  	var queryString = "?orderDate=" + encodeURIComponent(document.getElementById("orderDate").value) + 
+	let queryString = "?orderDate=" + encodeURIComponent(document.getElementById("orderDate").value) + 
 	"&unitPrice=" + encodeURIComponent(document.getElementById("unitPrice").value) +
 	"&orderComments=" + encodeURIComponent(document.getElementById("orderComments").value) +
 	"&creditDays=" + encodeURIComponent(document.getElementById("creditDays").value) +
@@ -59,12 +55,24 @@ xmlhttpi.onreadystatechange=function()
 	"&regNumber=" + encodeURIComponent(document.getElementById("regNumber").value) +
 	"&orderID=" + encodeURIComponent(document.getElementById("orderID").value)  	
 	;
+	
+	fetch(`modules/invoices/process_invoice.php${queryString}`)
+	.then(res => statusBar.innerHTML = res);
+	// rewrite to fetch
+// 	xmlhttpi=new XMLHttpRequest();
+// 	xmlhttpi.onreadystatechange=function()
+// 	  {
+// 	  if (xmlhttpi.readyState==4 && xmlhttpi.status==200)
+// 		{
+// 		document.getElementById("statusBar").innerHTML=xmlhttpi.responseText;
+// 		}
+// 	  }
 
-xmlhttpi.open("GET","modules/invoices/process_invoice.php"+queryString,true);
-xmlhttpi.send();
+// xmlhttpi.open("GET","modules/invoices/process_invoice.php"+queryString,true);
+// xmlhttpi.send();
 
 
-	}
+}
 
 
 
@@ -79,39 +87,44 @@ xmlhttpi.send();
 function deleteOrder(companyName, invoiceID, confirm_delete_heading, confirm_delete_invoice) {
 
 
-jConfirm(confirm_delete_invoice+" "+companyName+" ?", confirm_delete_heading, function(y) {
-	if(y==true) {
-	xmlhttp=new XMLHttpRequest();
-	xmlhttp.onreadystatechange=function()  {
-  		if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-    document.getElementById("statusBar").innerHTML=xmlhttp.responseText;
-    showOrders(orderStatusID);
-    }
-  }
-xmlhttp.open("GET","modules/orders/delete_invoice.php?invoiceID="+invoiceID,true);
-xmlhttp.send();
-	}
+	jConfirm(confirm_delete_invoice+" "+companyName+" ?", confirm_delete_heading, function(y) {
+		if(y === true) {
+		fetch(`modules/orders/delete_invoice.php?invoiceID=${invoiceID}`)
+		.then(res => statusBar.innerHTML = res)
+		.then(() => showOrders(orderStatusID));
+	// 	xmlhttp=new XMLHttpRequest();
+	// 	xmlhttp.onreadystatechange=function()  {
+	//   		if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+	//     document.getElementById("statusBar").innerHTML=xmlhttp.responseText;
+	//     showOrders(orderStatusID);
+	//     }
+	//   }
+	// xmlhttp.open("GET","modules/orders/delete_invoice.php?invoiceID="+invoiceID,true);
+	// xmlhttp.send();
+		}
+			
 		
-	
-});
-	}
+	});
+}
 
 
 function convertOrderStatus(orderID, orderStatusID) {
-
+	// rewrite to CSS class
 	document.getElementById("allButton").style.visibility='visible';
 	
+	fetch(`modules/orders/convert_order_status.php?orderID=${orderID}&orderStatusID=${orderStatusID}`)
+	.then(res => statusBar.innerHTML = res);
 	
-xmlhttpi=new XMLHttpRequest();
-xmlhttpi.onreadystatechange=function()
-  {
-  if (xmlhttpi.readyState==4 && xmlhttpi.status==200)
-    {
-    document.getElementById("statusBar").innerHTML=xmlhttpi.responseText;
-    }
-  }
-xmlhttpi.open("GET","modules/orders/convert_order_status.php?orderID="+orderID+"&orderStatusID="+orderStatusID,true);
-xmlhttpi.send();
+// xmlhttpi=new XMLHttpRequest();
+// xmlhttpi.onreadystatechange=function()
+//   {
+//   if (xmlhttpi.readyState==4 && xmlhttpi.status==200)
+//     {
+//     document.getElementById("statusBar").innerHTML=xmlhttpi.responseText;
+//     }
+//   }
+// xmlhttpi.open("GET","modules/orders/convert_order_status.php?orderID="+orderID+"&orderStatusID="+orderStatusID,true);
+// xmlhttpi.send();
 
 
 }
