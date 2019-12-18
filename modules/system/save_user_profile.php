@@ -6,13 +6,13 @@ header("Location: ../../index.php");
 require_once("db.php");
 require_once("../../lang/".$_SESSION['lang'].".php");
 
-$fullName = utf8_decode($_POST['fullName']);
-$userEmail = utf8_decode($_POST['userEmail']);
-$address = utf8_decode($_POST['address']);
+$fullName = $_POST['fullName'];
+$userEmail = $_POST['userEmail'];
+$address = $_POST['address'];
 $zipCode = $_POST['zipCode'];
-$city = utf8_decode($_POST['city']);
-$phone = utf8_decode($_POST['phone']);
-$mobilePhone = utf8_decode($_POST['mobilePhone']);
+$city = $_POST['city'];
+$phone = $_POST['phone'];
+$mobilePhone = $_POST['mobilePhone'];
 
 $query = "UPDATE ".$users." SET 
 
