@@ -37,7 +37,7 @@ node_modules/
 jspm_packages/
 
 # User documents and photos
-documents/users/
+documents/users/*
 
 # TypeScript v1 declaration files
 typings/
