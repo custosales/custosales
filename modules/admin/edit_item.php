@@ -461,7 +461,7 @@ try {
 }
 ?>
 <select name="productCategorySuperID" id="<?php print "value".$i;?>">
-<option value=""><?php print $LANG['none']; ?></option>
+<option value=0><?php print $LANG['none']; ?></option>
 <?php 
 foreach($resultos as $Rowos) {
 
@@ -792,7 +792,7 @@ try {
 }
 ?>
 <select name="contractID" id="<?php print "value".$i;?>">
-<option value="0"><?php print $LANG['none'];?></option>
+<option value=0><?php print $LANG['none'];?></option>
 <?php 
 foreach($resultcon as $Rowcon) {
 if($Rowcon['contractID']==$Rowd['contractID']) {
@@ -818,7 +818,7 @@ try {
 }
 ?>
 <select name="workplaceID" id="<?php print "value".$i;?>">
-<option value=""><?php print $LANG['none'];?></option>
+<option value=0><?php print $LANG['none'];?></option>
 <?php 
 foreach($resultw as $Roww) {
 if($Roww['workplaceID']==$Rowd['workplaceID']) {
@@ -870,7 +870,7 @@ try {
 }
 ?>
 <select name="departmentID" id="<?php print "value".$i;?>">
-<option value=""><?php print $LANG['none'];?></option>
+<option value=0><?php print $LANG['none'];?></option>
 <?php 
 foreach($resultdep as $Rowdep) {
 if($Rowdep['departmentID']==$Rowd['departmentID']) {
@@ -896,7 +896,7 @@ try {
 }
 ?>
 <select name="departmentID" id="<?php print "value".$i;?>">
-<option value=""><?php print $LANG['none'];?></option>
+<option value=0><?php print $LANG['none'];?></option>
 <?php 
 foreach($resultdep as $Rowdep) {
 	
@@ -1129,11 +1129,8 @@ if($itemType=="CallingLists") {
 }
 ?>
 
-
 </td>
-
 </tr>
-
 </table>
 
 <?php 
