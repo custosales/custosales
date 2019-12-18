@@ -59,7 +59,7 @@ function showTimeSheet(userID) {
 
 function showSalesReport() {
 
-    statusBarL.innerHTML = ""; // clean Status Bar
+    statusBar.innerHTML = ""; // clean Status Bar
 
     if (salesReport == false) {
         // rewrite to fetch
