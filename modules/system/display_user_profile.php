@@ -89,7 +89,7 @@ try {
     $resultS = $pdo->query($queryS);
     $RowS = $resultS->fetch();
 } catch (PDOException $e) {
-    echo "Data was not fetched, because: " . $e->getMessage();
+    echo "Supervisor Data was not fetched, because: " . $e->getMessage();
 }
 if($RowS['fullName']) {
     print $RowS['fullName']; 
@@ -126,15 +126,6 @@ if($RowS['fullName']) {
 </form>
 </tr>
 </table>
-
- 
-
-
-<?php  
-	 
-?>
-
-
 
 </td></tr>
 </table>

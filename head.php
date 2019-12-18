@@ -48,7 +48,7 @@ try {
 $_SESSION['noUserProjects'] = $RowPN['noUserProjects'];
 
 
-if ($_GET['project'] != "") {
+if ($_GET['project'] != "" && $_GET['project'] != "all") {
     $_SESSION['project'] = $_GET['project'];
 
     $queryPN = "SELECT projectName, projectFirstSalesStage, projectFirstOrderStage from " . $projects . " WHERE projectID=:project";
@@ -59,7 +59,7 @@ if ($_GET['project'] != "") {
         $stmt->execute();
         $RowPN = $stmt->fetch(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
-        echo "Data was not fetched, because: " . $e->getMessage();
+        echo "Project Data was not fetched, because: " . $e->getMessage();
     }
 
     $_SESSION['projectName'] = $RowPN['projectName'];
@@ -94,7 +94,7 @@ if ($_GET['project'] == "all" || $_SESSION['project'] == "") {
 <script language="javascript" type="text/javascript" src="lib/jquery/plugins/jqplot.highlighter.js"></script>
 <script language="javascript" type="text/javascript" src="lib/jquery/plugins/jqplot.pointLabels.js"></script>
 
-<script language="javascript" type="text/javascript" src="lib/indexFunctions.js"></script>
+<script language="javascript" type="text/javascript" src="modules/system/js/indexFunctions.js"></script>
 <script language="javascript" type="text/javascript" src="modules/orders/js/orderFunctions.js"></script>
 <script language="javascript" type="text/javascript" src="modules/reports/js/reportFunctions.js"></script>
 <script language="javascript" type="text/javascript" src="modules/invoices/js/invoiceFunctions.js"></script>

@@ -26,9 +26,12 @@ mobilePhone = '".$mobilePhone."'
 
 WHERE userID =".$_SESSION['userID'];
 
-if($Result = mysql_query($query, $Link)) {
- print $LANG['data_saved'];
-} else {
- print $LANG['data_not_saved']." ".mysql_error();	
-}	
+try {
+    $stmt = $pdo->query($query);
+    print $LANG['data_saved'];
+} catch (PDOException $e) {
+    print $LANG['data_not_saved']." ".$e->getMessage();
+}
+
+
 ?>
