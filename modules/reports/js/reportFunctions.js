@@ -1,7 +1,6 @@
-let statusBarL = document.getElementById("statusBar");
-let reportAreaL = document.getElementById("reportArea");
 
 function showRepSales(repID, year) {
+
 
     // Show user Graphs	
     let graphAreaL = document.getElementById("repGraphArea");
@@ -58,6 +57,10 @@ function showTimeSheet(userID) {
 }
 
 function showSalesReport() {
+
+    // declare after document is loaded, ie. when function is called
+    let statusBarL = document.getElementById("statusBar");
+    let reportAreaL = document.getElementById("reportArea");
 
     statusBarL.innerHTML = ""; // clean Status Bar
 
