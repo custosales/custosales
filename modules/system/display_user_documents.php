@@ -9,7 +9,13 @@ require_once("../../lang/".$_SESSION['lang'].".php");
 
 $query = "SELECT * from ".$users." WHERE userID=".$_SESSION['userID'];	
 
-$Result = mysql_db_query($DBName, $query, $Link) or die(MySql_error());
+try {
+    $Result = $pdo->query($query);
+ //   $RowS = $resultS->fetch();
+} catch (PDOException $e) {
+    echo "User Data was not fetched, because: " . $e->getMessage();
+}
+
 $i=1;
 ?>
 <br>
