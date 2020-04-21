@@ -19,12 +19,13 @@ export const get = async (url, type = "text") => {
 };
 
 // Post request
-export const post = (url, data) => {
+export const post = async (url, data) => {
   try {
-    fetch(url, {
+    const req = fetch(url, {
       method: "POST",
       body: data,
     });
+    return await req.text(); 
   } catch (err) {
     console.error(err);
   }
