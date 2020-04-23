@@ -27,25 +27,11 @@ function getOrder (orderID) {
 	// rewrite to fetch
 	let list = document.getElementById("list");
 	fetch(`modules/orders/display_order.php?orderID=${orderID}`)
-	.then(res => list.innerHTML = res)
+	.then(res => {
+		list.innerHTML = res; 
 		statusBar.innerHTML = "";
-
-
-xmlhttp=new XMLHttpRequest();
-xmlhttp.onreadystatechange=function()  {
-  if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-    document.getElementById("list").innerHTML=xmlhttp.responseText;
-	
 		$( "#datepicker" ).datepicker();
-	   
-   
-    }
-  }
-xmlhttp.open("GET","modules/orders/display_order.php?orderID="+orderID,true);
-xmlhttp.send();
-document.getElementById("statusBar").innerHTML="";
-
-
+	});
 
 }	
 

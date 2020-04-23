@@ -70,7 +70,7 @@ if($Row['customerContact']=="") {
 			$stmt->execute();
 			$Rowc = $stmt->fetch();
 		} catch (PDOException $e) {
-			// No manager available - di nothing - or TO DO - get from contacts?
+			// No manager available - do nothing - or TO DO - get from contacts?
 			// echo "Company Manager Data was not fetched, because: " . $e->getMessage();
 		}
 
@@ -218,7 +218,7 @@ $selected="";
 <?php print $LANG['order_date'].": ";?>
 </td>
 <td valign="top">
-<input type="text" style="width:150px;" id="orderDate" name="orderDate" value="<?php print $orderDate; ?>" >
+<input type="date" lang="NO" style="width:150px;" id="orderDate" name="orderDate" value="<?php print $orderDate; ?>" >
 </td>
 </tr>
 
