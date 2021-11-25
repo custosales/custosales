@@ -1,2 +1,0 @@
-[14-Mar-2017 17:19:04 UTC] PHP Warning:  require_once(../../../lang/.php): failed to open stream: No such file or directory in /home/itfakultetet/stevia.itfakultetet.no/lib/dashboard/jsonfeed/startupwidgets.php on line 11
-[14-Mar-2017 17:19:04 UTC] PHP Fatal error:  require_once(): Failed opening required '../../../lang/.php' (include_path='.:/opt/cpanel/ea-php70/root/usr/share/pear') in /home/itfakultetet/stevia.itfakultetet.no/lib/dashboard/jsonfeed/startupwidgets.php on line 11
