@@ -6,4 +6,10 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Custosales' });
 });
 
+
+router.post('/', function(req, res, next) {
+  res.render('index', { title: 'Custosales' });
+});
+
+
 module.exports = router;
