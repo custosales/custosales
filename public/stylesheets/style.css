@@ -6,17 +6,26 @@ body {
   padding: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   min-height: 100vh;
-  min-height: -webkit-fill-available;
+  height: -webkit-fill-available;
+}
+
+#container {
+  max-height: -webkit-fill-available;
+  border: solid 5px #07024b;
 }
 
 main {
   padding:40px;
+  border: solid 5px #00B7FF;
   padding-top: 60px;
-  height: 100vh;
-  height: -webkit-fill-available;
+  min-height: -webkit-fill-available;
   max-height: 100vh;
   overflow-x: auto;
   overflow-y: hidden;
+}
+
+footer {
+  border: solid 5px #00ff95;
 }
 
 a {
@@ -33,7 +42,7 @@ table {
 
 tr {
   background-color: #efefef;
-}
+}  border: solid 5px #00B7FF;
 
 tr:nth-child(even) {
   background-color: #ddd;
