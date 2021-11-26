@@ -42,7 +42,8 @@ table {
 
 tr {
   background-color: #efefef;
-}  border: solid 5px #00B7FF;
+  border: solid 5px #00B7FF;
+}  
 
 tr:nth-child(even) {
   background-color: #ddd;
