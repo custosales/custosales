@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 13.5
--- Dumped by pg_dump version 13.5
+-- Dumped from database version 13.5 (Ubuntu 13.5-0ubuntu0.21.10.1)
+-- Dumped by pg_dump version 13.5 (Ubuntu 13.5-0ubuntu0.21.10.1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -35,7 +35,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- Name: call_types; Type: TABLE; Schema: public; Owner: terje
+-- Name: call_types; Type: TABLE; Schema: public; Owner: custosales
 --
 
 CREATE TABLE public.call_types (
@@ -45,10 +45,10 @@ CREATE TABLE public.call_types (
 );
 
 
-ALTER TABLE public.call_types OWNER TO terje;
+ALTER TABLE public.call_types OWNER TO custosales;
 
 --
--- Name: call_types_call_type_id_seq; Type: SEQUENCE; Schema: public; Owner: terje
+-- Name: call_types_call_type_id_seq; Type: SEQUENCE; Schema: public; Owner: custosales
 --
 
 ALTER TABLE public.call_types ALTER COLUMN call_type_id ADD GENERATED ALWAYS AS IDENTITY (
@@ -62,7 +62,7 @@ ALTER TABLE public.call_types ALTER COLUMN call_type_id ADD GENERATED ALWAYS AS 
 
 
 --
--- Name: calling_lists; Type: TABLE; Schema: public; Owner: terje
+-- Name: calling_lists; Type: TABLE; Schema: public; Owner: custosales
 --
 
 CREATE TABLE public.calling_lists (
@@ -74,10 +74,10 @@ CREATE TABLE public.calling_lists (
 );
 
 
-ALTER TABLE public.calling_lists OWNER TO terje;
+ALTER TABLE public.calling_lists OWNER TO custosales;
 
 --
--- Name: calling_lists_calling_list_id_seq; Type: SEQUENCE; Schema: public; Owner: terje
+-- Name: calling_lists_calling_list_id_seq; Type: SEQUENCE; Schema: public; Owner: custosales
 --
 
 ALTER TABLE public.calling_lists ALTER COLUMN calling_list_id ADD GENERATED ALWAYS AS IDENTITY (
@@ -91,7 +91,7 @@ ALTER TABLE public.calling_lists ALTER COLUMN calling_list_id ADD GENERATED ALWA
 
 
 --
--- Name: calls; Type: TABLE; Schema: public; Owner: terje
+-- Name: calls; Type: TABLE; Schema: public; Owner: custosales
 --
 
 CREATE TABLE public.calls (
@@ -105,10 +105,10 @@ CREATE TABLE public.calls (
 );
 
 
-ALTER TABLE public.calls OWNER TO terje;
+ALTER TABLE public.calls OWNER TO custosales;
 
 --
--- Name: calls_call_id_seq; Type: SEQUENCE; Schema: public; Owner: terje
+-- Name: calls_call_id_seq; Type: SEQUENCE; Schema: public; Owner: custosales
 --
 
 ALTER TABLE public.calls ALTER COLUMN call_id ADD GENERATED ALWAYS AS IDENTITY (
@@ -122,7 +122,7 @@ ALTER TABLE public.calls ALTER COLUMN call_id ADD GENERATED ALWAYS AS IDENTITY (
 
 
 --
--- Name: contact_types; Type: TABLE; Schema: public; Owner: terje
+-- Name: contact_types; Type: TABLE; Schema: public; Owner: custosales
 --
 
 CREATE TABLE public.contact_types (
@@ -132,10 +132,10 @@ CREATE TABLE public.contact_types (
 );
 
 
-ALTER TABLE public.contact_types OWNER TO terje;
+ALTER TABLE public.contact_types OWNER TO custosales;
 
 --
--- Name: contact_types_contact_type_id_seq; Type: SEQUENCE; Schema: public; Owner: terje
+-- Name: contact_types_contact_type_id_seq; Type: SEQUENCE; Schema: public; Owner: custosales
 --
 
 ALTER TABLE public.contact_types ALTER COLUMN contact_type_id ADD GENERATED ALWAYS AS IDENTITY (
@@ -149,7 +149,7 @@ ALTER TABLE public.contact_types ALTER COLUMN contact_type_id ADD GENERATED ALWA
 
 
 --
--- Name: currencies; Type: TABLE; Schema: public; Owner: terje
+-- Name: currencies; Type: TABLE; Schema: public; Owner: custosales
 --
 
 CREATE TABLE public.currencies (
@@ -160,10 +160,10 @@ CREATE TABLE public.currencies (
 );
 
 
-ALTER TABLE public.currencies OWNER TO terje;
+ALTER TABLE public.currencies OWNER TO custosales;
 
 --
--- Name: currencies_currency_id_seq; Type: SEQUENCE; Schema: public; Owner: terje
+-- Name: currencies_currency_id_seq; Type: SEQUENCE; Schema: public; Owner: custosales
 --
 
 ALTER TABLE public.currencies ALTER COLUMN currency_id ADD GENERATED ALWAYS AS IDENTITY (
@@ -177,7 +177,7 @@ ALTER TABLE public.currencies ALTER COLUMN currency_id ADD GENERATED ALWAYS AS I
 
 
 --
--- Name: departments; Type: TABLE; Schema: public; Owner: terje
+-- Name: departments; Type: TABLE; Schema: public; Owner: custosales
 --
 
 CREATE TABLE public.departments (
@@ -189,10 +189,10 @@ CREATE TABLE public.departments (
 );
 
 
-ALTER TABLE public.departments OWNER TO terje;
+ALTER TABLE public.departments OWNER TO custosales;
 
 --
--- Name: departments_department_id_seq; Type: SEQUENCE; Schema: public; Owner: terje
+-- Name: departments_department_id_seq; Type: SEQUENCE; Schema: public; Owner: custosales
 --
 
 ALTER TABLE public.departments ALTER COLUMN department_id ADD GENERATED ALWAYS AS IDENTITY (
@@ -206,7 +206,7 @@ ALTER TABLE public.departments ALTER COLUMN department_id ADD GENERATED ALWAYS A
 
 
 --
--- Name: preferences; Type: TABLE; Schema: public; Owner: terje
+-- Name: preferences; Type: TABLE; Schema: public; Owner: custosales
 --
 
 CREATE TABLE public.preferences (
@@ -227,10 +227,10 @@ CREATE TABLE public.preferences (
 );
 
 
-ALTER TABLE public.preferences OWNER TO terje;
+ALTER TABLE public.preferences OWNER TO custosales;
 
 --
--- Name: preferences_company_id_seq; Type: SEQUENCE; Schema: public; Owner: terje
+-- Name: preferences_company_id_seq; Type: SEQUENCE; Schema: public; Owner: custosales
 --
 
 ALTER TABLE public.preferences ALTER COLUMN company_id ADD GENERATED ALWAYS AS IDENTITY (
@@ -334,7 +334,7 @@ ALTER TABLE public.users ALTER COLUMN user_id ADD GENERATED ALWAYS AS IDENTITY (
 
 
 --
--- Name: workplaces; Type: TABLE; Schema: public; Owner: terje
+-- Name: workplaces; Type: TABLE; Schema: public; Owner: custosales
 --
 
 CREATE TABLE public.workplaces (
@@ -349,10 +349,10 @@ CREATE TABLE public.workplaces (
 );
 
 
-ALTER TABLE public.workplaces OWNER TO terje;
+ALTER TABLE public.workplaces OWNER TO custosales;
 
 --
--- Name: workplaces_workplace_id_seq; Type: SEQUENCE; Schema: public; Owner: terje
+-- Name: workplaces_workplace_id_seq; Type: SEQUENCE; Schema: public; Owner: custosales
 --
 
 ALTER TABLE public.workplaces ALTER COLUMN workplace_id ADD GENERATED ALWAYS AS IDENTITY (
@@ -366,7 +366,7 @@ ALTER TABLE public.workplaces ALTER COLUMN workplace_id ADD GENERATED ALWAYS AS 
 
 
 --
--- Data for Name: call_types; Type: TABLE DATA; Schema: public; Owner: terje
+-- Data for Name: call_types; Type: TABLE DATA; Schema: public; Owner: custosales
 --
 
 COPY public.call_types (call_type_id, call_type_name, call_type_description) FROM stdin;
@@ -382,7 +382,7 @@ COPY public.call_types (call_type_id, call_type_name, call_type_description) FRO
 
 
 --
--- Data for Name: calling_lists; Type: TABLE DATA; Schema: public; Owner: terje
+-- Data for Name: calling_lists; Type: TABLE DATA; Schema: public; Owner: custosales
 --
 
 COPY public.calling_lists (calling_list_id, calling_list_name, calling_list_table_name, calling_list_owner_id, calling_list_comments) FROM stdin;
@@ -390,7 +390,7 @@ COPY public.calling_lists (calling_list_id, calling_list_name, calling_list_tabl
 
 
 --
--- Data for Name: calls; Type: TABLE DATA; Schema: public; Owner: terje
+-- Data for Name: calls; Type: TABLE DATA; Schema: public; Owner: custosales
 --
 
 COPY public.calls (call_id, company_regnumber, contact_id, contact_time, result, notes, call_type_id) FROM stdin;
@@ -398,7 +398,7 @@ COPY public.calls (call_id, company_regnumber, contact_id, contact_time, result,
 
 
 --
--- Data for Name: contact_types; Type: TABLE DATA; Schema: public; Owner: terje
+-- Data for Name: contact_types; Type: TABLE DATA; Schema: public; Owner: custosales
 --
 
 COPY public.contact_types (contact_type_id, contact_type_name, contact_type_description) FROM stdin;
@@ -406,7 +406,7 @@ COPY public.contact_types (contact_type_id, contact_type_name, contact_type_desc
 
 
 --
--- Data for Name: currencies; Type: TABLE DATA; Schema: public; Owner: terje
+-- Data for Name: currencies; Type: TABLE DATA; Schema: public; Owner: custosales
 --
 
 COPY public.currencies (currency_id, currency_name, currency_symbol, default_currency) FROM stdin;
@@ -414,7 +414,7 @@ COPY public.currencies (currency_id, currency_name, currency_symbol, default_cur
 
 
 --
--- Data for Name: departments; Type: TABLE DATA; Schema: public; Owner: terje
+-- Data for Name: departments; Type: TABLE DATA; Schema: public; Owner: custosales
 --
 
 COPY public.departments (department_id, department_name, workplace_id, manager_id, super_department_id) FROM stdin;
@@ -422,7 +422,7 @@ COPY public.departments (department_id, department_name, workplace_id, manager_i
 
 
 --
--- Data for Name: preferences; Type: TABLE DATA; Schema: public; Owner: terje
+-- Data for Name: preferences; Type: TABLE DATA; Schema: public; Owner: custosales
 --
 
 COPY public.preferences (company_id, company_reg_number, company_name, company_address, company_zip, company_city, company_country, company_phone, company_email, company_internet, default_currency_id, default_credit_days, company_bank_account, company_manager_id) FROM stdin;
@@ -461,7 +461,7 @@ COPY public.users (user_id, username, first_name, last_name, job_title, departme
 
 
 --
--- Data for Name: workplaces; Type: TABLE DATA; Schema: public; Owner: terje
+-- Data for Name: workplaces; Type: TABLE DATA; Schema: public; Owner: custosales
 --
 
 COPY public.workplaces (workplace_id, workplace_name, workplace_address, workplace_zip, workplace_city, manager_id, workplace_description, main_office) FROM stdin;
@@ -469,49 +469,49 @@ COPY public.workplaces (workplace_id, workplace_name, workplace_address, workpla
 
 
 --
--- Name: call_types_call_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: terje
+-- Name: call_types_call_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
 SELECT pg_catalog.setval('public.call_types_call_type_id_seq', 8, true);
 
 
 --
--- Name: calling_lists_calling_list_id_seq; Type: SEQUENCE SET; Schema: public; Owner: terje
+-- Name: calling_lists_calling_list_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
 SELECT pg_catalog.setval('public.calling_lists_calling_list_id_seq', 1, false);
 
 
 --
--- Name: calls_call_id_seq; Type: SEQUENCE SET; Schema: public; Owner: terje
+-- Name: calls_call_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
 SELECT pg_catalog.setval('public.calls_call_id_seq', 1, false);
 
 
 --
--- Name: contact_types_contact_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: terje
+-- Name: contact_types_contact_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
 SELECT pg_catalog.setval('public.contact_types_contact_type_id_seq', 1, false);
 
 
 --
--- Name: currencies_currency_id_seq; Type: SEQUENCE SET; Schema: public; Owner: terje
+-- Name: currencies_currency_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
 SELECT pg_catalog.setval('public.currencies_currency_id_seq', 1, false);
 
 
 --
--- Name: departments_department_id_seq; Type: SEQUENCE SET; Schema: public; Owner: terje
+-- Name: departments_department_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
 SELECT pg_catalog.setval('public.departments_department_id_seq', 1, false);
 
 
 --
--- Name: preferences_company_id_seq; Type: SEQUENCE SET; Schema: public; Owner: terje
+-- Name: preferences_company_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
 SELECT pg_catalog.setval('public.preferences_company_id_seq', 1, false);
@@ -532,14 +532,14 @@ SELECT pg_catalog.setval('public.users_user_id_seq', 2, true);
 
 
 --
--- Name: workplaces_workplace_id_seq; Type: SEQUENCE SET; Schema: public; Owner: terje
+-- Name: workplaces_workplace_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
 SELECT pg_catalog.setval('public.workplaces_workplace_id_seq', 1, false);
 
 
 --
--- Name: call_types call_types_pkey; Type: CONSTRAINT; Schema: public; Owner: terje
+-- Name: call_types call_types_pkey; Type: CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.call_types
@@ -547,7 +547,7 @@ ALTER TABLE ONLY public.call_types
 
 
 --
--- Name: calling_lists calling_lists_pkey; Type: CONSTRAINT; Schema: public; Owner: terje
+-- Name: calling_lists calling_lists_pkey; Type: CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.calling_lists
@@ -555,7 +555,7 @@ ALTER TABLE ONLY public.calling_lists
 
 
 --
--- Name: calls calls_pkey; Type: CONSTRAINT; Schema: public; Owner: terje
+-- Name: calls calls_pkey; Type: CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.calls
@@ -563,7 +563,7 @@ ALTER TABLE ONLY public.calls
 
 
 --
--- Name: contact_types contact_types_pkey; Type: CONSTRAINT; Schema: public; Owner: terje
+-- Name: contact_types contact_types_pkey; Type: CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.contact_types
@@ -571,7 +571,7 @@ ALTER TABLE ONLY public.contact_types
 
 
 --
--- Name: currencies currencies_pkey; Type: CONSTRAINT; Schema: public; Owner: terje
+-- Name: currencies currencies_pkey; Type: CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.currencies
@@ -579,7 +579,7 @@ ALTER TABLE ONLY public.currencies
 
 
 --
--- Name: departments departments_pkey; Type: CONSTRAINT; Schema: public; Owner: terje
+-- Name: departments departments_pkey; Type: CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.departments
@@ -587,7 +587,7 @@ ALTER TABLE ONLY public.departments
 
 
 --
--- Name: preferences preferences_pkey; Type: CONSTRAINT; Schema: public; Owner: terje
+-- Name: preferences preferences_pkey; Type: CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.preferences
@@ -619,7 +619,7 @@ ALTER TABLE ONLY public.users
 
 
 --
--- Name: workplaces workplaces_pkey; Type: CONSTRAINT; Schema: public; Owner: terje
+-- Name: workplaces workplaces_pkey; Type: CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.workplaces
@@ -627,7 +627,7 @@ ALTER TABLE ONLY public.workplaces
 
 
 --
--- Name: calling_lists calling_lists_calling_list_owner_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: calling_lists calling_lists_calling_list_owner_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.calling_lists
@@ -635,7 +635,7 @@ ALTER TABLE ONLY public.calling_lists
 
 
 --
--- Name: calls calls_call_type_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: calls calls_call_type_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.calls
@@ -643,7 +643,7 @@ ALTER TABLE ONLY public.calls
 
 
 --
--- Name: departments manager_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: departments manager_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.departments
@@ -651,7 +651,7 @@ ALTER TABLE ONLY public.departments
 
 
 --
--- Name: preferences preferences_company_manager_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: preferences preferences_company_manager_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.preferences
@@ -659,7 +659,7 @@ ALTER TABLE ONLY public.preferences
 
 
 --
--- Name: preferences preferences_default_currency_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: preferences preferences_default_currency_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.preferences
@@ -667,7 +667,7 @@ ALTER TABLE ONLY public.preferences
 
 
 --
--- Name: departments superdepartment_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: departments superdepartment_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.departments
@@ -699,7 +699,7 @@ ALTER TABLE ONLY public.users
 
 
 --
--- Name: departments workplace_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: departments workplace_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.departments
@@ -707,7 +707,7 @@ ALTER TABLE ONLY public.departments
 
 
 --
--- Name: workplaces workplaces_manager_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: workplaces workplaces_manager_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.workplaces
