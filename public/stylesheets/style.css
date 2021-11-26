@@ -1,11 +1,24 @@
+html {
+  height: -webkit-fill-available;
+}
+
 body {
   padding: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
 }
 
 main {
   padding:40px;
   padding-top: 60px;
+  display: flex;
+  flex-wrap: nowrap;
+  height: 100vh;
+  height: -webkit-fill-available;
+  max-height: 100vh;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 a {

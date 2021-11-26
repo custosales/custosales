@@ -5,12 +5,19 @@
      <%- include('head') %>
   </head>
   <body>
-    <nav>
+    <nav style="float:left">
+      <%- include('sidebar_menu') %>
+   </nav>
+    <nav style="float: none;">
       <%- include('menu') %>
     </nav>
+    
     <main>
+    
     <h1><%= title %></h1>
     <p>Velkommen til <%= title %></p>
-  </main>
-  </body>
+  
+</main>
+    
+</body>
 </html>
