@@ -1,8 +1,40 @@
 body {
-  padding: 50px;
+  padding: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+main {
+  padding:40px;
+  padding-top: 60px;
 }
 
 a {
   color: #00B7FF;
+}
+
+table {
+  margin-top: 20px;
+  border: solid 1px #333;
+  box-shadow: 5px 5px 20px #444;
+  margin-bottom: 50px;
+
+}
+
+tr {
+  background-color: #efefef;
+}
+
+tr:nth-child(even) {
+  background-color: #ddd;
+}
+
+td {
+  padding: 5px;;
+}
+
+.th, th {
+  font-weight: bold;
+  background-color: #333;
+  color: white;
+  padding:5px;
 }
