@@ -6,7 +6,7 @@ var router = express.Router();
 
 /* GET newuser page. */
 router.get('/', function(req, res, next) {
-  res.render('newuser', { title: 'Ny bruker', message: '' });
+  res.render('modules/admin/newuser', { title: 'Ny bruker', message: '' });
 });
 
 /* Register new user. */
