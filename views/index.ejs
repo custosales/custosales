@@ -5,21 +5,33 @@
      <%- include('head') %>
   </head>
   <body>
-    <section id="container">
-      <nav style="float:left">
-      <%- include('sidebar_menu') %>
-     </nav>
+<div class="container">
+
       <nav style="float: none;">
-      <%- include('menu') %>
+        <%- include('menu') %>
       </nav>
     
-    <main>
+<div class="row mb-3">
+      
+        <div class="col-lg-1 themed-grid-col">
+        <nav>
+          <%- include('sidebar_menu') %>
+        </nav>
+        </div>
     
-    <h1><%= title %></h1>
-    <p>Velkommen til <%= title %></p>
+        <div class="col-11 themed-grid-col" >
+         <main>
+    
+             <h1><%= title %></h1>
+             <p>Velkommen til <%= title %></p>
+               <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Hei
   
-   </main>
-    <%- include('footer') %>
-  </section>
-  </body>
+        </main>
+        <%- include('footer') %>
+       </div>
+      
+      
+</div>
+</div>
+</body>
 </html>
