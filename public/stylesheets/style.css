@@ -36,12 +36,14 @@ a {
   border: solid 1px #333;
   box-shadow: 5px 5px 20px #444;
   margin-bottom: 50px;
+}
 
+.tabell {
+  width: 600px;
 }
 
 tr {
-  background-color: #efefef;
-  
+  background-color: #efefef; 
 }  
 
 tr:nth-child(even) {
@@ -52,7 +54,7 @@ td {
   padding: 5px;;
 }
 
-.th, th {
+.th {
   font-weight: bold;
   background-color: #333;
   color: white;

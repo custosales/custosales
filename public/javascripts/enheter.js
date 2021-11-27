@@ -25,7 +25,7 @@ window.onload = function () {
 
         let query = "https://hotell.difi.no/api/json/brreg/enhetsregisteret?query=" + document.getElementById("sokefelt").value;
         // console.log(query);
-        div2.innerHTML = "<table id='tabell' class='tabell'></table>";
+        div2.innerHTML = "<table id='tabell' class='table'></table>";
         fetch(query)
             .then(resp => resp.json())
             .then(data => {
@@ -34,10 +34,10 @@ window.onload = function () {
                 let th = tabell.insertRow();
                 let navn = th.insertCell(0);
                 navn.innerHTML = "Navn";
-                navn.className = "th";
+                navn.className = "bg-dark text-white";
                 let orgnr = th.insertCell(1);
                 orgnr.innerHTML = "Orgnummer";
-                orgnr.className = "th";
+                orgnr.className = "bg-dark text-white";
 
                 return enheter.map(a => {
                     let tr = tabell.insertRow();
