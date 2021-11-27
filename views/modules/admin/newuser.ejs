@@ -1,63 +1,67 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-     <%- include('../../head') %>
-  </head>
-  <body>
-    <nav>
-      <%- include('../../menu') %>
-    </nav>
-    <main>
-    <h1><%= title %></h1>
-    <p>Legg til ny bruker</p>
 
-    <div style="width:400px">
-        <form id="skjema" method="POST" action="newuser">
-            <fieldset>
-                <div class="form-group">
-                    <label for="navn">Navn</label> <input type="text" required class="form-control form-control-sm"
-                        name="navn" placeholder="Tast inn fullt navn">
-                </div>
-                <div class="form-group">
-                    <label for="brukernavn">Brukernavn</label> <input type="text" required
-                        class="form-control form-control-sm" name="brukernavn" placeholder="Tast inn brukernavn">
-                </div>
-                <div class="form-group">
-                    <label for="passord">Passord</label> <input id="pw1" type="password"
-                        class="form-control form-control-sm" name="passord" placeholder="Tast inn Passord">
-                </div>
-                <div class="form-group">
-                    <label for="passord2">Gjenta passord</label> <input id="pw2" type="password"
-                        class="form-control form-control-sm" name="passord2" placeholder="Gjenta passordet">
-                </div>
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <%- include('../../head') %>
+</head>
 
-                <div class="form-group">
-                    <label for="epost">Epost</label> <input type="email" class="form-control form-control-sm"
-                        name="epost" placeholder="Tast inn epostadressen din">
-                <div class="form-group">
-                    <label for="dato">Dato</label> <input type="date" class="form-control form-control-sm" name="dato">
-                    </div>
-                <div class="form-group">
-                       <input type="submit" class="btn btn-success" value="Registrer bruker">
-                </div>
-            </fieldset>
+<body>
 
-        </form>
+    <%- include('../../menu') %>
 
-     <% if (message !="" ) { %>
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>
+        <main>
+            <h1>
+                <%= title %>
+            </h1>
+            <p>Legg til ny bruker</p>
+
+            <div style="width:400px">
+                <form id="newUserForm" method="POST" action="newuser">
+                    <fieldset>
+                        <div class="form-group">
+                            <label for="first_name">Fornavn</label> <input type="text" required class="form-control form-control-sm" name="first_name" placeholder="Tast inn fullt navn">
+                        </div>
+                        <div class="form-group">
+                            <label for="last_name">Etternavn</label> <input type="text" required class="form-control form-control-sm" name="last_name" placeholder="Tast inn fullt navn">
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Brukernavn</label> <input type="text" required class="form-control form-control-sm" name="brukernavn" placeholder="Tast inn brukernavn">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Passord</label> <input id="pw1" type="password" class="form-control form-control-sm" name="password" placeholder="Tast inn Passord">
+                        </div>
+                        <div class="form-group">
+                            <label for="password2">Gjenta passord</label> <input id="pw2" type="password" class="form-control form-control-sm" name="password2" placeholder="Gjenta passordet">
+                        </div>
+                        <div class="form-group">
+                            <label for="epost">Epost</label> <input type="email" class="form-control form-control-sm" name="epost" placeholder="Tast inn epostadressen din">
+                            <div class="form-group">
+                                <label for="dato">Dato</label> <input type="date" class="form-control form-control-sm" name="dato">
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-success" value="Registrer bruker">
+                            </div>
+                    </fieldset>
+
+                </form>
+
+                <% if (message !="" ) { %>
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong>
                    <%= message %>
                 </strong>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-            </div>
-            <% } %> 
-      
-    </div>
+                    </div>
+                    <% } %>
 
-  </main>
-  </body>
+                        </div>
+
+        </main>
+</body>
+
 </html>
