@@ -16,7 +16,7 @@ body {
 
 main {
   padding:40px;
-  border: solid 5px #00B7FF;
+ /* border: solid 5px #00B7FF; */
   padding-top: 60px;
   min-height: -webkit-fill-available;
   max-height: 100vh;
