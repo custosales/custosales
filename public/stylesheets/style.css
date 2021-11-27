@@ -15,9 +15,9 @@ body {
 }
 
 main {
-  padding:40px;
+  padding-left:10px;
  /* border: solid 5px #00B7FF; */
-  padding-top: 60px;
+  padding-top: 70px;
   min-height: -webkit-fill-available;
   max-height: 100vh;
   overflow-x: auto;
@@ -32,7 +32,7 @@ a {
   color: #00B7FF;
 }
 
-table {
+.table {
   margin-top: 20px;
   border: solid 1px #333;
   box-shadow: 5px 5px 20px #444;
@@ -42,7 +42,7 @@ table {
 
 tr {
   background-color: #efefef;
-  border: solid 5px #00B7FF;
+  
 }  
 
 tr:nth-child(even) {

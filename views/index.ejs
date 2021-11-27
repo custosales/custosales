@@ -5,33 +5,55 @@
      <%- include('head') %>
   </head>
   <body>
-<div class="container">
-
-      <nav style="float: none;">
-        <%- include('menu') %>
-      </nav>
-    
+  <%- include('menu') %>
+      
 <div class="row mb-3">
       
+         <!-- Top Menu-->
         <div class="col-lg-1 themed-grid-col">
-        <nav>
-          <%- include('sidebar_menu') %>
-        </nav>
+                 <%- include('sidebar_menu') %>
         </div>
     
+        <!-- Main Area -->
         <div class="col-11 themed-grid-col" >
-         <main>
-    
+         <main>    
              <h1><%= title %></h1>
-             <p>Velkommen til <%= title %></p>
-               <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Hei
-  
+          
+             <!-- Widgets -->
+             <div class="row mb-3">
+              <!-- Small left column -->
+              <div class="col-2 themed-grid-col">
+              <%- include('modules/sales/widgets/sales_list_widget.ejs') %>
+              <%- include('modules/orders/widgets/orders_list_widget.ejs') %>
+
+
+              </div>
+              <!-- Larger middle column -->
+              <div class="col-5 themed-grid-col">
+
+                <%- include('modules/sales/widgets/call_back_widget.ejs') %>
+
+              </div>
+
+              <!-- Larger right column -->
+              <div class="col-5 themed-grid-col">
+
+                <%- include('modules/sales/widgets/call_back_widget.ejs') %>
+
+              </div>
+
+
+             </div>
+
+
+
+
         </main>
+        <!-- Footer -->
         <%- include('footer') %>
        </div>
       
       
-</div>
 </div>
 </body>
 </html>
