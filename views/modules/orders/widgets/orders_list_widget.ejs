@@ -6,21 +6,9 @@
         <table class="main_table" style="border:0px;">
             <tr>
                 <td valign="top" width="180">
-                 
-                    foreach ($ResultC as $Row) {    // List numbers of companies that are not customers, per sales stage
-                        ?>
-                        <a href="show_companies.php?status=<?php print $Row['companyStatus']; ?>"><img src="images/sales_icons/<?php print str_replace('32', '22', $Row['icon']); ?>" style="border:0px;vertical-align:middle;" alt="" /></a> <a href="show_companies.php?status=<?php print $Row['companyStatus']; ?>"><?php print $Row['name']; ?></a>
-                        <span style="color:#777777">(<?php print $Row['number']; ?>)</span>
-                        <br>
-                  
-                    } // end list numbers of companies that are not customers
+                
+                    Ordre kommer her
                     
-                    // List number of customers  
-                  
-                    <a href="show_companies.php?status=<?php print $LANG['customer']; ?>"><img src="images/folder_yellow_22.png" style="border:0px;vertical-align:middle;" alt="" /></a> <a href="show_companies.php?status=<?php print $LANG['customer']; ?>"><?php print $LANG['customers']; ?></a>
-                    <span style="color:#777777">(<?php print $customerNumber;?>)</span>
-                    <br>
-                    <a href="show_callinglists.php"><img src="images/folder_blue_22.png" style="border:0px;vertical-align:middle;" alt="" /></a> <a href="show_callinglists.php"><?php print $LANG['calling_lists']; ?></a>
                 </td>
             </tr>
         </table>
