@@ -19,13 +19,13 @@
             <p>Legg til ny bruker</p>
 
             <div style="width:400px">
-                <form id="newUserForm" method="POST" action="newuser">
+                <form id="newUserForm" class="form" method="POST" action="newuser">
                     <fieldset>
                         <div class="form-group">
-                            <label for="first_name">Fornavn</label> <input type="text" required class="form-control form-control-sm" name="first_name" placeholder="Tast inn fullt navn">
+                            <label for="first_name">Fornavn</label> <input type="text" required class="form-control form-control-sm" name="first_name" placeholder="Tast inn fornavn">
                         </div>
                         <div class="form-group">
-                            <label for="last_name">Etternavn</label> <input type="text" required class="form-control form-control-sm" name="last_name" placeholder="Tast inn fullt navn">
+                            <label for="last_name">Etternavn</label> <input type="text" required class="form-control form-control-sm" name="last_name" placeholder="Tast inn etternavn">
                         </div>
                         <div class="form-group">
                             <label for="username">Brukernavn</label> <input type="text" required class="form-control form-control-sm" name="brukernavn" placeholder="Tast inn brukernavn">
@@ -37,22 +37,38 @@
                             <label for="password2">Gjenta passord</label> <input id="pw2" type="password" class="form-control form-control-sm" name="password2" placeholder="Gjenta passordet">
                         </div>
                         <div class="form-group">
-                            <label for="epost">Epost</label> <input type="email" class="form-control form-control-sm" name="epost" placeholder="Tast inn epostadressen din">
-                            <div class="form-group">
-                                <label for="start_date">Startet</label> <input type="date" class="form-control form-control-sm" name="dtart_date">
-                            </div>
-                            <div class="form-group">
-                                <label for="end_date">Sluttet</label> <input type="date" class="form-control form-control-sm" name="end_date">
-                            </div>
-                           
-                            <div class="form-group">
-                                <label for="enables">Aktiv</label> <input type="checkbox" class="form-control form-control-sm" name="enabled">
-                            </div>
-                            
-                            <div class="form-group">
-                                <input type="submit" class="btn btn-success" value="Registrer bruker">
-                            </div>
+                            <label for="user_email">Epost</label> <input type="email" class="form-control form-control-sm" name="user_email" placeholder="Tast inn brukerens epostadresse">
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Adresse</label> <input type="text" class="form-control form-control-sm" name="address" placeholder="Tast inn brukerens postadresse">
+                        </div>
+                        <div class="form-group">
+                            <label for="zip">Postnummer</label> <input type="text" class="form-control form-control-sm" name="zip" placeholder="Tast inn brukerens postnummer">
+                        </div>
+                        <div class="form-group">
+                            <label for="city">Poststed</label> <input type="text" class="form-control form-control-sm" name="city" placeholder="Tast inn brukerens poststed">
+                        </div>
+                        <div class="form-group">
+                            <label for="skills">Kompetanse</label> <input type="text" class="form-control form-control-sm" name="skills" placeholder="Tast inn stikkord for kompetanse">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="signed_contract">Signert kontrakt: </label> <input type="checkbox" class="form-check-input" name="signed_contract">
+                        </div>
+                        <div class="form-group">
+                            <label for="start_date">Startet</label> <input type="date" class="form-control form-control-sm" name="dtart_date">
+                        </div>
+                        <div class="form-group">
+                            <label for="end_date">Sluttet</label> <input type="date" class="form-control form-control-sm" name="end_date">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="enables">Aktiv: </label> <input type="checkbox" class="form-check-input" name="enabled">
+                        </div>
                     </fieldset>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-success" value="Registrer bruker">
+                    </div>
 
                 </form>
 
@@ -67,7 +83,7 @@
                     </div>
                     <% } %>
 
-                        </div>
+            </div>
 
         </main>
 </body>
