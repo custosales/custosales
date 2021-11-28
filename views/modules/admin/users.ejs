@@ -1,57 +1,65 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-     <%- include('head') %>
-  </head>
-  <body>
-    <nav>
-      <%- include('menu') %>
-    </nav>
-    <main>
-    <h1><%= title %></h1>
-    <p>Velkommen til <%= title %></p>
 
-    <table id="tabell">
-      <thead>
-          <tr>
-              <th>Navn</th>
-              <th>Brukernavn</th>
-              <th>Epost</th>
-              <th>Passord</th>
-              <th>Dato</th>
-          </tr>
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <%- include('../../head') %>
+</head>
 
-      </thead>
-      <tbody>
-          <%  for(var i = 0; i < docs.length; i++) {  %>
+<body>
+    <%- include('../../menu') %>
+        <main>
+            <h1>
+                <%= title %>
+            </h1>
 
-              <tr>
-                  <td>
-                      <%= docs[i].navn %>
-                  </td>
-                  <td>
-                      <%= docs[i].brukernavn %>
-                  </td>
+            <table id="tabell">
+                <thead>
+                    <tr>
+                        <th>Fornavn</th>
+                        <th>Etternavn</th>
+                        <th>Brukernavn</th>
+                        <th>Epost</th>
+                        <th>Mobil</th>
+                        <th>Start-dato</th>
+                    </tr>
 
-                  <td>
-                      <%= docs[i].epost %>
-                  </td>
-                  <td>
-                      <%= docs[i].passord %>
-                  </td>
-                  <td>
-                      <%= docs[i].dato %>
-                  </td>
+                </thead>
+                <tbody>
+                    <% for(var i=0; i < rows.length; i++) { %>
 
-              </tr>
+                        <tr>
+                            <td>
+                                <%= rows[i].first_name %>
+                            </td>
+                            <td>
+                                <%= rows[i].last_name %>
+                            </td>
+                            <td>
+                                <%= rows[i].username %>
+                            </td>
 
-              <% }  %>
-      </tbody>
+                            <td>
+                                <%= rows[i].user_email %>
+                            </td>
+                            <td>
+                                <%= rows[i].mobile_phone %>
+                            </td>
+                            <td>
+                                <%= rows[i].start_date %>
+                            </td>
 
-  </table>
+                        </tr>
+
+                        <% } %>
+                </tbody>
+
+            </table>
 
 
-  </main>
-  </body>
+        </main>
+</body>
+
 </html>

@@ -4,25 +4,27 @@ var router = express.Router();
 /* GET users page. */
 router.get('/', function (req, res, next) {
 
-  const MongoClient = require('mongodb').MongoClient;
-  const uri = "mongodb://kurs:kurs123@noderia.com:31017/kurs?retryWrites=true&w=majority";
-  const client = new MongoClient(uri, { useNewUrlParser: true });
-
-  client.connect(err => {
-    console.log("Connected successfully to server");
-    const col = client.db("kurs").collection("kursbrukere");
-
-    col.find({}).toArray(function (err, docs) {
-
-      res.render('users', {
-        title: 'Brukeroversikt',
-        docs: docs
-      });
-
-      client.close();
-    });
-
+  const { Client } = require('pg');
+  const client = new Client({
+    user: 'custosales',
+    host: 'custosales.com',
+    database: 'custosales',
+    password: 'custo432a',
+    port: 5432
   });
+
+  client.connect();
+
+  client.query('SELECT * from users', (err, sql) => {
+
+    res.render('modules/admin/users', {
+      title: 'Brukeroversikt',
+      rows: sql.rows
+    });
+  
+    client.end();
+  });
+
 
 
 });
