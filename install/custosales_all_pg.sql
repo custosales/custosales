@@ -35,7 +35,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- Name: call_types; Type: TABLE; Schema: public; Owner: terje
+-- Name: call_types; Type: TABLE; Schema: public; Owner: custosales
 --
 
 CREATE TABLE public.call_types (
@@ -45,10 +45,10 @@ CREATE TABLE public.call_types (
 );
 
 
-ALTER TABLE public.call_types OWNER TO terje;
+ALTER TABLE public.call_types OWNER TO custosales;
 
 --
--- Name: call_types_call_type_id_seq; Type: SEQUENCE; Schema: public; Owner: terje
+-- Name: call_types_call_type_id_seq; Type: SEQUENCE; Schema: public; Owner: custosales
 --
 
 ALTER TABLE public.call_types ALTER COLUMN call_type_id ADD GENERATED ALWAYS AS IDENTITY (
@@ -62,7 +62,7 @@ ALTER TABLE public.call_types ALTER COLUMN call_type_id ADD GENERATED ALWAYS AS 
 
 
 --
--- Name: calling_lists; Type: TABLE; Schema: public; Owner: terje
+-- Name: calling_lists; Type: TABLE; Schema: public; Owner: custosales
 --
 
 CREATE TABLE public.calling_lists (
@@ -74,10 +74,10 @@ CREATE TABLE public.calling_lists (
 );
 
 
-ALTER TABLE public.calling_lists OWNER TO terje;
+ALTER TABLE public.calling_lists OWNER TO custosales;
 
 --
--- Name: calling_lists_calling_list_id_seq; Type: SEQUENCE; Schema: public; Owner: terje
+-- Name: calling_lists_calling_list_id_seq; Type: SEQUENCE; Schema: public; Owner: custosales
 --
 
 ALTER TABLE public.calling_lists ALTER COLUMN calling_list_id ADD GENERATED ALWAYS AS IDENTITY (
@@ -91,7 +91,7 @@ ALTER TABLE public.calling_lists ALTER COLUMN calling_list_id ADD GENERATED ALWA
 
 
 --
--- Name: callinglists; Type: TABLE; Schema: public; Owner: terje
+-- Name: callinglists; Type: TABLE; Schema: public; Owner: custosales
 --
 
 CREATE TABLE public.callinglists (
@@ -103,10 +103,10 @@ CREATE TABLE public.callinglists (
 );
 
 
-ALTER TABLE public.callinglists OWNER TO terje;
+ALTER TABLE public.callinglists OWNER TO custosales;
 
 --
--- Name: callinglists_callinglist_id_seq; Type: SEQUENCE; Schema: public; Owner: terje
+-- Name: callinglists_callinglist_id_seq; Type: SEQUENCE; Schema: public; Owner: custosales
 --
 
 ALTER TABLE public.callinglists ALTER COLUMN callinglist_id ADD GENERATED ALWAYS AS IDENTITY (
@@ -120,7 +120,7 @@ ALTER TABLE public.callinglists ALTER COLUMN callinglist_id ADD GENERATED ALWAYS
 
 
 --
--- Name: calls; Type: TABLE; Schema: public; Owner: terje
+-- Name: calls; Type: TABLE; Schema: public; Owner: custosales
 --
 
 CREATE TABLE public.calls (
@@ -134,10 +134,10 @@ CREATE TABLE public.calls (
 );
 
 
-ALTER TABLE public.calls OWNER TO terje;
+ALTER TABLE public.calls OWNER TO custosales;
 
 --
--- Name: calls_call_id_seq; Type: SEQUENCE; Schema: public; Owner: terje
+-- Name: calls_call_id_seq; Type: SEQUENCE; Schema: public; Owner: custosales
 --
 
 ALTER TABLE public.calls ALTER COLUMN call_id ADD GENERATED ALWAYS AS IDENTITY (
@@ -151,7 +151,7 @@ ALTER TABLE public.calls ALTER COLUMN call_id ADD GENERATED ALWAYS AS IDENTITY (
 
 
 --
--- Name: companies; Type: TABLE; Schema: public; Owner: terje
+-- Name: companies; Type: TABLE; Schema: public; Owner: custosales
 --
 
 CREATE TABLE public.companies (
@@ -179,10 +179,10 @@ CREATE TABLE public.companies (
 );
 
 
-ALTER TABLE public.companies OWNER TO terje;
+ALTER TABLE public.companies OWNER TO custosales;
 
 --
--- Name: companies_company_id_seq; Type: SEQUENCE; Schema: public; Owner: terje
+-- Name: companies_company_id_seq; Type: SEQUENCE; Schema: public; Owner: custosales
 --
 
 ALTER TABLE public.companies ALTER COLUMN company_id ADD GENERATED ALWAYS AS IDENTITY (
@@ -196,7 +196,7 @@ ALTER TABLE public.companies ALTER COLUMN company_id ADD GENERATED ALWAYS AS IDE
 
 
 --
--- Name: company_status; Type: TABLE; Schema: public; Owner: terje
+-- Name: company_status; Type: TABLE; Schema: public; Owner: custosales
 --
 
 CREATE TABLE public.company_status (
@@ -207,10 +207,10 @@ CREATE TABLE public.company_status (
 );
 
 
-ALTER TABLE public.company_status OWNER TO terje;
+ALTER TABLE public.company_status OWNER TO custosales;
 
 --
--- Name: company_status_company_status_id_seq; Type: SEQUENCE; Schema: public; Owner: terje
+-- Name: company_status_company_status_id_seq; Type: SEQUENCE; Schema: public; Owner: custosales
 --
 
 ALTER TABLE public.company_status ALTER COLUMN company_status_id ADD GENERATED ALWAYS AS IDENTITY (
@@ -224,7 +224,7 @@ ALTER TABLE public.company_status ALTER COLUMN company_status_id ADD GENERATED A
 
 
 --
--- Name: contact_types; Type: TABLE; Schema: public; Owner: terje
+-- Name: contact_types; Type: TABLE; Schema: public; Owner: custosales
 --
 
 CREATE TABLE public.contact_types (
@@ -234,10 +234,10 @@ CREATE TABLE public.contact_types (
 );
 
 
-ALTER TABLE public.contact_types OWNER TO terje;
+ALTER TABLE public.contact_types OWNER TO custosales;
 
 --
--- Name: contact_types_contact_type_id_seq; Type: SEQUENCE; Schema: public; Owner: terje
+-- Name: contact_types_contact_type_id_seq; Type: SEQUENCE; Schema: public; Owner: custosales
 --
 
 ALTER TABLE public.contact_types ALTER COLUMN contact_type_id ADD GENERATED ALWAYS AS IDENTITY (
@@ -251,7 +251,7 @@ ALTER TABLE public.contact_types ALTER COLUMN contact_type_id ADD GENERATED ALWA
 
 
 --
--- Name: contacts; Type: TABLE; Schema: public; Owner: terje
+-- Name: contacts; Type: TABLE; Schema: public; Owner: custosales
 --
 
 CREATE TABLE public.contacts (
@@ -271,10 +271,10 @@ CREATE TABLE public.contacts (
 );
 
 
-ALTER TABLE public.contacts OWNER TO terje;
+ALTER TABLE public.contacts OWNER TO custosales;
 
 --
--- Name: contacts_contact_id_seq; Type: SEQUENCE; Schema: public; Owner: terje
+-- Name: contacts_contact_id_seq; Type: SEQUENCE; Schema: public; Owner: custosales
 --
 
 ALTER TABLE public.contacts ALTER COLUMN contact_id ADD GENERATED ALWAYS AS IDENTITY (
@@ -288,7 +288,7 @@ ALTER TABLE public.contacts ALTER COLUMN contact_id ADD GENERATED ALWAYS AS IDEN
 
 
 --
--- Name: currencies; Type: TABLE; Schema: public; Owner: terje
+-- Name: currencies; Type: TABLE; Schema: public; Owner: custosales
 --
 
 CREATE TABLE public.currencies (
@@ -299,10 +299,10 @@ CREATE TABLE public.currencies (
 );
 
 
-ALTER TABLE public.currencies OWNER TO terje;
+ALTER TABLE public.currencies OWNER TO custosales;
 
 --
--- Name: currencies_currency_id_seq; Type: SEQUENCE; Schema: public; Owner: terje
+-- Name: currencies_currency_id_seq; Type: SEQUENCE; Schema: public; Owner: custosales
 --
 
 ALTER TABLE public.currencies ALTER COLUMN currency_id ADD GENERATED ALWAYS AS IDENTITY (
@@ -316,7 +316,7 @@ ALTER TABLE public.currencies ALTER COLUMN currency_id ADD GENERATED ALWAYS AS I
 
 
 --
--- Name: departments; Type: TABLE; Schema: public; Owner: terje
+-- Name: departments; Type: TABLE; Schema: public; Owner: custosales
 --
 
 CREATE TABLE public.departments (
@@ -328,10 +328,10 @@ CREATE TABLE public.departments (
 );
 
 
-ALTER TABLE public.departments OWNER TO terje;
+ALTER TABLE public.departments OWNER TO custosales;
 
 --
--- Name: departments_department_id_seq; Type: SEQUENCE; Schema: public; Owner: terje
+-- Name: departments_department_id_seq; Type: SEQUENCE; Schema: public; Owner: custosales
 --
 
 ALTER TABLE public.departments ALTER COLUMN department_id ADD GENERATED ALWAYS AS IDENTITY (
@@ -345,7 +345,7 @@ ALTER TABLE public.departments ALTER COLUMN department_id ADD GENERATED ALWAYS A
 
 
 --
--- Name: document_types; Type: TABLE; Schema: public; Owner: terje
+-- Name: document_types; Type: TABLE; Schema: public; Owner: custosales
 --
 
 CREATE TABLE public.document_types (
@@ -357,10 +357,10 @@ CREATE TABLE public.document_types (
 );
 
 
-ALTER TABLE public.document_types OWNER TO terje;
+ALTER TABLE public.document_types OWNER TO custosales;
 
 --
--- Name: document_types_document_type_id_seq; Type: SEQUENCE; Schema: public; Owner: terje
+-- Name: document_types_document_type_id_seq; Type: SEQUENCE; Schema: public; Owner: custosales
 --
 
 ALTER TABLE public.document_types ALTER COLUMN document_type_id ADD GENERATED ALWAYS AS IDENTITY (
@@ -374,7 +374,7 @@ ALTER TABLE public.document_types ALTER COLUMN document_type_id ADD GENERATED AL
 
 
 --
--- Name: documents; Type: TABLE; Schema: public; Owner: terje
+-- Name: documents; Type: TABLE; Schema: public; Owner: custosales
 --
 
 CREATE TABLE public.documents (
@@ -389,10 +389,10 @@ CREATE TABLE public.documents (
 );
 
 
-ALTER TABLE public.documents OWNER TO terje;
+ALTER TABLE public.documents OWNER TO custosales;
 
 --
--- Name: documents_document_id_seq; Type: SEQUENCE; Schema: public; Owner: terje
+-- Name: documents_document_id_seq; Type: SEQUENCE; Schema: public; Owner: custosales
 --
 
 ALTER TABLE public.documents ALTER COLUMN document_id ADD GENERATED ALWAYS AS IDENTITY (
@@ -406,7 +406,7 @@ ALTER TABLE public.documents ALTER COLUMN document_id ADD GENERATED ALWAYS AS ID
 
 
 --
--- Name: order_stages; Type: TABLE; Schema: public; Owner: terje
+-- Name: order_stages; Type: TABLE; Schema: public; Owner: custosales
 --
 
 CREATE TABLE public.order_stages (
@@ -417,10 +417,10 @@ CREATE TABLE public.order_stages (
 );
 
 
-ALTER TABLE public.order_stages OWNER TO terje;
+ALTER TABLE public.order_stages OWNER TO custosales;
 
 --
--- Name: order_stages_order_stage_id_seq; Type: SEQUENCE; Schema: public; Owner: terje
+-- Name: order_stages_order_stage_id_seq; Type: SEQUENCE; Schema: public; Owner: custosales
 --
 
 ALTER TABLE public.order_stages ALTER COLUMN order_stage_id ADD GENERATED ALWAYS AS IDENTITY (
@@ -434,35 +434,34 @@ ALTER TABLE public.order_stages ALTER COLUMN order_stage_id ADD GENERATED ALWAYS
 
 
 --
--- Name: preferences; Type: TABLE; Schema: public; Owner: terje
+-- Name: orders; Type: TABLE; Schema: public; Owner: terje
 --
 
-CREATE TABLE public.preferences (
-    company_id integer NOT NULL,
-    company_reg_number text,
-    company_name text,
-    company_address text,
-    company_zip text,
-    company_city text,
-    company_country text,
-    company_phone text,
-    company_email text,
-    company_internet text,
-    default_currency_id integer,
-    default_credit_days integer,
-    company_bank_account text,
-    company_manager_id integer
+CREATE TABLE public.orders (
+    order_id integer NOT NULL,
+    customer_id integer,
+    order_date date,
+    order_stage_id integer,
+    sales_rep_id integer,
+    customer_contact_id integer,
+    unit_price integer,
+    items integer,
+    product_id integer,
+    credit_days integer,
+    other_terms text,
+    comments text,
+    regdate timestamp without time zone
 );
 
 
-ALTER TABLE public.preferences OWNER TO terje;
+ALTER TABLE public.orders OWNER TO terje;
 
 --
--- Name: preferences_company_id_seq; Type: SEQUENCE; Schema: public; Owner: terje
+-- Name: orders_order_id_seq; Type: SEQUENCE; Schema: public; Owner: terje
 --
 
-ALTER TABLE public.preferences ALTER COLUMN company_id ADD GENERATED ALWAYS AS IDENTITY (
-    SEQUENCE NAME public.preferences_company_id_seq
+ALTER TABLE public.orders ALTER COLUMN order_id ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.orders_order_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -472,7 +471,7 @@ ALTER TABLE public.preferences ALTER COLUMN company_id ADD GENERATED ALWAYS AS I
 
 
 --
--- Name: product_categories; Type: TABLE; Schema: public; Owner: terje
+-- Name: product_categories; Type: TABLE; Schema: public; Owner: custosales
 --
 
 CREATE TABLE public.product_categories (
@@ -485,10 +484,10 @@ CREATE TABLE public.product_categories (
 );
 
 
-ALTER TABLE public.product_categories OWNER TO terje;
+ALTER TABLE public.product_categories OWNER TO custosales;
 
 --
--- Name: product_categories_product_category_id_seq; Type: SEQUENCE; Schema: public; Owner: terje
+-- Name: product_categories_product_category_id_seq; Type: SEQUENCE; Schema: public; Owner: custosales
 --
 
 ALTER TABLE public.product_categories ALTER COLUMN product_category_id ADD GENERATED ALWAYS AS IDENTITY (
@@ -502,7 +501,7 @@ ALTER TABLE public.product_categories ALTER COLUMN product_category_id ADD GENER
 
 
 --
--- Name: products; Type: TABLE; Schema: public; Owner: terje
+-- Name: products; Type: TABLE; Schema: public; Owner: custosales
 --
 
 CREATE TABLE public.products (
@@ -523,10 +522,10 @@ CREATE TABLE public.products (
 );
 
 
-ALTER TABLE public.products OWNER TO terje;
+ALTER TABLE public.products OWNER TO custosales;
 
 --
--- Name: products_product_id_seq; Type: SEQUENCE; Schema: public; Owner: terje
+-- Name: products_product_id_seq; Type: SEQUENCE; Schema: public; Owner: custosales
 --
 
 ALTER TABLE public.products ALTER COLUMN product_id ADD GENERATED ALWAYS AS IDENTITY (
@@ -540,7 +539,7 @@ ALTER TABLE public.products ALTER COLUMN product_id ADD GENERATED ALWAYS AS IDEN
 
 
 --
--- Name: project_categories; Type: TABLE; Schema: public; Owner: terje
+-- Name: project_categories; Type: TABLE; Schema: public; Owner: custosales
 --
 
 CREATE TABLE public.project_categories (
@@ -550,10 +549,10 @@ CREATE TABLE public.project_categories (
 );
 
 
-ALTER TABLE public.project_categories OWNER TO terje;
+ALTER TABLE public.project_categories OWNER TO custosales;
 
 --
--- Name: project_categories_project_category_id_seq; Type: SEQUENCE; Schema: public; Owner: terje
+-- Name: project_categories_project_category_id_seq; Type: SEQUENCE; Schema: public; Owner: custosales
 --
 
 ALTER TABLE public.project_categories ALTER COLUMN project_category_id ADD GENERATED ALWAYS AS IDENTITY (
@@ -567,7 +566,7 @@ ALTER TABLE public.project_categories ALTER COLUMN project_category_id ADD GENER
 
 
 --
--- Name: projects; Type: TABLE; Schema: public; Owner: terje
+-- Name: projects; Type: TABLE; Schema: public; Owner: custosales
 --
 
 CREATE TABLE public.projects (
@@ -583,10 +582,10 @@ CREATE TABLE public.projects (
 );
 
 
-ALTER TABLE public.projects OWNER TO terje;
+ALTER TABLE public.projects OWNER TO custosales;
 
 --
--- Name: projects_project_id_seq; Type: SEQUENCE; Schema: public; Owner: terje
+-- Name: projects_project_id_seq; Type: SEQUENCE; Schema: public; Owner: custosales
 --
 
 ALTER TABLE public.projects ALTER COLUMN project_id ADD GENERATED ALWAYS AS IDENTITY (
@@ -628,7 +627,7 @@ ALTER TABLE public.roles ALTER COLUMN role_id ADD GENERATED ALWAYS AS IDENTITY (
 
 
 --
--- Name: sales_stages; Type: TABLE; Schema: public; Owner: terje
+-- Name: sales_stages; Type: TABLE; Schema: public; Owner: custosales
 --
 
 CREATE TABLE public.sales_stages (
@@ -640,10 +639,10 @@ CREATE TABLE public.sales_stages (
 );
 
 
-ALTER TABLE public.sales_stages OWNER TO terje;
+ALTER TABLE public.sales_stages OWNER TO custosales;
 
 --
--- Name: sales_stages_sales_stage_id_seq; Type: SEQUENCE; Schema: public; Owner: terje
+-- Name: sales_stages_sales_stage_id_seq; Type: SEQUENCE; Schema: public; Owner: custosales
 --
 
 ALTER TABLE public.sales_stages ALTER COLUMN sales_stage_id ADD GENERATED ALWAYS AS IDENTITY (
@@ -657,11 +656,11 @@ ALTER TABLE public.sales_stages ALTER COLUMN sales_stage_id ADD GENERATED ALWAYS
 
 
 --
--- Name: settings; Type: TABLE; Schema: public; Owner: terje
+-- Name: settings; Type: TABLE; Schema: public; Owner: custosales
 --
 
 CREATE TABLE public.settings (
-    own_company_id integer,
+    own_company_id integer NOT NULL,
     chat_domain text,
     default_currency_id integer,
     bank_name text,
@@ -672,10 +671,10 @@ CREATE TABLE public.settings (
 );
 
 
-ALTER TABLE public.settings OWNER TO terje;
+ALTER TABLE public.settings OWNER TO custosales;
 
 --
--- Name: template_categories; Type: TABLE; Schema: public; Owner: terje
+-- Name: template_categories; Type: TABLE; Schema: public; Owner: custosales
 --
 
 CREATE TABLE public.template_categories (
@@ -684,10 +683,10 @@ CREATE TABLE public.template_categories (
 );
 
 
-ALTER TABLE public.template_categories OWNER TO terje;
+ALTER TABLE public.template_categories OWNER TO custosales;
 
 --
--- Name: template_categories_template_category_id_seq; Type: SEQUENCE; Schema: public; Owner: terje
+-- Name: template_categories_template_category_id_seq; Type: SEQUENCE; Schema: public; Owner: custosales
 --
 
 ALTER TABLE public.template_categories ALTER COLUMN template_category_id ADD GENERATED ALWAYS AS IDENTITY (
@@ -701,7 +700,7 @@ ALTER TABLE public.template_categories ALTER COLUMN template_category_id ADD GEN
 
 
 --
--- Name: templates; Type: TABLE; Schema: public; Owner: terje
+-- Name: templates; Type: TABLE; Schema: public; Owner: custosales
 --
 
 CREATE TABLE public.templates (
@@ -715,10 +714,10 @@ CREATE TABLE public.templates (
 );
 
 
-ALTER TABLE public.templates OWNER TO terje;
+ALTER TABLE public.templates OWNER TO custosales;
 
 --
--- Name: templates_template_id_seq; Type: SEQUENCE; Schema: public; Owner: terje
+-- Name: templates_template_id_seq; Type: SEQUENCE; Schema: public; Owner: custosales
 --
 
 ALTER TABLE public.templates ALTER COLUMN template_id ADD GENERATED ALWAYS AS IDENTITY (
@@ -794,7 +793,7 @@ ALTER TABLE public.users ALTER COLUMN user_id ADD GENERATED ALWAYS AS IDENTITY (
 
 
 --
--- Name: workhours; Type: TABLE; Schema: public; Owner: terje
+-- Name: workhours; Type: TABLE; Schema: public; Owner: custosales
 --
 
 CREATE TABLE public.workhours (
@@ -806,10 +805,10 @@ CREATE TABLE public.workhours (
 );
 
 
-ALTER TABLE public.workhours OWNER TO terje;
+ALTER TABLE public.workhours OWNER TO custosales;
 
 --
--- Name: workhours_workhour_id_seq; Type: SEQUENCE; Schema: public; Owner: terje
+-- Name: workhours_workhour_id_seq; Type: SEQUENCE; Schema: public; Owner: custosales
 --
 
 ALTER TABLE public.workhours ALTER COLUMN workhour_id ADD GENERATED ALWAYS AS IDENTITY (
@@ -823,7 +822,7 @@ ALTER TABLE public.workhours ALTER COLUMN workhour_id ADD GENERATED ALWAYS AS ID
 
 
 --
--- Name: workplaces; Type: TABLE; Schema: public; Owner: terje
+-- Name: workplaces; Type: TABLE; Schema: public; Owner: custosales
 --
 
 CREATE TABLE public.workplaces (
@@ -838,10 +837,10 @@ CREATE TABLE public.workplaces (
 );
 
 
-ALTER TABLE public.workplaces OWNER TO terje;
+ALTER TABLE public.workplaces OWNER TO custosales;
 
 --
--- Name: workplaces_workplace_id_seq; Type: SEQUENCE; Schema: public; Owner: terje
+-- Name: workplaces_workplace_id_seq; Type: SEQUENCE; Schema: public; Owner: custosales
 --
 
 ALTER TABLE public.workplaces ALTER COLUMN workplace_id ADD GENERATED ALWAYS AS IDENTITY (
@@ -855,7 +854,7 @@ ALTER TABLE public.workplaces ALTER COLUMN workplace_id ADD GENERATED ALWAYS AS 
 
 
 --
--- Data for Name: call_types; Type: TABLE DATA; Schema: public; Owner: terje
+-- Data for Name: call_types; Type: TABLE DATA; Schema: public; Owner: custosales
 --
 
 COPY public.call_types (call_type_id, call_type_name, call_type_description) FROM stdin;
@@ -871,7 +870,7 @@ COPY public.call_types (call_type_id, call_type_name, call_type_description) FRO
 
 
 --
--- Data for Name: calling_lists; Type: TABLE DATA; Schema: public; Owner: terje
+-- Data for Name: calling_lists; Type: TABLE DATA; Schema: public; Owner: custosales
 --
 
 COPY public.calling_lists (calling_list_id, calling_list_name, calling_list_table_name, calling_list_owner_id, calling_list_comments) FROM stdin;
@@ -879,7 +878,7 @@ COPY public.calling_lists (calling_list_id, calling_list_name, calling_list_tabl
 
 
 --
--- Data for Name: callinglists; Type: TABLE DATA; Schema: public; Owner: terje
+-- Data for Name: callinglists; Type: TABLE DATA; Schema: public; Owner: custosales
 --
 
 COPY public.callinglists (callinglist_id, callinglist__name, callinglist_table_name, callinglist_owner_id, callinglist_comments) FROM stdin;
@@ -887,7 +886,7 @@ COPY public.callinglists (callinglist_id, callinglist__name, callinglist_table_n
 
 
 --
--- Data for Name: calls; Type: TABLE DATA; Schema: public; Owner: terje
+-- Data for Name: calls; Type: TABLE DATA; Schema: public; Owner: custosales
 --
 
 COPY public.calls (call_id, company_regnumber, contact_id, contact_time, result, notes, call_type_id) FROM stdin;
@@ -895,7 +894,7 @@ COPY public.calls (call_id, company_regnumber, contact_id, contact_time, result,
 
 
 --
--- Data for Name: companies; Type: TABLE DATA; Schema: public; Owner: terje
+-- Data for Name: companies; Type: TABLE DATA; Schema: public; Owner: custosales
 --
 
 COPY public.companies (company_id, company_name, company_status_id, company_type, company_email, company_phone, company_address, company_zip, company_city, company_county, company_date_registered, company_manager, branch_code, branch_text, last_contacted, contact_again, currency_id, company_comments, reg_date, sales_rep_id, calling_list_id) FROM stdin;
@@ -903,7 +902,7 @@ COPY public.companies (company_id, company_name, company_status_id, company_type
 
 
 --
--- Data for Name: company_status; Type: TABLE DATA; Schema: public; Owner: terje
+-- Data for Name: company_status; Type: TABLE DATA; Schema: public; Owner: custosales
 --
 
 COPY public.company_status (company_status_id, company_status_name, company_status_description, company_status_icon) FROM stdin;
@@ -911,7 +910,7 @@ COPY public.company_status (company_status_id, company_status_name, company_stat
 
 
 --
--- Data for Name: contact_types; Type: TABLE DATA; Schema: public; Owner: terje
+-- Data for Name: contact_types; Type: TABLE DATA; Schema: public; Owner: custosales
 --
 
 COPY public.contact_types (contact_type_id, contact_type_name, contact_type_description) FROM stdin;
@@ -919,7 +918,7 @@ COPY public.contact_types (contact_type_id, contact_type_name, contact_type_desc
 
 
 --
--- Data for Name: contacts; Type: TABLE DATA; Schema: public; Owner: terje
+-- Data for Name: contacts; Type: TABLE DATA; Schema: public; Owner: custosales
 --
 
 COPY public.contacts (contact_id, contact_type_id, contact_company_id, contact_first_name, contact_last_name, contact_position, contact_phone, contact_email, contact_address, contact_zip, contact_city, sales_rep_id, contact_comments) FROM stdin;
@@ -927,7 +926,7 @@ COPY public.contacts (contact_id, contact_type_id, contact_company_id, contact_f
 
 
 --
--- Data for Name: currencies; Type: TABLE DATA; Schema: public; Owner: terje
+-- Data for Name: currencies; Type: TABLE DATA; Schema: public; Owner: custosales
 --
 
 COPY public.currencies (currency_id, currency_name, currency_symbol, default_currency) FROM stdin;
@@ -935,7 +934,7 @@ COPY public.currencies (currency_id, currency_name, currency_symbol, default_cur
 
 
 --
--- Data for Name: departments; Type: TABLE DATA; Schema: public; Owner: terje
+-- Data for Name: departments; Type: TABLE DATA; Schema: public; Owner: custosales
 --
 
 COPY public.departments (department_id, department_name, workplace_id, manager_id, super_department_id) FROM stdin;
@@ -943,7 +942,7 @@ COPY public.departments (department_id, department_name, workplace_id, manager_i
 
 
 --
--- Data for Name: document_types; Type: TABLE DATA; Schema: public; Owner: terje
+-- Data for Name: document_types; Type: TABLE DATA; Schema: public; Owner: custosales
 --
 
 COPY public.document_types (document_type_id, document_type_name, document_type_type, document_type_icon, document_type_comments) FROM stdin;
@@ -951,7 +950,7 @@ COPY public.document_types (document_type_id, document_type_name, document_type_
 
 
 --
--- Data for Name: documents; Type: TABLE DATA; Schema: public; Owner: terje
+-- Data for Name: documents; Type: TABLE DATA; Schema: public; Owner: custosales
 --
 
 COPY public.documents (document_id, document_name, document_type_id, document_file_name, document_path, document_owner_id, document_comments, document_reg_date) FROM stdin;
@@ -959,7 +958,7 @@ COPY public.documents (document_id, document_name, document_type_id, document_fi
 
 
 --
--- Data for Name: order_stages; Type: TABLE DATA; Schema: public; Owner: terje
+-- Data for Name: order_stages; Type: TABLE DATA; Schema: public; Owner: custosales
 --
 
 COPY public.order_stages (order_stage_id, order_stage_name, order_stage_description, order_stage_comments) FROM stdin;
@@ -967,15 +966,15 @@ COPY public.order_stages (order_stage_id, order_stage_name, order_stage_descript
 
 
 --
--- Data for Name: preferences; Type: TABLE DATA; Schema: public; Owner: terje
+-- Data for Name: orders; Type: TABLE DATA; Schema: public; Owner: terje
 --
 
-COPY public.preferences (company_id, company_reg_number, company_name, company_address, company_zip, company_city, company_country, company_phone, company_email, company_internet, default_currency_id, default_credit_days, company_bank_account, company_manager_id) FROM stdin;
+COPY public.orders (order_id, customer_id, order_date, order_stage_id, sales_rep_id, customer_contact_id, unit_price, items, product_id, credit_days, other_terms, comments, regdate) FROM stdin;
 \.
 
 
 --
--- Data for Name: product_categories; Type: TABLE DATA; Schema: public; Owner: terje
+-- Data for Name: product_categories; Type: TABLE DATA; Schema: public; Owner: custosales
 --
 
 COPY public.product_categories (product_category_id, product_category_name, product_categpry_description, product_category_owner_id, product_category_super_id, product_category_active) FROM stdin;
@@ -983,7 +982,7 @@ COPY public.product_categories (product_category_id, product_category_name, prod
 
 
 --
--- Data for Name: products; Type: TABLE DATA; Schema: public; Owner: terje
+-- Data for Name: products; Type: TABLE DATA; Schema: public; Owner: custosales
 --
 
 COPY public.products (product_id, product_name, product_description, product_category_id, count_based, unit_price, currency_id, standard_terms, department_id, product_owner_id, active, product_number, in_stock, comments) FROM stdin;
@@ -991,7 +990,7 @@ COPY public.products (product_id, product_name, product_description, product_cat
 
 
 --
--- Data for Name: project_categories; Type: TABLE DATA; Schema: public; Owner: terje
+-- Data for Name: project_categories; Type: TABLE DATA; Schema: public; Owner: custosales
 --
 
 COPY public.project_categories (project_category_id, project_category_name, comments) FROM stdin;
@@ -999,7 +998,7 @@ COPY public.project_categories (project_category_id, project_category_name, comm
 
 
 --
--- Data for Name: projects; Type: TABLE DATA; Schema: public; Owner: terje
+-- Data for Name: projects; Type: TABLE DATA; Schema: public; Owner: custosales
 --
 
 COPY public.projects (project_id, project_name, project_decription, project_start_date, project_end_date, project_client_id, project_owner_id, comments, project_category_id) FROM stdin;
@@ -1017,7 +1016,7 @@ COPY public.roles (role_id, role_name, role_description, supervisor_rights) FROM
 
 
 --
--- Data for Name: sales_stages; Type: TABLE DATA; Schema: public; Owner: terje
+-- Data for Name: sales_stages; Type: TABLE DATA; Schema: public; Owner: custosales
 --
 
 COPY public.sales_stages (sales_stage_id, sales_stage_name, sales_stage_description, sales_stage_icon, sales_stage_comments) FROM stdin;
@@ -1028,7 +1027,7 @@ COPY public.sales_stages (sales_stage_id, sales_stage_name, sales_stage_descript
 
 
 --
--- Data for Name: settings; Type: TABLE DATA; Schema: public; Owner: terje
+-- Data for Name: settings; Type: TABLE DATA; Schema: public; Owner: custosales
 --
 
 COPY public.settings (own_company_id, chat_domain, default_currency_id, bank_name, bank_account, default_credit_days, manager_id, main_office_id) FROM stdin;
@@ -1036,7 +1035,7 @@ COPY public.settings (own_company_id, chat_domain, default_currency_id, bank_nam
 
 
 --
--- Data for Name: template_categories; Type: TABLE DATA; Schema: public; Owner: terje
+-- Data for Name: template_categories; Type: TABLE DATA; Schema: public; Owner: custosales
 --
 
 COPY public.template_categories (template_category_id, template_category_name) FROM stdin;
@@ -1044,7 +1043,7 @@ COPY public.template_categories (template_category_id, template_category_name) F
 
 
 --
--- Data for Name: templates; Type: TABLE DATA; Schema: public; Owner: terje
+-- Data for Name: templates; Type: TABLE DATA; Schema: public; Owner: custosales
 --
 
 COPY public.templates (template_id, template_name, template_category_id, template_content, template_explanation, template_owner_id, reg_date) FROM stdin;
@@ -1073,7 +1072,7 @@ COPY public.users (user_id, username, first_name, last_name, job_title, departme
 
 
 --
--- Data for Name: workhours; Type: TABLE DATA; Schema: public; Owner: terje
+-- Data for Name: workhours; Type: TABLE DATA; Schema: public; Owner: custosales
 --
 
 COPY public.workhours (workhour_id, stamp_type, stamp, user_id) FROM stdin;
@@ -1081,7 +1080,7 @@ COPY public.workhours (workhour_id, stamp_type, stamp, user_id) FROM stdin;
 
 
 --
--- Data for Name: workplaces; Type: TABLE DATA; Schema: public; Owner: terje
+-- Data for Name: workplaces; Type: TABLE DATA; Schema: public; Owner: custosales
 --
 
 COPY public.workplaces (workplace_id, workplace_name, workplace_address, workplace_zip, workplace_city, manager_id, workplace_description, main_office) FROM stdin;
@@ -1089,126 +1088,126 @@ COPY public.workplaces (workplace_id, workplace_name, workplace_address, workpla
 
 
 --
--- Name: call_types_call_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: terje
+-- Name: call_types_call_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
 SELECT pg_catalog.setval('public.call_types_call_type_id_seq', 8, true);
 
 
 --
--- Name: calling_lists_calling_list_id_seq; Type: SEQUENCE SET; Schema: public; Owner: terje
+-- Name: calling_lists_calling_list_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
 SELECT pg_catalog.setval('public.calling_lists_calling_list_id_seq', 1, false);
 
 
 --
--- Name: callinglists_callinglist_id_seq; Type: SEQUENCE SET; Schema: public; Owner: terje
+-- Name: callinglists_callinglist_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
 SELECT pg_catalog.setval('public.callinglists_callinglist_id_seq', 1, false);
 
 
 --
--- Name: calls_call_id_seq; Type: SEQUENCE SET; Schema: public; Owner: terje
+-- Name: calls_call_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
 SELECT pg_catalog.setval('public.calls_call_id_seq', 1, false);
 
 
 --
--- Name: companies_company_id_seq; Type: SEQUENCE SET; Schema: public; Owner: terje
+-- Name: companies_company_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
 SELECT pg_catalog.setval('public.companies_company_id_seq', 1, false);
 
 
 --
--- Name: company_status_company_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: terje
+-- Name: company_status_company_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
 SELECT pg_catalog.setval('public.company_status_company_status_id_seq', 1, false);
 
 
 --
--- Name: contact_types_contact_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: terje
+-- Name: contact_types_contact_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
 SELECT pg_catalog.setval('public.contact_types_contact_type_id_seq', 1, false);
 
 
 --
--- Name: contacts_contact_id_seq; Type: SEQUENCE SET; Schema: public; Owner: terje
+-- Name: contacts_contact_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
 SELECT pg_catalog.setval('public.contacts_contact_id_seq', 1, false);
 
 
 --
--- Name: currencies_currency_id_seq; Type: SEQUENCE SET; Schema: public; Owner: terje
+-- Name: currencies_currency_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
 SELECT pg_catalog.setval('public.currencies_currency_id_seq', 1, false);
 
 
 --
--- Name: departments_department_id_seq; Type: SEQUENCE SET; Schema: public; Owner: terje
+-- Name: departments_department_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
 SELECT pg_catalog.setval('public.departments_department_id_seq', 1, false);
 
 
 --
--- Name: document_types_document_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: terje
+-- Name: document_types_document_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
 SELECT pg_catalog.setval('public.document_types_document_type_id_seq', 1, false);
 
 
 --
--- Name: documents_document_id_seq; Type: SEQUENCE SET; Schema: public; Owner: terje
+-- Name: documents_document_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
 SELECT pg_catalog.setval('public.documents_document_id_seq', 1, false);
 
 
 --
--- Name: order_stages_order_stage_id_seq; Type: SEQUENCE SET; Schema: public; Owner: terje
+-- Name: order_stages_order_stage_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
 SELECT pg_catalog.setval('public.order_stages_order_stage_id_seq', 1, false);
 
 
 --
--- Name: preferences_company_id_seq; Type: SEQUENCE SET; Schema: public; Owner: terje
+-- Name: orders_order_id_seq; Type: SEQUENCE SET; Schema: public; Owner: terje
 --
 
-SELECT pg_catalog.setval('public.preferences_company_id_seq', 1, false);
+SELECT pg_catalog.setval('public.orders_order_id_seq', 1, false);
 
 
 --
--- Name: product_categories_product_category_id_seq; Type: SEQUENCE SET; Schema: public; Owner: terje
+-- Name: product_categories_product_category_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
 SELECT pg_catalog.setval('public.product_categories_product_category_id_seq', 1, false);
 
 
 --
--- Name: products_product_id_seq; Type: SEQUENCE SET; Schema: public; Owner: terje
+-- Name: products_product_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
 SELECT pg_catalog.setval('public.products_product_id_seq', 1, false);
 
 
 --
--- Name: project_categories_project_category_id_seq; Type: SEQUENCE SET; Schema: public; Owner: terje
+-- Name: project_categories_project_category_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
 SELECT pg_catalog.setval('public.project_categories_project_category_id_seq', 1, false);
 
 
 --
--- Name: projects_project_id_seq; Type: SEQUENCE SET; Schema: public; Owner: terje
+-- Name: projects_project_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
 SELECT pg_catalog.setval('public.projects_project_id_seq', 1, false);
@@ -1222,21 +1221,21 @@ SELECT pg_catalog.setval('public.roles_role_id_seq', 2, true);
 
 
 --
--- Name: sales_stages_sales_stage_id_seq; Type: SEQUENCE SET; Schema: public; Owner: terje
+-- Name: sales_stages_sales_stage_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
 SELECT pg_catalog.setval('public.sales_stages_sales_stage_id_seq', 3, true);
 
 
 --
--- Name: template_categories_template_category_id_seq; Type: SEQUENCE SET; Schema: public; Owner: terje
+-- Name: template_categories_template_category_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
 SELECT pg_catalog.setval('public.template_categories_template_category_id_seq', 1, false);
 
 
 --
--- Name: templates_template_id_seq; Type: SEQUENCE SET; Schema: public; Owner: terje
+-- Name: templates_template_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
 SELECT pg_catalog.setval('public.templates_template_id_seq', 1, false);
@@ -1250,21 +1249,21 @@ SELECT pg_catalog.setval('public.users_user_id_seq', 2, true);
 
 
 --
--- Name: workhours_workhour_id_seq; Type: SEQUENCE SET; Schema: public; Owner: terje
+-- Name: workhours_workhour_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
 SELECT pg_catalog.setval('public.workhours_workhour_id_seq', 1, false);
 
 
 --
--- Name: workplaces_workplace_id_seq; Type: SEQUENCE SET; Schema: public; Owner: terje
+-- Name: workplaces_workplace_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
 SELECT pg_catalog.setval('public.workplaces_workplace_id_seq', 1, false);
 
 
 --
--- Name: call_types call_types_pkey; Type: CONSTRAINT; Schema: public; Owner: terje
+-- Name: call_types call_types_pkey; Type: CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.call_types
@@ -1272,7 +1271,7 @@ ALTER TABLE ONLY public.call_types
 
 
 --
--- Name: calling_lists calling_lists_pkey; Type: CONSTRAINT; Schema: public; Owner: terje
+-- Name: calling_lists calling_lists_pkey; Type: CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.calling_lists
@@ -1280,7 +1279,7 @@ ALTER TABLE ONLY public.calling_lists
 
 
 --
--- Name: callinglists callinglists_pkey; Type: CONSTRAINT; Schema: public; Owner: terje
+-- Name: callinglists callinglists_pkey; Type: CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.callinglists
@@ -1288,7 +1287,7 @@ ALTER TABLE ONLY public.callinglists
 
 
 --
--- Name: calls calls_pkey; Type: CONSTRAINT; Schema: public; Owner: terje
+-- Name: calls calls_pkey; Type: CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.calls
@@ -1296,7 +1295,7 @@ ALTER TABLE ONLY public.calls
 
 
 --
--- Name: companies companies_pkey; Type: CONSTRAINT; Schema: public; Owner: terje
+-- Name: companies companies_pkey; Type: CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.companies
@@ -1304,7 +1303,7 @@ ALTER TABLE ONLY public.companies
 
 
 --
--- Name: company_status company_status_pkey; Type: CONSTRAINT; Schema: public; Owner: terje
+-- Name: company_status company_status_pkey; Type: CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.company_status
@@ -1312,7 +1311,7 @@ ALTER TABLE ONLY public.company_status
 
 
 --
--- Name: contact_types contact_types_pkey; Type: CONSTRAINT; Schema: public; Owner: terje
+-- Name: contact_types contact_types_pkey; Type: CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.contact_types
@@ -1320,7 +1319,7 @@ ALTER TABLE ONLY public.contact_types
 
 
 --
--- Name: contacts contacts_pkey; Type: CONSTRAINT; Schema: public; Owner: terje
+-- Name: contacts contacts_pkey; Type: CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.contacts
@@ -1328,7 +1327,7 @@ ALTER TABLE ONLY public.contacts
 
 
 --
--- Name: currencies currencies_pkey; Type: CONSTRAINT; Schema: public; Owner: terje
+-- Name: currencies currencies_pkey; Type: CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.currencies
@@ -1336,7 +1335,7 @@ ALTER TABLE ONLY public.currencies
 
 
 --
--- Name: departments departments_pkey; Type: CONSTRAINT; Schema: public; Owner: terje
+-- Name: departments departments_pkey; Type: CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.departments
@@ -1344,7 +1343,7 @@ ALTER TABLE ONLY public.departments
 
 
 --
--- Name: document_types document_types_pkey; Type: CONSTRAINT; Schema: public; Owner: terje
+-- Name: document_types document_types_pkey; Type: CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.document_types
@@ -1352,7 +1351,7 @@ ALTER TABLE ONLY public.document_types
 
 
 --
--- Name: documents documents_pkey; Type: CONSTRAINT; Schema: public; Owner: terje
+-- Name: documents documents_pkey; Type: CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.documents
@@ -1360,7 +1359,7 @@ ALTER TABLE ONLY public.documents
 
 
 --
--- Name: order_stages order_stages_pkey; Type: CONSTRAINT; Schema: public; Owner: terje
+-- Name: order_stages order_stages_pkey; Type: CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.order_stages
@@ -1368,15 +1367,15 @@ ALTER TABLE ONLY public.order_stages
 
 
 --
--- Name: preferences preferences_pkey; Type: CONSTRAINT; Schema: public; Owner: terje
+-- Name: orders orders_pkey; Type: CONSTRAINT; Schema: public; Owner: terje
 --
 
-ALTER TABLE ONLY public.preferences
-    ADD CONSTRAINT preferences_pkey PRIMARY KEY (company_id);
+ALTER TABLE ONLY public.orders
+    ADD CONSTRAINT orders_pkey PRIMARY KEY (order_id);
 
 
 --
--- Name: product_categories product_categories_pkey; Type: CONSTRAINT; Schema: public; Owner: terje
+-- Name: product_categories product_categories_pkey; Type: CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.product_categories
@@ -1384,7 +1383,7 @@ ALTER TABLE ONLY public.product_categories
 
 
 --
--- Name: products products_pkey; Type: CONSTRAINT; Schema: public; Owner: terje
+-- Name: products products_pkey; Type: CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.products
@@ -1392,7 +1391,7 @@ ALTER TABLE ONLY public.products
 
 
 --
--- Name: project_categories project_categories_pkey; Type: CONSTRAINT; Schema: public; Owner: terje
+-- Name: project_categories project_categories_pkey; Type: CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.project_categories
@@ -1400,7 +1399,7 @@ ALTER TABLE ONLY public.project_categories
 
 
 --
--- Name: projects projects_pkey; Type: CONSTRAINT; Schema: public; Owner: terje
+-- Name: projects projects_pkey; Type: CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.projects
@@ -1416,7 +1415,7 @@ ALTER TABLE ONLY public.roles
 
 
 --
--- Name: sales_stages sales_stages_pkey; Type: CONSTRAINT; Schema: public; Owner: terje
+-- Name: sales_stages sales_stages_pkey; Type: CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.sales_stages
@@ -1424,7 +1423,15 @@ ALTER TABLE ONLY public.sales_stages
 
 
 --
--- Name: template_categories template_categories_pkey; Type: CONSTRAINT; Schema: public; Owner: terje
+-- Name: settings settings_pkey; Type: CONSTRAINT; Schema: public; Owner: custosales
+--
+
+ALTER TABLE ONLY public.settings
+    ADD CONSTRAINT settings_pkey PRIMARY KEY (own_company_id);
+
+
+--
+-- Name: template_categories template_categories_pkey; Type: CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.template_categories
@@ -1432,7 +1439,7 @@ ALTER TABLE ONLY public.template_categories
 
 
 --
--- Name: templates templates_pkey; Type: CONSTRAINT; Schema: public; Owner: terje
+-- Name: templates templates_pkey; Type: CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.templates
@@ -1456,7 +1463,7 @@ ALTER TABLE ONLY public.users
 
 
 --
--- Name: workhours workhours_pkey; Type: CONSTRAINT; Schema: public; Owner: terje
+-- Name: workhours workhours_pkey; Type: CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.workhours
@@ -1464,7 +1471,7 @@ ALTER TABLE ONLY public.workhours
 
 
 --
--- Name: workplaces workplaces_pkey; Type: CONSTRAINT; Schema: public; Owner: terje
+-- Name: workplaces workplaces_pkey; Type: CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.workplaces
@@ -1472,7 +1479,7 @@ ALTER TABLE ONLY public.workplaces
 
 
 --
--- Name: calling_lists calling_lists_calling_list_owner_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: calling_lists calling_lists_calling_list_owner_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.calling_lists
@@ -1480,7 +1487,7 @@ ALTER TABLE ONLY public.calling_lists
 
 
 --
--- Name: callinglists callinglists_callinglist_owner_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: callinglists callinglists_callinglist_owner_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.callinglists
@@ -1488,7 +1495,7 @@ ALTER TABLE ONLY public.callinglists
 
 
 --
--- Name: calls calls_call_type_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: calls calls_call_type_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.calls
@@ -1496,7 +1503,7 @@ ALTER TABLE ONLY public.calls
 
 
 --
--- Name: companies companies_calling_list_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: companies companies_calling_list_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.companies
@@ -1504,7 +1511,7 @@ ALTER TABLE ONLY public.companies
 
 
 --
--- Name: companies companies_company_status_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: companies companies_company_status_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.companies
@@ -1512,7 +1519,7 @@ ALTER TABLE ONLY public.companies
 
 
 --
--- Name: companies companies_currency_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: companies companies_currency_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.companies
@@ -1520,7 +1527,7 @@ ALTER TABLE ONLY public.companies
 
 
 --
--- Name: companies companies_sales_rep_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: companies companies_sales_rep_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.companies
@@ -1528,7 +1535,7 @@ ALTER TABLE ONLY public.companies
 
 
 --
--- Name: contacts contacts_contact_company_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: contacts contacts_contact_company_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.contacts
@@ -1536,7 +1543,7 @@ ALTER TABLE ONLY public.contacts
 
 
 --
--- Name: contacts contacts_contact_type_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: contacts contacts_contact_type_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.contacts
@@ -1544,7 +1551,7 @@ ALTER TABLE ONLY public.contacts
 
 
 --
--- Name: contacts contacts_sales_rep_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: contacts contacts_sales_rep_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.contacts
@@ -1552,7 +1559,7 @@ ALTER TABLE ONLY public.contacts
 
 
 --
--- Name: documents documents_document_owner_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: documents documents_document_owner_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.documents
@@ -1560,7 +1567,7 @@ ALTER TABLE ONLY public.documents
 
 
 --
--- Name: documents documents_document_type_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: documents documents_document_type_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.documents
@@ -1568,7 +1575,7 @@ ALTER TABLE ONLY public.documents
 
 
 --
--- Name: departments manager_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: departments manager_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.departments
@@ -1576,23 +1583,47 @@ ALTER TABLE ONLY public.departments
 
 
 --
--- Name: preferences preferences_company_manager_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: orders orders_customer_contact_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
 --
 
-ALTER TABLE ONLY public.preferences
-    ADD CONSTRAINT preferences_company_manager_id_fkey FOREIGN KEY (company_manager_id) REFERENCES public.users(user_id);
-
-
---
--- Name: preferences preferences_default_currency_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
---
-
-ALTER TABLE ONLY public.preferences
-    ADD CONSTRAINT preferences_default_currency_id_fkey FOREIGN KEY (default_currency_id) REFERENCES public.currencies(currency_id);
+ALTER TABLE ONLY public.orders
+    ADD CONSTRAINT orders_customer_contact_id_fkey FOREIGN KEY (customer_contact_id) REFERENCES public.contacts(contact_id);
 
 
 --
--- Name: product_categories product_categories_product_category_owner_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: orders orders_customer_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+--
+
+ALTER TABLE ONLY public.orders
+    ADD CONSTRAINT orders_customer_id_fkey FOREIGN KEY (customer_id) REFERENCES public.companies(company_id);
+
+
+--
+-- Name: orders orders_order_stage_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+--
+
+ALTER TABLE ONLY public.orders
+    ADD CONSTRAINT orders_order_stage_id_fkey FOREIGN KEY (order_stage_id) REFERENCES public.order_stages(order_stage_id);
+
+
+--
+-- Name: orders orders_product_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+--
+
+ALTER TABLE ONLY public.orders
+    ADD CONSTRAINT orders_product_id_fkey FOREIGN KEY (product_id) REFERENCES public.products(product_id);
+
+
+--
+-- Name: orders orders_sales_rep_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+--
+
+ALTER TABLE ONLY public.orders
+    ADD CONSTRAINT orders_sales_rep_id_fkey FOREIGN KEY (sales_rep_id) REFERENCES public.users(user_id);
+
+
+--
+-- Name: product_categories product_categories_product_category_owner_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.product_categories
@@ -1600,7 +1631,7 @@ ALTER TABLE ONLY public.product_categories
 
 
 --
--- Name: product_categories product_category_super_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: product_categories product_category_super_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.product_categories
@@ -1608,7 +1639,7 @@ ALTER TABLE ONLY public.product_categories
 
 
 --
--- Name: products products_currency_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: products products_currency_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.products
@@ -1616,7 +1647,7 @@ ALTER TABLE ONLY public.products
 
 
 --
--- Name: products products_department_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: products products_department_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.products
@@ -1624,7 +1655,7 @@ ALTER TABLE ONLY public.products
 
 
 --
--- Name: products products_product_category_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: products products_product_category_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.products
@@ -1632,7 +1663,7 @@ ALTER TABLE ONLY public.products
 
 
 --
--- Name: products products_product_owner_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: products products_product_owner_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.products
@@ -1640,7 +1671,7 @@ ALTER TABLE ONLY public.products
 
 
 --
--- Name: projects projects_project_category_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: projects projects_project_category_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.projects
@@ -1648,7 +1679,7 @@ ALTER TABLE ONLY public.projects
 
 
 --
--- Name: projects projects_project_client_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: projects projects_project_client_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.projects
@@ -1656,7 +1687,7 @@ ALTER TABLE ONLY public.projects
 
 
 --
--- Name: projects projects_project_owner_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: projects projects_project_owner_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.projects
@@ -1664,7 +1695,7 @@ ALTER TABLE ONLY public.projects
 
 
 --
--- Name: settings settings_default_currency_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: settings settings_default_currency_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.settings
@@ -1672,7 +1703,7 @@ ALTER TABLE ONLY public.settings
 
 
 --
--- Name: settings settings_main_office_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: settings settings_main_office_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.settings
@@ -1680,7 +1711,7 @@ ALTER TABLE ONLY public.settings
 
 
 --
--- Name: settings settings_manager_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: settings settings_manager_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.settings
@@ -1688,7 +1719,7 @@ ALTER TABLE ONLY public.settings
 
 
 --
--- Name: settings settings_own_company_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: settings settings_own_company_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.settings
@@ -1696,7 +1727,7 @@ ALTER TABLE ONLY public.settings
 
 
 --
--- Name: departments superdepartment_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: departments superdepartment_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.departments
@@ -1704,7 +1735,7 @@ ALTER TABLE ONLY public.departments
 
 
 --
--- Name: templates templates_template_category_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: templates templates_template_category_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.templates
@@ -1712,7 +1743,7 @@ ALTER TABLE ONLY public.templates
 
 
 --
--- Name: templates templates_template_owner_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: templates templates_template_owner_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.templates
@@ -1736,7 +1767,7 @@ ALTER TABLE ONLY public.user_role
 
 
 --
--- Name: workhours workhours_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: workhours workhours_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.workhours
@@ -1752,7 +1783,7 @@ ALTER TABLE ONLY public.users
 
 
 --
--- Name: departments workplace_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: departments workplace_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.departments
@@ -1760,7 +1791,7 @@ ALTER TABLE ONLY public.departments
 
 
 --
--- Name: workplaces workplaces_manager_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: workplaces workplaces_manager_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.workplaces
