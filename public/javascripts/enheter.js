@@ -25,7 +25,8 @@ window.onload = function () {
 
         let query = "https://hotell.difi.no/api/json/brreg/enhetsregisteret?query=" + document.getElementById("sokefelt").value;
         // console.log(query);
-        div2.innerHTML = "<table id='tabell' class='table'></table>";
+        div2.style.width="50%";
+        div2.innerHTML = "<table id='tabell' class='table thead-dark'></table>";
         fetch(query)
             .then(resp => resp.json())
             .then(data => {
