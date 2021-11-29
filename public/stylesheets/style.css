@@ -1,15 +1,15 @@
 html {
-    height: -webkit-fill-available;
+   
 }
 
 body {
     padding: 0px;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-    height: -webkit-fill-available;
+   
 }
 
 #container {
-    max-height: -webkit-fill-available;
+   /* max-height: -webkit-fill-available; */
     /* border: solid 5px #07024b; */
 }
 
@@ -20,7 +20,7 @@ main {
     min-height: -webkit-fill-available;
     max-height: 100vh;
     overflow-x: auto;
-    overflow-y: hidden;
+    overflow-y: auto;
 }
 
 footer {
