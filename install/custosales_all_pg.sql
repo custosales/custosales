@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 13.5
--- Dumped by pg_dump version 13.5
+-- Dumped from database version 13.5 (Ubuntu 13.5-0ubuntu0.21.10.1)
+-- Dumped by pg_dump version 13.5 (Ubuntu 13.5-0ubuntu0.21.10.1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -175,7 +175,8 @@ CREATE TABLE public.companies (
     company_comments text,
     reg_date timestamp without time zone,
     sales_rep_id integer,
-    calling_list_id integer
+    calling_list_id integer,
+    company_web text
 );
 
 
@@ -434,7 +435,7 @@ ALTER TABLE public.order_stages ALTER COLUMN order_stage_id ADD GENERATED ALWAYS
 
 
 --
--- Name: orders; Type: TABLE; Schema: public; Owner: terje
+-- Name: orders; Type: TABLE; Schema: public; Owner: custosales
 --
 
 CREATE TABLE public.orders (
@@ -454,14 +455,52 @@ CREATE TABLE public.orders (
 );
 
 
-ALTER TABLE public.orders OWNER TO terje;
+ALTER TABLE public.orders OWNER TO custosales;
 
 --
--- Name: orders_order_id_seq; Type: SEQUENCE; Schema: public; Owner: terje
+-- Name: orders_order_id_seq; Type: SEQUENCE; Schema: public; Owner: custosales
 --
 
 ALTER TABLE public.orders ALTER COLUMN order_id ADD GENERATED ALWAYS AS IDENTITY (
     SEQUENCE NAME public.orders_order_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- Name: preferences; Type: TABLE; Schema: public; Owner: custosales
+--
+
+CREATE TABLE public.preferences (
+    company_id integer NOT NULL,
+    company_reg_number text,
+    company_name text,
+    company_address text,
+    company_zip text,
+    company_city text,
+    company_country text,
+    company_phone text,
+    company_email text,
+    company_internet text,
+    default_currency_id integer,
+    default_credit_days integer,
+    company_bank_account text,
+    company_manager_id integer
+);
+
+
+ALTER TABLE public.preferences OWNER TO custosales;
+
+--
+-- Name: preferences_company_id_seq; Type: SEQUENCE; Schema: public; Owner: custosales
+--
+
+ALTER TABLE public.preferences ALTER COLUMN company_id ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.preferences_company_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -897,7 +936,8 @@ COPY public.calls (call_id, company_regnumber, contact_id, contact_time, result,
 -- Data for Name: companies; Type: TABLE DATA; Schema: public; Owner: custosales
 --
 
-COPY public.companies (company_id, company_name, company_status_id, company_type, company_email, company_phone, company_address, company_zip, company_city, company_county, company_date_registered, company_manager, branch_code, branch_text, last_contacted, contact_again, currency_id, company_comments, reg_date, sales_rep_id, calling_list_id) FROM stdin;
+COPY public.companies (company_id, company_name, company_status_id, company_type, company_email, company_phone, company_address, company_zip, company_city, company_county, company_date_registered, company_manager, branch_code, branch_text, last_contacted, contact_again, currency_id, company_comments, reg_date, sales_rep_id, calling_list_id, company_web) FROM stdin;
+1	ITfakultetet AS	\N	AS	admin@itfakultetet.no	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2021-11-29 02:05:27.593651	\N	\N	web.itfakultetet.no
 \.
 
 
@@ -906,6 +946,10 @@ COPY public.companies (company_id, company_name, company_status_id, company_type
 --
 
 COPY public.company_status (company_status_id, company_status_name, company_status_description, company_status_icon) FROM stdin;
+1	Egen	Egne selskaper	fa-folder blue
+2	Kunde	Kundeselskaper	fa-folder yellow
+3	Leverandør	Leverandørselskaper	fa-folder silver
+4	Partner	Partnerselskaper	fa-folder beige
 \.
 
 
@@ -938,6 +982,7 @@ COPY public.currencies (currency_id, currency_name, currency_symbol, default_cur
 --
 
 COPY public.departments (department_id, department_name, workplace_id, manager_id, super_department_id) FROM stdin;
+1	Utviklingsavdelingen	1	2	\N
 \.
 
 
@@ -966,10 +1011,18 @@ COPY public.order_stages (order_stage_id, order_stage_name, order_stage_descript
 
 
 --
--- Data for Name: orders; Type: TABLE DATA; Schema: public; Owner: terje
+-- Data for Name: orders; Type: TABLE DATA; Schema: public; Owner: custosales
 --
 
 COPY public.orders (order_id, customer_id, order_date, order_stage_id, sales_rep_id, customer_contact_id, unit_price, items, product_id, credit_days, other_terms, comments, regdate) FROM stdin;
+\.
+
+
+--
+-- Data for Name: preferences; Type: TABLE DATA; Schema: public; Owner: custosales
+--
+
+COPY public.preferences (company_id, company_reg_number, company_name, company_address, company_zip, company_city, company_country, company_phone, company_email, company_internet, default_currency_id, default_credit_days, company_bank_account, company_manager_id) FROM stdin;
 \.
 
 
@@ -1066,8 +1119,8 @@ COPY public.user_role (user_id, role_id, from_date, to_date) FROM stdin;
 --
 
 COPY public.users (user_id, username, first_name, last_name, job_title, department_id, user_email, password, enabled, start_date, end_date, phone, mobile_phone, address, zipcode, city, skills, signed_contract, contract_id, documents, supervisor_id, workplace_id, user_comments) FROM stdin;
-1	admin	Site	Administrator	\N	\N	\N	$2a$06$M5YRgsMraxxoCQYDBktrTeaaeqjJByHULYealWBrvl15du.S/SKri	t	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-2	terje	Terje	Berg-Hansen	\N	\N	\N	$2a$06$6Bljr42EdxUb4oD1wWUsjehIrYzWCJ6lGozUJi.3Bby0hY4UBCx1a	t	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+2	terje	Terje	Berg-Hansen	\N	\N	terje@custosales.com	$2a$06$6Bljr42EdxUb4oD1wWUsjehIrYzWCJ6lGozUJi.3Bby0hY4UBCx1a	t	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+1	admin	Site	Administrator	\N	\N	admin@custosales.com	$2a$06$M5YRgsMraxxoCQYDBktrTeaaeqjJByHULYealWBrvl15du.S/SKri	t	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
 \.
 
 
@@ -1084,6 +1137,7 @@ COPY public.workhours (workhour_id, stamp_type, stamp, user_id) FROM stdin;
 --
 
 COPY public.workplaces (workplace_id, workplace_name, workplace_address, workplace_zip, workplace_city, manager_id, workplace_description, main_office) FROM stdin;
+1	Hjemmekontor	Kåsabakken 28	3804	Bø i Telemark	\N	\N	t
 \.
 
 
@@ -1119,14 +1173,14 @@ SELECT pg_catalog.setval('public.calls_call_id_seq', 1, false);
 -- Name: companies_company_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
-SELECT pg_catalog.setval('public.companies_company_id_seq', 1, false);
+SELECT pg_catalog.setval('public.companies_company_id_seq', 1, true);
 
 
 --
 -- Name: company_status_company_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
-SELECT pg_catalog.setval('public.company_status_company_status_id_seq', 1, false);
+SELECT pg_catalog.setval('public.company_status_company_status_id_seq', 4, true);
 
 
 --
@@ -1154,7 +1208,7 @@ SELECT pg_catalog.setval('public.currencies_currency_id_seq', 1, false);
 -- Name: departments_department_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
-SELECT pg_catalog.setval('public.departments_department_id_seq', 1, false);
+SELECT pg_catalog.setval('public.departments_department_id_seq', 1, true);
 
 
 --
@@ -1179,10 +1233,17 @@ SELECT pg_catalog.setval('public.order_stages_order_stage_id_seq', 1, false);
 
 
 --
--- Name: orders_order_id_seq; Type: SEQUENCE SET; Schema: public; Owner: terje
+-- Name: orders_order_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
 SELECT pg_catalog.setval('public.orders_order_id_seq', 1, false);
+
+
+--
+-- Name: preferences_company_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
+--
+
+SELECT pg_catalog.setval('public.preferences_company_id_seq', 1, false);
 
 
 --
@@ -1259,7 +1320,7 @@ SELECT pg_catalog.setval('public.workhours_workhour_id_seq', 1, false);
 -- Name: workplaces_workplace_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
-SELECT pg_catalog.setval('public.workplaces_workplace_id_seq', 1, false);
+SELECT pg_catalog.setval('public.workplaces_workplace_id_seq', 1, true);
 
 
 --
@@ -1367,11 +1428,19 @@ ALTER TABLE ONLY public.order_stages
 
 
 --
--- Name: orders orders_pkey; Type: CONSTRAINT; Schema: public; Owner: terje
+-- Name: orders orders_pkey; Type: CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.orders
     ADD CONSTRAINT orders_pkey PRIMARY KEY (order_id);
+
+
+--
+-- Name: preferences preferences_pkey; Type: CONSTRAINT; Schema: public; Owner: custosales
+--
+
+ALTER TABLE ONLY public.preferences
+    ADD CONSTRAINT preferences_pkey PRIMARY KEY (company_id);
 
 
 --
@@ -1583,7 +1652,7 @@ ALTER TABLE ONLY public.departments
 
 
 --
--- Name: orders orders_customer_contact_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: orders orders_customer_contact_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.orders
@@ -1591,7 +1660,7 @@ ALTER TABLE ONLY public.orders
 
 
 --
--- Name: orders orders_customer_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: orders orders_customer_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.orders
@@ -1599,7 +1668,7 @@ ALTER TABLE ONLY public.orders
 
 
 --
--- Name: orders orders_order_stage_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: orders orders_order_stage_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.orders
@@ -1607,7 +1676,7 @@ ALTER TABLE ONLY public.orders
 
 
 --
--- Name: orders orders_product_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: orders orders_product_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.orders
@@ -1615,11 +1684,27 @@ ALTER TABLE ONLY public.orders
 
 
 --
--- Name: orders orders_sales_rep_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: terje
+-- Name: orders orders_sales_rep_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.orders
     ADD CONSTRAINT orders_sales_rep_id_fkey FOREIGN KEY (sales_rep_id) REFERENCES public.users(user_id);
+
+
+--
+-- Name: preferences preferences_company_manager_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
+--
+
+ALTER TABLE ONLY public.preferences
+    ADD CONSTRAINT preferences_company_manager_id_fkey FOREIGN KEY (company_manager_id) REFERENCES public.users(user_id);
+
+
+--
+-- Name: preferences preferences_default_currency_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
+--
+
+ALTER TABLE ONLY public.preferences
+    ADD CONSTRAINT preferences_default_currency_id_fkey FOREIGN KEY (default_currency_id) REFERENCES public.currencies(currency_id);
 
 
 --
