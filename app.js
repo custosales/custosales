@@ -5,11 +5,11 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users'); 
-var newuserRouter = require('./routes/newuser');
+var usersRouter = require('./routes/modules/admin/users'); 
+var newuserRouter = require('./routes/modules/admin/newuser');
 var enheterRouter = require('./routes/enheter'); 
 var loginRouter = require('./routes/login'); 
-var salesRouter = require('./routes/sales'); 
+var salesRouter = require('./routes/modules/sales/sales'); 
 var app = express();
 
 // view engine setup

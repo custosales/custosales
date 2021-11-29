@@ -18,9 +18,13 @@
             </h1>
             <p>Legg til ny bruker</p>
 
-            <div style="width:400px">
-                <form id="newUserForm" class="form" method="POST" action="newuser">
+            <div style="max-width:900px">
+                <form id="newUserForm" class="form gray-200" method="POST" action="newuser">
                     <fieldset>
+                        
+                        <div class="row">
+                        
+                         <div class="col-4">   
                         <div class="form-group">
                             <label for="first_name">Fornavn</label> <input type="text" required class="form-control form-control-sm" name="first_name" placeholder="Tast inn fornavn">
                         </div>
@@ -39,6 +43,10 @@
                         <div class="form-group">
                             <label for="user_email">Epost</label> <input type="email" class="form-control form-control-sm" name="user_email" placeholder="Tast inn brukerens epostadresse">
                         </div>
+
+                    
+                    </div><div class="col-4">
+
                         <div class="form-group">
                             <label for="address">Adresse</label> <input type="text" class="form-control form-control-sm" name="address" placeholder="Tast inn brukerens postadresse">
                         </div>
@@ -51,10 +59,6 @@
                         <div class="form-group">
                             <label for="skills">Kompetanse</label> <input type="text" class="form-control form-control-sm" name="skills" placeholder="Tast inn stikkord for kompetanse">
                         </div>
-
-                        <div class="form-group">
-                            <label for="signed_contract">Signert kontrakt: </label> <input type="checkbox" class="form-check-input" name="signed_contract">
-                        </div>
                         <div class="form-group">
                             <label for="start_date">Startet</label> <input type="date" class="form-control form-control-sm" name="dtart_date">
                         </div>
@@ -62,9 +66,55 @@
                             <label for="end_date">Sluttet</label> <input type="date" class="form-control form-control-sm" name="end_date">
                         </div>
 
-                        <div class="form-group">
-                            <label for="enables">Aktiv: </label> <input type="checkbox" class="form-check-input" name="enabled">
-                        </div>
+                                           
+                   
+                </div><div class="col-4">
+
+                    <div class="form-group">
+                        
+                        <label for="department_id">Avdeling</label> 
+                        <select name="department_id">
+                                
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        
+                        <label for="workplace_id">Arbeidssted</label> 
+                        <select name="workplace_id">
+                                
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        
+                        <label for="title_id">Stilling</label> 
+                        <select name="title_id">
+                                
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        
+                        <label for="supervisor_id">Leder</label> 
+                        <select name="supervisor_id">
+                            
+                                
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comments">Kommentarer: </label>
+                        <textarea name="comments" class="form-text-area"></textarea>
+
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="enabled">Aktiv: </label> <input type="checkbox" class="form-check-input" name="enabled">
+                        <label for="signed_contract"> Signert kontrakt: </label> <input type="checkbox" class="form-check-input" name="signed_contract">
+                    </div>     
+
+                    </div> <!-- end row --> 
+
                     </fieldset>
                     <div class="form-group">
                         <input type="submit" class="btn btn-success" value="Registrer bruker">
