@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 13.5 (Ubuntu 13.5-0ubuntu0.21.10.1)
--- Dumped by pg_dump version 13.5 (Ubuntu 13.5-0ubuntu0.21.10.1)
+-- Dumped from database version 13.5
+-- Dumped by pg_dump version 13.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -770,6 +770,33 @@ ALTER TABLE public.templates ALTER COLUMN template_id ADD GENERATED ALWAYS AS ID
 
 
 --
+-- Name: titles; Type: TABLE; Schema: public; Owner: terje
+--
+
+CREATE TABLE public.titles (
+    title_id integer NOT NULL,
+    title text,
+    description text
+);
+
+
+ALTER TABLE public.titles OWNER TO terje;
+
+--
+-- Name: titles_title_id_seq; Type: SEQUENCE; Schema: public; Owner: terje
+--
+
+ALTER TABLE public.titles ALTER COLUMN title_id ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.titles_title_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
 -- Name: user_role; Type: TABLE; Schema: public; Owner: custosales
 --
 
@@ -793,7 +820,6 @@ CREATE TABLE public.users (
     username character varying(255) NOT NULL,
     first_name character varying(255) NOT NULL,
     last_name character varying(255) NOT NULL,
-    job_title character varying(255),
     department_id integer,
     user_email character varying(255),
     password character varying(100) NOT NULL,
@@ -811,7 +837,8 @@ CREATE TABLE public.users (
     documents character varying(255),
     supervisor_id integer,
     workplace_id integer,
-    user_comments text
+    user_comments text,
+    title_id integer
 );
 
 
@@ -1104,6 +1131,25 @@ COPY public.templates (template_id, template_name, template_category_id, templat
 
 
 --
+-- Data for Name: titles; Type: TABLE DATA; Schema: public; Owner: terje
+--
+
+COPY public.titles (title_id, title, description) FROM stdin;
+1	Avdelingsleder	Leder av en avdeling
+2	CEO	Chief Executive Officer - adm direktør
+3	CTO	Chief Technical Officer - teknisk direktør
+4	COO	Chief Operations Officer - driftssjef
+5	Selger	Selger av produkter eller tjenester
+6	Systemutvikler	Programmerer, applikasjonsutvikler
+7	Designer	Web + Ebok-designer
+8	Driftskonsulent	Konsulent i driftsavdelingen
+9	Senior Konsulent	Senior Konsulent i konsulentavdelingen
+10	Konsulent	Konsulent i konsulentavdelingen
+11	Prosjektleder	Leder av interne eller eksterne prosjekter
+\.
+
+
+--
 -- Data for Name: user_role; Type: TABLE DATA; Schema: public; Owner: custosales
 --
 
@@ -1118,9 +1164,9 @@ COPY public.user_role (user_id, role_id, from_date, to_date) FROM stdin;
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: custosales
 --
 
-COPY public.users (user_id, username, first_name, last_name, job_title, department_id, user_email, password, enabled, start_date, end_date, phone, mobile_phone, address, zipcode, city, skills, signed_contract, contract_id, documents, supervisor_id, workplace_id, user_comments) FROM stdin;
-2	terje	Terje	Berg-Hansen	\N	\N	terje@custosales.com	$2a$06$6Bljr42EdxUb4oD1wWUsjehIrYzWCJ6lGozUJi.3Bby0hY4UBCx1a	t	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-1	admin	Site	Administrator	\N	\N	admin@custosales.com	$2a$06$M5YRgsMraxxoCQYDBktrTeaaeqjJByHULYealWBrvl15du.S/SKri	t	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+COPY public.users (user_id, username, first_name, last_name, department_id, user_email, password, enabled, start_date, end_date, phone, mobile_phone, address, zipcode, city, skills, signed_contract, contract_id, documents, supervisor_id, workplace_id, user_comments, title_id) FROM stdin;
+1	admin	Site	Administrator	\N	admin@custosales.com	$2a$06$M5YRgsMraxxoCQYDBktrTeaaeqjJByHULYealWBrvl15du.S/SKri	t	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+2	terje	Terje	Berg-Hansen	\N	terje@custosales.com	$2a$06$6Bljr42EdxUb4oD1wWUsjehIrYzWCJ6lGozUJi.3Bby0hY4UBCx1a	t	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	6
 \.
 
 
@@ -1300,6 +1346,13 @@ SELECT pg_catalog.setval('public.template_categories_template_category_id_seq', 
 --
 
 SELECT pg_catalog.setval('public.templates_template_id_seq', 1, false);
+
+
+--
+-- Name: titles_title_id_seq; Type: SEQUENCE SET; Schema: public; Owner: terje
+--
+
+SELECT pg_catalog.setval('public.titles_title_id_seq', 11, true);
 
 
 --
@@ -1513,6 +1566,14 @@ ALTER TABLE ONLY public.template_categories
 
 ALTER TABLE ONLY public.templates
     ADD CONSTRAINT templates_pkey PRIMARY KEY (template_id);
+
+
+--
+-- Name: titles titles_pkey; Type: CONSTRAINT; Schema: public; Owner: terje
+--
+
+ALTER TABLE ONLY public.titles
+    ADD CONSTRAINT titles_pkey PRIMARY KEY (title_id);
 
 
 --
@@ -1849,6 +1910,14 @@ ALTER TABLE ONLY public.user_role
 
 ALTER TABLE ONLY public.user_role
     ADD CONSTRAINT user_role_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(user_id);
+
+
+--
+-- Name: users users_title_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: custosales
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_title_id_fkey FOREIGN KEY (title_id) REFERENCES public.titles(title_id);
 
 
 --
