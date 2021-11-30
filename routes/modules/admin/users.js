@@ -1,32 +1,32 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET users page. */
+// Connect to database
+let db = require("../../../model/db.js");
+var client = db.dbclient;
+
+// GET users page.
 router.get('/', function (req, res, next) {
+  
+client.connect();
+console.log("Database connected from users/GET");
 
-  const { Client } = require('pg');
-  const client = new Client({
-    user: 'custosales',
-    host: 'custosales.com',
-    database: 'custosales',
-    password: 'custo432a',
-    port: 5432
-  });
-
-  client.connect();
-
-  client.query('SELECT * from users', (err, sql) => {
-
+client.query('SELECT * from users', (err, sql) => {
+  if (err) {
+    console.error(err); 
+    } else {
     res.render('modules/admin/users', {
       title: 'Brukeroversikt',
       rows: sql.rows
-    });
-  
-    client.end();
+     });
+     client.end();
+    }
   });
 
 
 
 });
+
+
 
 module.exports = router;

@@ -3,42 +3,55 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 var router = express.Router();
 
+// Connect to database
+//let db = require("../../db.js");
+//let client = db.dbclient;
+//client.connect();
+console.log("Database connected from newuser/GET");
+
 
 /* GET newuser page. */
 router.get('/', function(req, res, next) {
-  res.render('modules/admin/newuser', { title: 'Ny bruker', message: '' });
+  
+      res.render('modules/admin/newuser', { 
+      title: 'Ny bruker', 
+      message: '' 
+        
+    });
 });
 
 /* Register new user. */
 router.post('/', function(req, res, next) {
 
-    const navn = req.body.navn;
-    const brukernavn = req.body.brukernavn;
-    const passord_plain = req.body.passord;
-    const passord = bcrypt.hashSync(passord_plain, saltRounds);
-    const epost = req.body.epost;
-    const dato = req.body.dato;
+    
+    const first_name = req.body.first_name;
+    const last_name = req.body.last_name;
+    const username = req.body.username;
+    const password_plain = req.body.password;
+    const password = bcrypt.hashSync(password_plain, saltRounds);
+    const user_email = req.body.user_email;
+    const start_date = req.body.start_date;
+    const end_date = req.body.end_date;
+    const title_id = req.body.title_id;
+    const enabled = req.body.enabled;
+    const address = req.body.address;
+    const zip = req.body.zip;
+    const city = req.body.city;
+    const signed_contract = req.body.signed_contract;
+    const contract_id = req.body.contract_id;
+    const skills = req.body.skills;
+    const supervisor_id = req.body.supervisor_id;
+    const workplace_id = req.body.workplace_id;
+    const user_comments = req.body.user_comments;
+         
 
-    const MongoClient = require('mongodb').MongoClient;
-    const uri = "mongodb://kurs:kurs123@noderia.com:31017/kurs?retryWrites=true&w=majority";
-    const client = new MongoClient(uri, { useNewUrlParser: true });
-
-    client.connect(err => {
-        console.log("Connected successfully to server");
-        const coll = client.db("kurs").collection("kursbrukere");
-        // Insert a single document
-        coll.insertOne({ "navn": navn, "brukernavn": brukernavn, "passord": passord, "epost": epost, "dato": dato }, function(err, r) {
-            
-            client.close();
-        });
-
-    });
-
+    
     res.render('newuser', {
         title: 'Ny bruker',
         message: `Ny bruker ${navn} lagret`
 
     });
+    
 }); // end router.post
 
 
