@@ -4,10 +4,6 @@ const saltRounds = 10;
 const get_titles = require('../../../model/get_titles');
 var router = express.Router();
 
-// Connect to database 
-//let db = require("../../db.js");
-//let client = db.dbclient;
-//client.connect();
 console.log("Database connected from newuser/GET");
 
 
@@ -18,7 +14,7 @@ router.get('/', async function(req, res, next) {
       res.render('modules/admin/newuser', { 
       title: 'Ny bruker', 
       message: '',
-      titles : await get_titles.res_titles.rows       
+      titles : await get_titles.titles.rows       
     });
 });
 

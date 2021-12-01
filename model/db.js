@@ -1,5 +1,5 @@
-const { Client } = require('pg');
-const dbclient = new Client({
+const { Pool } = require('pg')
+const pool = new Pool({
   user: 'custosales',
   host: 'custosales.com',
   database: 'custosales',
@@ -7,5 +7,10 @@ const dbclient = new Client({
   port: 5432
 });
 
-module.exports.dbclient = dbclient;
+pool.on('error', (err, client) => {
+  console.error('Unexpected error on idle client', err)
+  process.exit(-1)
+})
+
+module.exports.pool = pool;
 
