@@ -18,7 +18,7 @@ router.get('/', async function(req, res, next) {
       res.render('modules/admin/newuser', { 
       title: 'Ny bruker', 
       message: '',
-      get_titles : await get_titles.res_titles       
+      titles : await get_titles.res_titles.rows       
     });
 });
 

@@ -3,7 +3,7 @@ var router = express.Router();
 
 // Connect to database
 let db = require("../../../model/db.js");
-var client = db.dbclient;
+const client = db.dbclient;
 
 // GET users page.
 router.get('/', function (req, res, next) {

@@ -1,16 +1,23 @@
 const db = require('./db');
+const client = db.dbclient;
 let titles;
 
-// SQL
-const query_titles= "select title_id, title from titles";
+// Coonect
+client.connect();
+console.log("Database connected from model/get_titles");
 
-db.connection.query(query_company, function (err, result, fields) {
+// SQL
+const query_titles= "select title_id, title from titles order by title";
+
+client.query(query_titles, function (err, result, fields) {
     if (err) {
         console.error(err);;
     } else {
         // console.log("Firma:" + result[0].Firmanavn);
         titles = result;
-        module.exports.res_titles = titles;
+        client.end();
+       module.exports.res_titles = titles;
     }
+  
 });
 

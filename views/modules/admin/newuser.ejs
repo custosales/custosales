@@ -7,7 +7,7 @@
     </title>
     <%- include('../../head') %>
 </head>
-
+ 
 <body>
 
     <%- include('../../menu') %>
@@ -89,7 +89,12 @@
                         
                         <label for="title_id">Stilling</label> 
                         <select name="title_id">
-                                
+                            
+                            <% for(var i=0; i < titles.length; i++) { %>
+                        <option value="<%= titles[i].title_id%>"><%= titles[i].title  %></option>
+                        <% }  %>
+
+
                         </select>
                     </div>
 
