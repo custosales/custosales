@@ -2,6 +2,8 @@ var express = require('express');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const get_titles = require('../../../model/get_titles');
+const get_departments = require('../../../model/get_departments');
+
 var router = express.Router();
 
 console.log("Database connected from newuser/GET");
@@ -14,7 +16,8 @@ router.get('/', async function(req, res, next) {
       res.render('modules/admin/newuser', { 
       title: 'Ny bruker', 
       message: '',
-      titles : await get_titles.titles.rows       
+      titles : await get_titles.titles.rows,
+      departments : await get_departments.departments.rows       
     });
 });
 

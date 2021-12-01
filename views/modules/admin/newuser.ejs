@@ -74,7 +74,10 @@
                         
                         <label for="department_id">Avdeling</label> 
                         <select name="department_id">
-                                
+                            <% for(var i=0; i < departments.length; i++) { %>
+                                <option value="<%= departments[i].department_id%>"><%= departments[i].department_name  %></option>
+                                <% }  %>
+                                        
                         </select>
                     </div>
                     <div class="form-group">
