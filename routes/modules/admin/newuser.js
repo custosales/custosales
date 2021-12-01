@@ -1,9 +1,10 @@
 var express = require('express');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
+const get_titles = require('../../../model/get_titles');
 var router = express.Router();
 
-// Connect to database
+// Connect to database 
 //let db = require("../../db.js");
 //let client = db.dbclient;
 //client.connect();
@@ -11,12 +12,13 @@ console.log("Database connected from newuser/GET");
 
 
 /* GET newuser page. */
-router.get('/', function(req, res, next) {
+router.get('/', async function(req, res, next) {
   
+
       res.render('modules/admin/newuser', { 
       title: 'Ny bruker', 
-      message: '' 
-        
+      message: '',
+      get_titles : await get_titles.res_titles       
     });
 });
 
