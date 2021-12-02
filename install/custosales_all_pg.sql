@@ -770,20 +770,21 @@ ALTER TABLE public.templates ALTER COLUMN template_id ADD GENERATED ALWAYS AS ID
 
 
 --
--- Name: titles; Type: TABLE; Schema: public; Owner: terje
+-- Name: titles; Type: TABLE; Schema: public; Owner: custosales
 --
 
 CREATE TABLE public.titles (
     title_id integer NOT NULL,
     title text,
-    description text
+    description text,
+    manager boolean
 );
 
 
-ALTER TABLE public.titles OWNER TO terje;
+ALTER TABLE public.titles OWNER TO custosales;
 
 --
--- Name: titles_title_id_seq; Type: SEQUENCE; Schema: public; Owner: terje
+-- Name: titles_title_id_seq; Type: SEQUENCE; Schema: public; Owner: custosales
 --
 
 ALTER TABLE public.titles ALTER COLUMN title_id ADD GENERATED ALWAYS AS IDENTITY (
@@ -1131,21 +1132,21 @@ COPY public.templates (template_id, template_name, template_category_id, templat
 
 
 --
--- Data for Name: titles; Type: TABLE DATA; Schema: public; Owner: terje
+-- Data for Name: titles; Type: TABLE DATA; Schema: public; Owner: custosales
 --
 
-COPY public.titles (title_id, title, description) FROM stdin;
-1	Avdelingsleder	Leder av en avdeling
-2	CEO	Chief Executive Officer - adm direktør
-3	CTO	Chief Technical Officer - teknisk direktør
-4	COO	Chief Operations Officer - driftssjef
-5	Selger	Selger av produkter eller tjenester
-6	Systemutvikler	Programmerer, applikasjonsutvikler
-7	Designer	Web + Ebok-designer
-8	Driftskonsulent	Konsulent i driftsavdelingen
-9	Senior Konsulent	Senior Konsulent i konsulentavdelingen
-10	Konsulent	Konsulent i konsulentavdelingen
-11	Prosjektleder	Leder av interne eller eksterne prosjekter
+COPY public.titles (title_id, title, description, manager) FROM stdin;
+5	Selger	Selger av produkter eller tjenester	\N
+6	Systemutvikler	Programmerer, applikasjonsutvikler	\N
+7	Designer	Web + Ebok-designer	\N
+8	Driftskonsulent	Konsulent i driftsavdelingen	\N
+9	Senior Konsulent	Senior Konsulent i konsulentavdelingen	\N
+10	Konsulent	Konsulent i konsulentavdelingen	\N
+1	Avdelingsleder	Leder av en avdeling	t
+2	CEO	Chief Executive Officer - adm direktør	t
+3	CTO	Chief Technical Officer - teknisk direktør	t
+4	COO	Chief Operations Officer - driftssjef	t
+11	Prosjektleder	Leder av interne eller eksterne prosjekter	t
 \.
 
 
@@ -1349,7 +1350,7 @@ SELECT pg_catalog.setval('public.templates_template_id_seq', 1, false);
 
 
 --
--- Name: titles_title_id_seq; Type: SEQUENCE SET; Schema: public; Owner: terje
+-- Name: titles_title_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
 SELECT pg_catalog.setval('public.titles_title_id_seq', 11, true);
@@ -1569,7 +1570,7 @@ ALTER TABLE ONLY public.templates
 
 
 --
--- Name: titles titles_pkey; Type: CONSTRAINT; Schema: public; Owner: terje
+-- Name: titles titles_pkey; Type: CONSTRAINT; Schema: public; Owner: custosales
 --
 
 ALTER TABLE ONLY public.titles
