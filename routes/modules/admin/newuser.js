@@ -28,28 +28,8 @@ router.get('/', async function(req, res, next) {
 /* Register new user. */
 router.post('/', function(req, res, next) {
 
+    const save_newuser = require('../../../model/save_newuser');
     
-    const first_name = req.body.first_name;
-    const last_name = req.body.last_name;
-    const username = req.body.username;
-    const password_plain = req.body.password;
-    const password = bcrypt.hashSync(password_plain, saltRounds);
-    const user_email = req.body.user_email;
-    const start_date = req.body.start_date;
-    const end_date = req.body.end_date;
-    const title_id = req.body.title_id;
-    const enabled = req.body.enabled;
-    const address = req.body.address;
-    const zip = req.body.zip;
-    const city = req.body.city;
-    const signed_contract = req.body.signed_contract;
-    const contract_id = req.body.contract_id;
-    const skills = req.body.skills;
-    const supervisor_id = req.body.supervisor_id;
-    const workplace_id = req.body.workplace_id;
-    const user_comments = req.body.user_comments;
-         
-
     
     res.render('newuser', {
         title: 'Ny bruker',

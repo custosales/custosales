@@ -4,7 +4,7 @@
    
   // Connect
     let client = await db.pool.connect()
-    console.log("Database connected from model/get_workplaces");
+    console.log("Database connected from model/get_managers");
     
     // SQL
     const sql= "select user_id, concat(first_name,' ',last_name) as name from users u inner join titles t on u.title_id = t.title_id where t.manager=true order by name";
