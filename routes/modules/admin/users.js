@@ -1,17 +1,16 @@
 var express = require('express');
+const get_users = require('../../../model/get_users');
+
 var router = express.Router();
 
 
 
 // GET users page.
-router.get('/', async function (req, res, next) {
-
-  const get_users = require('../../../model/get_users');
-
+router.get('/', function (req, res, next) {
 
     res.render('modules/admin/users', {
       title: 'Brukeroversikt',
-      rows: await get_users.users.rows
+      rows: get_users.users.rows
     });
  
 });
