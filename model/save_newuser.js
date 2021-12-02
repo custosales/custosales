@@ -4,7 +4,7 @@
    
   // Connect
     let client = await db.pool.connect()
-    console.log("Database connected from model/get_managers");
+    console.log("Database connected from model/save_newuser");
     
 
     const first_name = req.body.first_name;
@@ -28,14 +28,20 @@
     const manager_id = req.body.manager_id;
     const user_comments = req.body.user_comments;
          
-
-
-    // SQL
-    const sql= "select user_id, concat(first_name,' ',last_name) as name from users u inner join titles t on u.title_id = t.title_id where t.manager=true order by name";
+    
+    const sql = {
+      text: 'INSERT INTO users(first_name,last_name,username,password,user_email,'
+      +'start_date,end_date,title_id,address,zip,city,signed_contract,enabled,skills,supervisor_id,workplace_id,manager_id.user_comments)'+
+      +' VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17 ,$18, $19)',
+      values: [first_name,last_name,username,password,user_email,start_date,end_date, title_id,address,zip,city,signed_contract,enabled,skills,supervisor_id,workplace_id,department_id,manager_id,user_comments],
+    }
+    
     // Query
     try {
-        const managers = await client.query(sql)
-        module.exports.managers = managers;
+        const newuser = await client.query(sql);
+
+
+        module.exports.newuser = newuser;
     } finally {
       // Make sure to release the client before any error handling,
       // just in case the error handling itself throws an error.
