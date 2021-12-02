@@ -12,7 +12,6 @@
     // Query
     try {
         const titles = await client.query(sql)
-        console.log(titles.rows[0])
         module.exports.titles = titles;
     } finally {
       // Make sure to release the client before any error handling,

@@ -18,7 +18,7 @@
             </h1>
             <p>Legg til ny bruker</p>
 
-            <div style="max-width:900px">
+            <div style="max-width:1000px">
                 <form id="newUserForm" class="form gray-200" method="POST" action="newuser">
                     <fieldset>
                         
@@ -84,7 +84,9 @@
                         
                         <label for="workplace_id">Arbeidssted</label> 
                         <select name="workplace_id">
-                                
+                            <% for(var i=0; i < workplaces.length; i++) { %>
+                                <option value="<%= workplaces[i].workplace_id %>"><%= workplaces[i].workplace_name  %> - <%= workplaces[i].workplace_city  %></option>
+                                <% }  %>
                         </select>
                     </div>
 
@@ -105,8 +107,11 @@
                         
                         <label for="supervisor_id">Leder</label> 
                         <select name="supervisor_id">
-                            
-                                
+                            <option>Ingen</option>
+                            <% for(var i=0; i < managers.length; i++) { %>
+                                <option value="<%= managers[i].user_id%>"><%= managers[i].name  %></option>
+                                <% }  %>
+        
                         </select>
                     </div>
 

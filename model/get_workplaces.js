@@ -1,18 +1,18 @@
 
 ;(async () => {
   const db = require('./db');
-  let titles;
+  let workplaces;
   
   // Connect
     let client = await db.pool.connect()
-    console.log("Database connected from model/get_users");
+    console.log("Database connected from model/get_workplaces");
     
     // SQL
-    const sql= "select * from users order by user_id";
+    const sql= "select workplace_id, workplace_name, workplace_city from workplaces order by workplace_name";
     // Query
     try {
-        const users = await client.query(sql)
-        module.exports.users = users;
+        const workplaces = await client.query(sql)
+        module.exports.workplaces = workplaces;
     } finally {
       // Make sure to release the client before any error handling,
       // just in case the error handling itself throws an error.

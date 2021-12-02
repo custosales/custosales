@@ -5,7 +5,7 @@
     
     // Connect
     const client = await db.pool.connect()
-    console.log("Database connected from model/get_departmens");
+    console.log("Database connected from model/get_departments");
     
     // SQL
     const sql= "select department_id, department_name from departments order by department_name";

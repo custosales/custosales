@@ -3,6 +3,8 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const get_titles = require('../../../model/get_titles');
 const get_departments = require('../../../model/get_departments');
+const get_workplaces = require('../../../model/get_workplaces');
+const get_managers = require('../../../model/get_managers');
 
 var router = express.Router();
 
@@ -17,7 +19,9 @@ router.get('/', async function(req, res, next) {
       title: 'Ny bruker', 
       message: '',
       titles : await get_titles.titles.rows,
-      departments : await get_departments.departments.rows       
+      departments : await get_departments.departments.rows,
+      workplaces : await get_workplaces.workplaces.rows,
+      managers : await get_managers.managers.rows
     });
 });
 
