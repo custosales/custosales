@@ -1011,6 +1011,9 @@ COPY public.currencies (currency_id, currency_name, currency_symbol, default_cur
 
 COPY public.departments (department_id, department_name, workplace_id, manager_id, super_department_id) FROM stdin;
 1	Utviklingsavdelingen	1	2	\N
+2	Salgsavdelingen	1	2	\N
+3	Personalavdelingen	1	2	\N
+4	Markedsavdelingen	1	2	\N
 \.
 
 
@@ -1167,7 +1170,7 @@ COPY public.user_role (user_id, role_id, from_date, to_date) FROM stdin;
 
 COPY public.users (user_id, username, first_name, last_name, department_id, user_email, password, enabled, start_date, end_date, phone, mobile_phone, address, zipcode, city, skills, signed_contract, contract_id, documents, supervisor_id, workplace_id, user_comments, title_id) FROM stdin;
 1	admin	Site	Administrator	\N	admin@custosales.com	$2a$06$M5YRgsMraxxoCQYDBktrTeaaeqjJByHULYealWBrvl15du.S/SKri	t	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-2	terje	Terje	Berg-Hansen	\N	terje@custosales.com	$2a$06$6Bljr42EdxUb4oD1wWUsjehIrYzWCJ6lGozUJi.3Bby0hY4UBCx1a	t	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	6
+2	terje	Terje	Berg-Hansen	\N	terje@custosales.com	$2a$06$6Bljr42EdxUb4oD1wWUsjehIrYzWCJ6lGozUJi.3Bby0hY4UBCx1a	t	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2
 \.
 
 
@@ -1255,7 +1258,7 @@ SELECT pg_catalog.setval('public.currencies_currency_id_seq', 1, false);
 -- Name: departments_department_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
-SELECT pg_catalog.setval('public.departments_department_id_seq', 1, true);
+SELECT pg_catalog.setval('public.departments_department_id_seq', 4, true);
 
 
 --
