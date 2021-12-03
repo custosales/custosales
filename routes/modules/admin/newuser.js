@@ -27,8 +27,9 @@ router.get('/', function (req, res, next) {
 router.post('/', function (req, res, next) {
 
     const save_newuser = require('../../../model/save_newuser');
+    save_newuser.save(req);
 
-    console.log(save_newuser.newuser.rows[0]);
+   
 
     // res.render('modules/admin/newuser', {
     //     title: 'Ny bruker',
