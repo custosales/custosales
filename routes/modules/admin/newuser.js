@@ -8,11 +8,19 @@ var router = express.Router();
 
 /* GET newuser page. */
 router.get("/", async function (req, res, next) {
-  const titles = await getTitles();
-  const managers = await getManagers();
-  const departments = await getDepartments();
-  const workplaces = await getWorkPlaces();
+  const get_titles = getTitles();
+  const get_managers = getManagers();
+  const get_departments = getDepartments();
+  const get_workplaces = getWorkPlaces();
 
+  const [titles, managers, departments, workplaces] = await Promise.all([
+    get_titles,
+    get_managers,
+    get_departments,
+    get_workplaces,
+  ]);
+
+  console.log(titles, managers);
   res.render("modules/admin/newuser", {
     title: "Ny bruker",
     message: "",
@@ -27,7 +35,7 @@ router.get("/", async function (req, res, next) {
 router.post("/", async function (req, res, next) {
   const saved = await saveNewUser(req);
   console.log(saved);
-  res.redirect('/users');
+  res.redirect("/users");
   // res.render('modules/admin/newuser', {
   //     title: 'Ny bruker',
   //     message: `Ny bruker lagret`
