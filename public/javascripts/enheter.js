@@ -1,60 +1,92 @@
-window.onload = function () {
+window.onload = function onload() {
+  const div1 = document.querySelector("#div1");
+  const companyTable = document.querySelector("#div2");
 
-    div2.innerHTML = "";
-    div1.innerHTML = '<label for="sokefelt">Søk i enhetsregisteret: </label> ' +
-        '<input type="text" id="sokefelt" placeholder="Søk etter navn eller orgnummer">' +
-        ' <button id="send" class="btn btn-success">Søk</button>';
-    document.getElementById("sokefelt").focus();
+  const createCompanyTable = (enheter) => {
+    const table = document.createElement("table");
+    const tableHeader = document.createElement("tr");
+    const navn = document.createElement("th");
+    const orgnr = document.createElement("th");
 
-    document.getElementById("sokefelt").addEventListener("keyup", function (event) {
-        // Number 13 is the "Enter" key on the keyboard
-        if (event.keyCode === 13) {
-            // Cancel the default action, if needed
-            event.preventDefault();
-            // Trigger the button element with a click
-            if (document.getElementById("sokefelt").value == "") {
-                alert("Tast inn firmanavn eller orgnummer ")
-                document.getElementById("sokefelt").focus();
-            } else {
-                document.getElementById("send").click();
-            }
-        }
+    table.id = "tabell";
+    table.className = "tabell";
+
+    navn.innerHTML = "Navn";
+    navn.className = "th";
+
+    orgnr.innerHTML = "Orgnummer";
+    orgnr.className = "th";
+
+    tableHeader.append(navn, orgnr);
+    table.append(tableHeader);
+
+    enheter.forEach((enhet) => {
+      const row = document.createElement("tr");
+      const navnCell = document.createElement("td");
+      const orgnrCell = document.createElement("td");
+
+      navnCell.innerText = enhet.navn;
+      orgnrCell.innerText = enhet.orgnr;
+
+      row.append(navnCell, orgnrCell);
+      table.append(row);
     });
 
-    document.getElementById("send").addEventListener('click', function () {
+    companyTable.innerHTML = table.outerHTML;
+  };
 
-        let query = "https://hotell.difi.no/api/json/brreg/enhetsregisteret?query=" + document.getElementById("sokefelt").value;
-        // console.log(query);
-        div2.style.width="50%";
-        div2.innerHTML = "<table id='tabell' class='table thead-dark'></table>";
-        fetch(query)
-            .then(resp => resp.json())
-            .then(data => {
-                let enheter = data.entries;
-                //   console.log(enheter);
-                let th = tabell.insertRow();
-                let navn = th.insertCell(0);
-                navn.innerHTML = "Navn";
-                navn.className = "bg-dark text-white";
-                let orgnr = th.insertCell(1);
-                orgnr.innerHTML = "Orgnummer";
-                orgnr.className = "bg-dark text-white";
+  const handleOnSend = async (event) => {
+    const brregURL =
+      "https://hotell.difi.no/api/json/brreg/enhetsregisteret?query=";
+    const query = `${brregURL}${searchField.value}`;
 
-                return enheter.map(a => {
-                    let tr = tabell.insertRow();
-                    let navnData = tr.insertCell(0);
-                    navnData.innerHTML = a.navn;
-                    let orgnrData = tr.insertCell(1);
-                    orgnrData.innerHTML = a.orgnr;
-                });
+    try {
+      const request = await fetch(query);
+      const { entries: enheter } = await request.json();
+      createCompanyTable(enheter);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
+  const createSearchSection = () => {
+    const handleOnSearch = (event) => {
+      if (event.key !== "Enter") return;
+      event.preventDefault();
 
-            })
+      if (!searchField.value) {
+        alert("Tast inn firmanavn eller orgnummer ");
+        searchField.focus();
+        return;
+      }
+      sendBtn.click();
+    };
 
+    const sendButton = document.createElement("button");
+    const searchField = document.createElement("input");
+    const label = document.createElement("label");
 
-    })
+    sendButton.className = "btn btn-success";
+    sendButton.innerText = "Søk";
+    sendButton.addEventListener("click", handleOnSend);
 
-        .catch(function () {
-            console.error("Noe gikk galt")
-        });
-}
+    searchField.type = "search";
+    searchField.id = "sokefelt";
+    searchField.placeholder = "Søk etter navn eller orgnummer";
+    searchField.addEventListener("keyup", handleOnSearch);
+
+    label.innerText = "Søk i enhetsregisteret:";
+    label.htmlFor = "sokefelt";
+
+    div1.append(label, searchField, sendButton);
+  };
+
+  div1.innerHTML = "";
+  companyTable.innerHTML = "";
+
+  createSearchSection();
+
+  const searchField = document.querySelector("#sokefelt");
+
+  searchField.focus();
+};
