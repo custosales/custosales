@@ -2,50 +2,36 @@
 <html>
   <head>
     <title><%= title %></title>
-     <%- include('head') %>
+    <%- include('head') %>
   </head>
   <body>
-      <!-- Top Menu-->
-      <%- include('menu') %>
-         <!-- Main Area -->
-         <main>    
-             <!-- Widgets -->
-             
-<div class="row">
-      
-          <!--   <h1><%= title %></h1>-->
-          
+    <!-- Top Menu-->
+    <%- include('menu') %>
+    <!-- Main Area -->
+    <main class="container">
+      <!-- Widgets -->
+
+      <div class="row">
+        <!--   <h1><%= title %></h1>-->
+
+        <!-- Small left column -->
+        <div class="col-2 themed-grid-col">
+          <%- include('modules/sales/widgets/sales_list_widget.ejs') %> <%-
+          include('modules/orders/widgets/orders_list_widget.ejs') %>
+        </div>
+        <!-- Larger middle column -->
+        <div class="col-5 themed-grid-col">
+          <%- include('modules/sales/widgets/call_back_widget.ejs') %>
+        </div>
+
+        <!-- Larger right column -->
+        <div class="col-5 themed-grid-col">
+          <%- include('modules/sales/widgets/call_back_widget.ejs') %>
+        </div>
         
-              <!-- Small left column -->
-              <div class="col-2 themed-grid-col">
-              <%- include('modules/sales/widgets/sales_list_widget.ejs') %>
-              <%- include('modules/orders/widgets/orders_list_widget.ejs') %>
-
-
-              </div>
-              <!-- Larger middle column -->
-              <div class="col-5 themed-grid-col">
-
-                <%- include('modules/sales/widgets/call_back_widget.ejs') %>
-
-              </div>
-
-              <!-- Larger right column -->
-              <div class="col-5 themed-grid-col">
-
-                <%- include('modules/sales/widgets/call_back_widget.ejs') %>
-
-              </div>
-
-
-             </div>
-
-
-
-
-        </main>
-        <!-- Footer -->
-        <%- include('footer') %>
-        
-</body>
+      </div>
+    </main>
+    <!-- Footer -->
+    <%- include('footer') %>
+  </body>
 </html>
