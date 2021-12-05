@@ -2,20 +2,47 @@
 <html>
   <head>
     <title><%= title %></title>
-    <script src="/javascripts/enheter.js"></script>
-     <%- include('head') -%>
+    <%- include('head') -%>
   </head>
   <body>
-    <nav>
-      <%- include('menu') -%>
-    </nav>
+    <nav><%- include('menu') -%></nav>
     <main>
-    <h1><%= title %></h1>
-    <p>Velkommen til <%= title %></p>
+      <h1><%= title %></h1>
+      <p>Velkommen til <%= title %></p>
 
-    <div id="div1"></div>
-    <div id="div2"></div>
+      <section>
+        <form action="" method="get">
+          <label>
+            Søk i enhetsregisteret
+            <input
+              type="search"
+              name="search"
+              placeholder="Navn eller orgnummer"
+              required
+            />
+          </label>
+          <button type="submit" class="btn btn-success">Søk</button>
+        </form>
+      </section>
 
-  </main>
+      <section>
+        <table id="tabell" class="tabell" hidden>
+          <thead>
+            <tr>
+              <th class="th">Navn</th>
+              <th class="th">Orgnummer</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+          <tfoot>
+            <tr>
+              <td><button id="prev" disabled><</button></td>
+              <td><button id="next">></button></td>
+            </tr>
+          </tfoot>
+        </table>
+      </section>
+    </main>
+    <script src="/javascripts/enheter.js"></script>
   </body>
 </html>
