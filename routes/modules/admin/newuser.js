@@ -20,7 +20,6 @@ router.get("/", async function (req, res, next) {
     get_workplaces,
   ]);
 
-  console.log(titles, managers);
   res.render("modules/admin/newuser", {
     title: "Ny bruker",
     message: "",
