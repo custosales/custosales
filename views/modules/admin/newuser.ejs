@@ -107,7 +107,7 @@
                         
                         <label for="supervisor_id">Leder</label> 
                         <select name="supervisor_id">
-                            <option>Ingen</option>
+                            <option value="0">Ingen</option>
                             <% for(var i=0; i < managers.length; i++) { %>
                                 <option value="<%= managers[i].user_id%>"><%= managers[i].name  %></option>
                                 <% }  %>

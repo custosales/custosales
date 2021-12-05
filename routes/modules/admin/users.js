@@ -5,11 +5,12 @@ const { getUsers } = require("../../../model/get_users");
 // GET users page.
 router.get("/", async function (req, res, next) {
   const { rows } = await getUsers();
-  const title = "Brukeroversikt";
-  res.render("modules/admin/users", {
-    title,
+  const response = {
+    title: "Brukeroversikt",
     rows,
-  });
+  };
+  
+  res.render("modules/admin/users", response);
 });
 
 module.exports = router;
