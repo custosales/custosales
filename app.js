@@ -4,12 +4,18 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/modules/admin/users'); 
-var newuserRouter = require('./routes/modules/admin/newuser');
+
+// Sales Module
+var salesRouter = require('./routes/modules/sales/sales');
 var enheterRouter = require('./routes/enheter'); 
+// Admin Module 
+var usersRouter = require('./routes/modules/admin/users'); 
+var newUserRouter = require('./routes/modules/admin/newuser');
+var projectsRouter = require('./routes/modules/admin/projects'); 
+var newProjectsRouter = require('./routes/modules/admin/newproject'); 
+// System
 var loginRouter = require('./routes/login'); 
-var salesRouter = require('./routes/modules/sales/sales'); 
+var indexRouter = require('./routes/index');
 var app = express();
 
 // view engine setup
@@ -24,10 +30,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/newuser', newuserRouter);
+app.use('/newuser', newUserRouter);
 app.use('/enheter', enheterRouter);
 app.use('/login', loginRouter);
 app.use('/sales', salesRouter);
+app.use('/admin/projects', projectsRouter);
+app.use('/admin/newproject', newProjectsRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

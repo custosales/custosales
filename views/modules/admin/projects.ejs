@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <%- include('../../head') %>
+</head>
+
+<body>
+    <%- include('../../menu') %>
+        <main>
+            <h1>
+                <%= title %> <a href="newproject"><button class="btn btn-primary">Nytt prosjekt</button></a>
+            </h1>
+
+            <table id="admin_projects_table" class="table" style="width:80%">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Kategori</th>
+                        <th>Navn</th>
+                        <th>Beskrivelse</th>
+                        <th>Startdato</th>
+                        <th>Sluttdato</th>
+                        <th>Kunde</th>
+                        <th>Prosjekteier</th>
+                        <th>Kommentarer</th>
+                     </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0; i < rows.length; i++) { %>
+
+                        <tr>
+                            <td>
+                                <%= rows[i].project_id %>
+                            </td>
+                            <td>
+                                <%= rows[i].project_category_name %>
+                            </td>
+                        
+                            <td>
+                                <%= rows[i].project_description %>
+                            </td>
+                            <td>
+                                <%= rows[i].project_start_date %>
+                            </td>
+                            <td>
+                                <%= rows[i].project_end_date %>
+                            </td>
+
+                            <td>
+                                <a href="client?client_id=<%= rows[i].project_client_id %>">
+                                    <%= rows[i].project_client %>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="user?user_id=<%= rows[i].project_owner_id %>"></a>
+                                <%= rows[i].project_owner %>
+                            </td>
+                            <td>
+                                <a href="editproject?project_id=<%= rows[i].project_id %>"><i class="fa fa-edit" style="font-size: 16px;"></i></a>
+                            </td>
+
+                        </tr>
+
+                        <% } %>
+                </tbody>
+
+            </table>
+
+
+        </main>
+</body>
+
+</html>
