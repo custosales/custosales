@@ -27,6 +27,7 @@
                         <th>Kunde</th>
                         <th>Prosjekteier</th>
                         <th>Kommentarer</th>
+                        <th></th>
                      </tr>
                 </thead>
                 <tbody>
@@ -38,6 +39,9 @@
                             </td>
                             <td>
                                 <%= rows[i].project_category_name %>
+                            </td>
+                            <td>
+                                <%= rows[i].project_name %>
                             </td>
                         
                             <td>
@@ -56,9 +60,13 @@
                                 </a>
                             </td>
                             <td>
-                                <a href="user?user_id=<%= rows[i].project_owner_id %>"></a>
-                                <%= rows[i].project_owner %>
+                                <a href="/admin/user?user_id=<%= rows[i].project_owner_id %>">
+                                <%= rows[i].project_owner %></a>
                             </td>
+                            <td>
+                                <%= rows[i].project_comments %>
+                            </td>
+                        
                             <td>
                                 <a href="editproject?project_id=<%= rows[i].project_id %>"><i class="fa fa-edit" style="font-size: 16px;"></i></a>
                             </td>
