@@ -20,9 +20,11 @@
               <i class="fa fa-tags fa-fw" style="font-size: 18px"></i>  Prosjekter
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item "  href="projects"><i class="fa fa-tags fa-fw" style="font-size: 18px"></i> Prosjektoversikt</a></li>
-              <li><a class="dropdown-item "  href="newproject"><i class="fa fa-tag fa-fw" style="font-size: 18px"></i> Nytt prosjekt</a></li>
-            </ul>
+              <% for(var i=0; i < projectRows.length; i++) {  %>
+              <li><a class="dropdown-item " 
+                 href="project?project_id=<%= projectRows[i].project_id %>"><i class="fa fa-tag fa-fw" style="font-size: 18px"></i> <%= projectRows[i].project_name%></a></li>
+              <% } %>
+              </ul>
           </li>
           <li class="nav-item">
             <a href="sales" class="nav-link ">
@@ -59,9 +61,10 @@
               <i class="fa fa-cogs fa-fw" style="font-size: 18px"></i>  Admin
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-        
-             <li><a class="dropdown-item "  href="users"><i class="fa fa-users fa-fw" style="font-size: 18px"></i> Brukeroversikt</a></li>
-              <li><a class="dropdown-item "  href="newuser"><i class="fa fa-user fa-fw" style="font-size: 18px"></i> Ny bruker</a></li>
+              <li><a class="dropdown-item "  href="/admin/projects"><i class="fa fa-tags fa-fw" style="font-size: 18px"></i> Prosjektoversikt</a></li>
+            
+             <li><a class="dropdown-item "  href="/users"><i class="fa fa-users fa-fw" style="font-size: 18px"></i> Brukeroversikt</a></li>
+              <li><a class="dropdown-item "  href="/newuser"><i class="fa fa-user fa-fw" style="font-size: 18px"></i> Ny bruker</a></li>
             </ul>
           </li>
           </ul>

@@ -1,9 +1,9 @@
 async function getProjects() {
-  const db = require("./db");
+  const db = require("../db");
   const sql =
     "select project_id, project_name, project_description,project_start_date,project_end_date, "
     +"project_client_id, project_owner_id, concat(first_name,' ',last_name) as project_owner, p.comments, "
-    +"project_category_id, pc.project_category_name from projects p "
+    +"p.project_category_id, pc.project_category_name from projects p "
     +"inner join users u on p.project_owner_id = u.user_id "
     +"inner join project_categories pc on pc.project_category_id = p.project_category_id "
     +"order by project_name";

@@ -12,7 +12,7 @@ var enheterRouter = require('./routes/enheter');
 var usersRouter = require('./routes/modules/admin/users'); 
 var newUserRouter = require('./routes/modules/admin/newuser');
 var projectsRouter = require('./routes/modules/admin/projects'); 
-var newProjectsRouter = require('./routes/modules/admin/newproject'); 
+var newProjectRouter = require('./routes/modules/admin/newproject'); 
 // System
 var loginRouter = require('./routes/login'); 
 var indexRouter = require('./routes/index');
@@ -35,7 +35,7 @@ app.use('/enheter', enheterRouter);
 app.use('/login', loginRouter);
 app.use('/sales', salesRouter);
 app.use('/admin/projects', projectsRouter);
-app.use('/admin/newproject', newProjectsRouter);
+app.use('/admin/newproject', newProjectRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

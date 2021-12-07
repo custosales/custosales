@@ -8,7 +8,6 @@ router.get("/", async function (req, res, next) {
   const response = {
     title: "Prosjektoversikt",
     rows,
-    projectRows: rows
   };
   
   res.render("modules/admin/projects", response);
