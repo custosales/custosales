@@ -3,7 +3,7 @@
 --
 
 -- Dumped from database version 13.5
--- Dumped by pg_dump version 13.5
+-- Dumped by pg_dump version 13.5 (Ubuntu 13.5-0ubuntu0.21.10.1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -176,7 +176,8 @@ CREATE TABLE public.companies (
     reg_date timestamp without time zone,
     sales_rep_id integer,
     calling_list_id integer,
-    company_web text
+    company_web text,
+    company_regnumber text
 );
 
 
@@ -611,7 +612,7 @@ ALTER TABLE public.project_categories ALTER COLUMN project_category_id ADD GENER
 CREATE TABLE public.projects (
     project_id integer NOT NULL,
     project_name text NOT NULL,
-    project_decription text,
+    project_description text,
     project_start_date date,
     project_end_date date,
     project_client_id integer,
@@ -964,8 +965,8 @@ COPY public.calls (call_id, company_regnumber, contact_id, contact_time, result,
 -- Data for Name: companies; Type: TABLE DATA; Schema: public; Owner: custosales
 --
 
-COPY public.companies (company_id, company_name, company_status_id, company_type, company_email, company_phone, company_address, company_zip, company_city, company_county, company_date_registered, company_manager, branch_code, branch_text, last_contacted, contact_again, currency_id, company_comments, reg_date, sales_rep_id, calling_list_id, company_web) FROM stdin;
-1	ITfakultetet AS	\N	AS	admin@itfakultetet.no	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2021-11-29 02:05:27.593651	\N	\N	web.itfakultetet.no
+COPY public.companies (company_id, company_name, company_status_id, company_type, company_email, company_phone, company_address, company_zip, company_city, company_county, company_date_registered, company_manager, branch_code, branch_text, last_contacted, contact_again, currency_id, company_comments, reg_date, sales_rep_id, calling_list_id, company_web, company_regnumber) FROM stdin;
+1	ITfakultetet AS	\N	AS	admin@itfakultetet.no	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2021-11-29 02:05:27.593651	\N	\N	web.itfakultetet.no	\N
 \.
 
 
@@ -986,6 +987,10 @@ COPY public.company_status (company_status_id, company_status_name, company_stat
 --
 
 COPY public.contact_types (contact_type_id, contact_type_name, contact_type_description) FROM stdin;
+1	Daglig leder	Leder av kunde-, partner- eller leverandørbedrift
+2	IT-sjef	CTO
+3	Kursansvarlig	Ansvarlig for bestilling av kurs
+4	Innkjøps-sjef	Ansvarlig for innkjøp
 \.
 
 
@@ -1002,6 +1007,11 @@ COPY public.contacts (contact_id, contact_type_id, contact_company_id, contact_f
 --
 
 COPY public.currencies (currency_id, currency_name, currency_symbol, default_currency) FROM stdin;
+1	NOK	Kr.	t
+2	SEK	Kr.	f
+3	USD	$	f
+4	CAD	$	f
+5	EURO	€	f
 \.
 
 
@@ -1078,6 +1088,10 @@ COPY public.products (product_id, product_name, product_description, product_cat
 --
 
 COPY public.project_categories (project_category_id, project_category_name, comments) FROM stdin;
+1	Salg	\N
+2	Markedsføring	\N
+3	Rådgivning	\N
+4	Opplæring	\N
 \.
 
 
@@ -1085,7 +1099,8 @@ COPY public.project_categories (project_category_id, project_category_name, comm
 -- Data for Name: projects; Type: TABLE DATA; Schema: public; Owner: custosales
 --
 
-COPY public.projects (project_id, project_name, project_decription, project_start_date, project_end_date, project_client_id, project_owner_id, comments, project_category_id) FROM stdin;
+COPY public.projects (project_id, project_name, project_description, project_start_date, project_end_date, project_client_id, project_owner_id, comments, project_category_id) FROM stdin;
+1	Salg av kurs	Salg av kurs gjennom partnere ved direkte kontakt med potensielle kundebedrifter	\N	\N	\N	2	\N	1
 \.
 
 
@@ -1171,6 +1186,10 @@ COPY public.user_role (user_id, role_id, from_date, to_date) FROM stdin;
 COPY public.users (user_id, username, first_name, last_name, department_id, user_email, password, enabled, start_date, end_date, phone, mobile_phone, address, zipcode, city, skills, signed_contract, contract_id, documents, supervisor_id, workplace_id, user_comments, title_id) FROM stdin;
 1	admin	Site	Administrator	\N	admin@custosales.com	$2a$06$M5YRgsMraxxoCQYDBktrTeaaeqjJByHULYealWBrvl15du.S/SKri	t	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
 2	terje	Terje	Berg-Hansen	\N	terje@custosales.com	$2a$06$6Bljr42EdxUb4oD1wWUsjehIrYzWCJ6lGozUJi.3Bby0hY4UBCx1a	t	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2
+3	skrue	Onkel	Skrue	3	onkel@skrue.com	$2b$10$kXlrD65kHOpiGdYzPazwp.zeq5rGqdc.GkkhhLN.woLdE51vSwBfq	t	2021-12-12	\N	\N	\N	Andebyveien 13	2390	Andeby	Skuespiller	t	\N	\N	2	1	\N	7
+7	test	test	test	4		$2b$10$wMI0uB67kaZ7z1PSOXZNbeQMPmSw5rEg.8WqlR6jM1.MSOoMUtHGy	t	\N	\N	\N	\N					t	\N	\N	0	1		1
+8	nytest	nytest	yes	4		$2b$10$72UaQxGZOU/T702QmYYceOifW5Bu/9e4oCiBRGYba5Rco7mugUw.6	t	\N	\N	\N	\N					t	\N	\N	2	1	Dette er en kommentar	5
+9	trude	Trude	Lutt	4	trude@lutt.com	$2b$10$hYURFE9Vwi4eKAs1bG08GeBIzuneQ.KkjpHNX2YkT69VUnZs99cbi	f	\N	\N	\N	\N					f	\N	\N	0	1	dette er en kommentar	1
 \.
 
 
@@ -1237,7 +1256,7 @@ SELECT pg_catalog.setval('public.company_status_company_status_id_seq', 4, true)
 -- Name: contact_types_contact_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
-SELECT pg_catalog.setval('public.contact_types_contact_type_id_seq', 1, false);
+SELECT pg_catalog.setval('public.contact_types_contact_type_id_seq', 4, true);
 
 
 --
@@ -1251,7 +1270,7 @@ SELECT pg_catalog.setval('public.contacts_contact_id_seq', 1, false);
 -- Name: currencies_currency_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
-SELECT pg_catalog.setval('public.currencies_currency_id_seq', 1, false);
+SELECT pg_catalog.setval('public.currencies_currency_id_seq', 5, true);
 
 
 --
@@ -1314,14 +1333,14 @@ SELECT pg_catalog.setval('public.products_product_id_seq', 1, false);
 -- Name: project_categories_project_category_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
-SELECT pg_catalog.setval('public.project_categories_project_category_id_seq', 1, false);
+SELECT pg_catalog.setval('public.project_categories_project_category_id_seq', 4, true);
 
 
 --
 -- Name: projects_project_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
-SELECT pg_catalog.setval('public.projects_project_id_seq', 1, false);
+SELECT pg_catalog.setval('public.projects_project_id_seq', 1, true);
 
 
 --
@@ -1363,7 +1382,7 @@ SELECT pg_catalog.setval('public.titles_title_id_seq', 11, true);
 -- Name: users_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
-SELECT pg_catalog.setval('public.users_user_id_seq', 2, true);
+SELECT pg_catalog.setval('public.users_user_id_seq', 9, true);
 
 
 --
