@@ -20,11 +20,10 @@
               <i class="fa fa-tags fa-fw" style="font-size: 18px"></i>  Prosjekter
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <% for(var i=0; i < projectRows.length; i++) {  %>
-              <li><a class="dropdown-item " 
-                 href="project?project_id=<%= projectRows[i].project_id %>"><i class="fa fa-tag fa-fw" style="font-size: 18px"></i> <%= projectRows[i].project_name%></a></li>
-              <% } %>
-              </ul>
+              <li><a class="dropdown-item " href="/admin/projects"><i class="fa fa-tags fa-fw" style="font-size: 18px"></i>Velg Prosjekt</a></li>
+              <li><a class="dropdown-item " href="/admin/newproject"><i class="fa fa-tag fa-fw" style="font-size: 18px"></i>Nytt Prosjekt</a></li>
+
+            </ul>
           </li>
           <li class="nav-item">
             <a href="sales" class="nav-link ">
