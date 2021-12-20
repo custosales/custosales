@@ -1,32 +1,27 @@
 var express = require("express");
-const { getTitles } = require("../../../model/get_titles");
-const { getDepartments } = require("../../../model/get_departments");
-const { getWorkPlaces } = require("../../../model/get_workplaces");
-const { getManagers } = require("../../../model/get_managers");
-const { saveNewUser } = require("../../../model/save_newuser");
+const { getUsers } = require("../../../model/admin/get_users_name_id");
+const { getClients } = require("../../../model/admin/get_clients_name_id");
+const { getProjectCategories } = require("../../../model/admin/get_project_categories_name_id");
 var router = express.Router();
 
 /* GET newuser page. */
 router.get("/", async function (req, res, next) {
-  const get_titles = getTitles();
-  const get_managers = getManagers();
-  const get_departments = getDepartments();
-  const get_workplaces = getWorkPlaces();
+  const get_users = getUsers();
+  const get_clients = getClients();
+  const get_project_categories = getProjectCategories();
 
-  const [titles, managers, departments, workplaces] = await Promise.all([
-    get_titles,
-    get_managers,
-    get_departments,
-    get_workplaces,
+  const [users, clients, projectCategories] = await Promise.all([
+    get_users,
+    get_clients,
+    get_project_categories,
   ]);
 
   res.render("modules/admin/newproject", {
     title: "Nytt prosjekt",
     message: "",
-    titles: titles.rows,
-    departments: departments.rows,
-    workplaces: workplaces.rows,
-    managers: managers.rows,
+    users: users.rows,
+    clients: clients.rows,
+    projectCategories: projectCategories.rows,
   });
 });
 

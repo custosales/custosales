@@ -16,87 +16,59 @@
             <h1>
                 <%= title %>
             </h1>
-            <p>Legg til nytt projsekt</p>
-
-            <div style="max-width:1000px">
+        <div style="max-width:1000px">
                 <form id="newProjectForm" class="form gray-200" method="POST" action="newproject">
                     <fieldset>
                         
                         <div class="row">
                         
                          <div class="col-4">   
-                        <div class="form-group">
-                            <label for="first_name">Fornavn</label> <input type="text" required class="form-control form-control-sm" name="first_name" placeholder="Tast inn fornavn">
+                      
+                            <div class="form-group">
+                            <label for="project_name">Navn: </label> <input type="text" required class="form-control form-control-sm" name="project_name" placeholder="Gi prosjektet et navn">
                         </div>
                         <div class="form-group">
-                            <label for="last_name">Etternavn</label> <input type="text" required class="form-control form-control-sm" name="last_name" placeholder="Tast inn etternavn">
+                            <label for="project_description">Beskrivelse: </label>
+                            <textarea name="project_description" class="form-text-area"></textarea>
+    
                         </div>
-                        <div class="form-group">
-                            <label for="username">Brukernavn</label> <input type="text" required class="form-control form-control-sm" name="username" placeholder="Tast inn brukernavn">
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Passord</label> <input id="pw1" type="password" class="form-control form-control-sm" name="password" placeholder="Tast inn Passord">
-                        </div>
-                        <div class="form-group">
-                            <label for="password2">Gjenta passord</label> <input id="pw2" type="password" class="form-control form-control-sm" name="password2" placeholder="Gjenta passordet">
-                        </div>
-                        <div class="form-group">
-                            <label for="user_email">Epost</label> <input type="email" class="form-control form-control-sm" name="user_email" placeholder="Tast inn brukerens epostadresse">
-                        </div>
-
-                    
-                    </div><div class="col-4">
-
-                        <div class="form-group">
-                            <label for="address">Adresse</label> <input type="text" class="form-control form-control-sm" name="address" placeholder="Tast inn brukerens postadresse">
-                        </div>
-                        <div class="form-group">
-                            <label for="zip">Postnummer</label> <input type="text" class="form-control form-control-sm" name="zip" placeholder="Tast inn brukerens postnummer">
-                        </div>
-                        <div class="form-group">
-                            <label for="city">Poststed</label> <input type="text" class="form-control form-control-sm" name="city" placeholder="Tast inn brukerens poststed">
-                        </div>
-                        <div class="form-group">
-                            <label for="skills">Kompetanse</label> <input type="text" class="form-control form-control-sm" name="skills" placeholder="Tast inn stikkord for kompetanse">
-                        </div>
-                        <div class="form-group">
-                            <label for="start_date">Startet</label> <input type="date" class="form-control form-control-sm" name="start_date">
-                        </div>
-                        <div class="form-group">
-                            <label for="end_date">Sluttet</label> <input type="date" class="form-control form-control-sm" name="end_date">
-                        </div>
-
-                                           
-                   
-                </div><div class="col-4">
-
+                        
                     <div class="form-group">
                         
-                        <label for="department_id">Avdeling</label> 
-                        <select name="department_id">
-                            <% for(var i=0; i < departments.length; i++) { %>
-                                <option value="<%= departments[i].department_id%>"><%= departments[i].department_name  %></option>
+                        <label for="project_category_id">Kategori: </label> 
+                        <select name="project_category_id">
+                            <% for(var i=0; i < projectCategories.length; i++) { %>
+                                <option value="<%= projectCategories[i].project_category_id%>"><%= projectCategories[i].project_category_name  %></option>
                                 <% }  %>
                                         
                         </select>
                     </div>
+    
+                        <div class="form-group">
+                            <label for="project_start_date">Start: </label> <input type="date" class="form-control form-control-sm" name="project_start_date">
+                        </div>
+                        <div class="form-group">
+                            <label for="project_end_date">Avslutning: </label> <input type="date" class="form-control form-control-sm" name="project_end_date">
+                        </div>
+  
+                        <div class="form-group">
+                        
+                            <label for="project_owner_id">Prosjekteier: </label> 
+                            <select name="project_owner_id">
+                                <% for(var i=0; i < users.length; i++) { %>
+                                    <option value="<%= users[i].user_id %>"><%= users[i].name %></option>
+                                    <% }  %>
+                            </select>
+                        </div>
+    
+                                 
                     <div class="form-group">
                         
-                        <label for="workplace_id">Arbeidssted</label> 
-                        <select name="workplace_id">
-                            <% for(var i=0; i < workplaces.length; i++) { %>
-                                <option value="<%= workplaces[i].workplace_id %>"><%= workplaces[i].workplace_name  %> - <%= workplaces[i].workplace_city  %></option>
-                                <% }  %>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        
-                        <label for="title_id">Stilling</label> 
-                        <select name="title_id">
+                        <label for="project_client_id">Oppdragsgiver/Kunde: </label> 
+                        <select name="project_client_id">
                             
-                            <% for(var i=0; i < titles.length; i++) { %>
-                        <option value="<%= titles[i].title_id%>"><%= titles[i].title  %></option>
+                            <% for(var i=0; i < clients.length; i++) { %>
+                        <option value="<%= clients[i].company_id%>"><%= clients[i].company_name  %></option>
                         <% }  %>
 
 
@@ -104,33 +76,17 @@
                     </div>
 
                     <div class="form-group">
-                        
-                        <label for="supervisor_id">Leder</label> 
-                        <select name="supervisor_id">
-                            <option value="0">Ingen</option>
-                            <% for(var i=0; i < managers.length; i++) { %>
-                                <option value="<%= managers[i].user_id%>"><%= managers[i].name  %></option>
-                                <% }  %>
-        
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="user_comments">Kommentarer: </label>
-                        <textarea name="user_comments" class="form-text-area"></textarea>
+                        <label for="comments">Kommentarer: </label>
+                        <textarea name="comments" class="form-text-area"></textarea>
 
                     </div>
                     
-                    <div class="form-group">
-                        <label for="enabled">Aktiv: </label> <input type="checkbox" class="form-check-input" name="enabled">
-                        <label for="signed_contract"> Signert kontrakt: </label> <input type="checkbox" class="form-check-input" name="signed_contract">
-                    </div>     
 
                     </div> <!-- end row --> 
 
                     </fieldset>
                     <div class="form-group">
-                        <input type="submit" class="btn btn-success" value="Registrer bruker">
+                        <input type="submit" class="btn btn-success" value="Registrer prosjekt">
                     </div>
 
                 </form>
