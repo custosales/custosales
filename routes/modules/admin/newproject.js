@@ -20,7 +20,7 @@ router.get("/", async function (req, res, next) {
     get_workplaces,
   ]);
 
-  res.render("/modules/admin/newproject", {
+  res.render("modules/admin/newproject", {
     title: "Nytt prosjekt",
     message: "",
     titles: titles.rows,
@@ -34,7 +34,7 @@ router.get("/", async function (req, res, next) {
 router.post("/", async function (req, res, next) {
   const saved = await saveNewUser(req);
   console.log(saved);
-  res.redirect("/modules/admin/projects");
+  res.redirect("modules/admin/projects");
   // res.render('modules/admin/newuser', {
   //     title: 'Ny bruker',
   //     message: `Ny bruker lagret`
