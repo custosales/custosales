@@ -13,23 +13,27 @@
     <%- include('../../menu') %>
 
         <main>
-            <h1>
-                <%= title %>
-            </h1>
+           
         <div style="max-width:1000px">
-                <form id="newProjectForm" class="form gray-200" method="POST" action="newproject">
-                    <fieldset>
+                <form id="newProjectForm"  method="POST" action="newproject">
+                    <fieldset >
                         
+                       
                         <div class="row">
-                        
-                         <div class="col-4">   
-                      
+                            
+                            <div class="col-4">   
+                            </div>
+                         
+                            <div class="col-5 bg-light border">   
+                                <h1>
+                                    <%= title %>
+                                </h1>
                             <div class="form-group">
-                            <label for="project_name">Navn: </label> <input type="text" required class="form-control form-control-sm" name="project_name" placeholder="Gi prosjektet et navn">
+                            <label for="project_name">Navn: </label> <input type="text" style="width: 375px" required class="form-control form-control-sm" name="project_name" placeholder="Gi prosjektet et navn">
                         </div>
                         <div class="form-group">
-                            <label for="project_description">Beskrivelse: </label>
-                            <textarea name="project_description" class="form-text-area"></textarea>
+                            <label for="project_description" style="vertical-align:top">Beskrivelse: </label>
+                            <textarea name="project_description" class="form-text-area" rows=1 cols="41"></textarea>
     
                         </div>
                         
@@ -45,11 +49,13 @@
                     </div>
     
                         <div class="form-group">
-                            <label for="project_start_date">Start: </label> <input type="date" class="form-control form-control-sm" name="project_start_date">
+                            <div style="float:left; margin-right: 10px;">
+                            <label for="project_start_date">Start: </label> <input type="date" class="form-control form-control-sm" style="width: fit-content" name="project_start_date">
                         </div>
-                        <div class="form-group">
-                            <label for="project_end_date">Avslutning: </label> <input type="date" class="form-control form-control-sm" name="project_end_date">
-                        </div>
+                        <div> 
+                        <label for="project_end_date">Avslutning: </label> <input type="date" class="form-control form-control-sm" style="width: fit-content" name="project_end_date">
+                        </div>      
+                    </div>
   
                         <div class="form-group">
                         
@@ -73,22 +79,24 @@
 
 
                         </select>
+                        <a class="btn btn-primary btn-sm" href="/admin/newcompany" role="button">Ny</a>
                     </div>
 
                     <div class="form-group">
-                        <label for="comments">Kommentarer: </label>
-                        <textarea name="comments" class="form-text-area"></textarea>
+                        <label for="comments" style="vertical-align:top">Kommentarer: </label>
+                        <textarea name="comments" class="form-text-area" rows=1 cols="40"></textarea>
 
                     </div>
                     
+                    <div class="form-group" style="margin-bottom: 15px; margin-top: 10px;">
+                        <input type="submit" class="btn btn-success" value="Registrer prosjekt">
+                    </div>
 
                     </div> <!-- end row --> 
 
                     </fieldset>
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-success" value="Registrer prosjekt">
-                    </div>
-
+       
+       
                 </form>
 
                 <% if (message !="" ) { %>

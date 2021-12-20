@@ -13,15 +13,15 @@
     <%- include('../../menu') %>
 
         <main>
-            <h1>
-                <%= title %>
-            </h1>
-            <p>Legg til ny bruker</p>
+           
+            
 
             <div style="max-width:1000px">
-                <form id="newUserForm" class="form gray-200" method="POST" action="newuser">
+                <form id="newUserForm" class="form gray-200  bg-light border" style="padding: 10px ;" method="POST" action="newuser">
                     <fieldset>
-                        
+                        <h1>
+                            <%= title %>
+                        </h1>
                         <div class="row">
                         
                          <div class="col-4">   
@@ -126,12 +126,13 @@
                         <label for="signed_contract"> Signert kontrakt: </label> <input type="checkbox" class="form-check-input" name="signed_contract">
                     </div>     
 
+                    <div class="form-group" style="margin-top: 75px; text-align: center;">
+                        <input type="submit" class="btn btn-success" value="Registrer bruker">
+                    </div>
                     </div> <!-- end row --> 
 
                     </fieldset>
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-success" value="Registrer bruker">
-                    </div>
+                   
 
                 </form>
 

@@ -1,7 +1,7 @@
 async function getClients() {
   const db = require("../db");
   const sql =
-    "select company_id, company_name from companies c inner join company_status cs on c.company_status_id = cs.company_status_id where cs.customer = true  order by company_name";
+    "select company_id, company_name from companies c inner join company_status cs on c.company_status_id = cs.company_status_id where cs.customer = true or cs.partner = true or cs.supplier= true order by company_name";
   let clients;
 
   let client = await db.pool.connect();
