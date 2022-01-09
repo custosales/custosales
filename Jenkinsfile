@@ -1,7 +1,7 @@
 pipeline  {
  
-  agent agent1
-  
+   agent { label 'ubuntu' }
+ 
   stages {
    
     stage('Checkout') {
@@ -27,7 +27,6 @@ pipeline  {
      }
       
     }
-    
    
     
   }
