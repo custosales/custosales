@@ -4,12 +4,6 @@ pipeline  {
  
   stages {
    
-    stage('Checkout') {
-     steps {
-      scm checkout
-     }
-    }
-    
    stage("Make tar.gz") {
     steps { 
     sh 'tar -czf custosales-0.0.10.tgz *'
