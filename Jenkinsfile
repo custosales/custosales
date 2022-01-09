@@ -24,7 +24,7 @@ pipeline  {
         artifacts: [
         [artifactId: 'cusosales-dev',
          classifier: '',
-         file: 'custosales-' + version + '.tgz',
+         file: 'custosales-0.0.10.tgz',
          type: 'tgz']
         ]
         )
