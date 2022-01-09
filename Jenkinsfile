@@ -15,7 +15,7 @@ pipeline  {
    stage("Make tar.gz") {
     
     step {
-     sh tar -czf custosales-0.0.10.tgz *
+     sh 'tar -czf custosales-0.0.10.tgz *'
     }
     
    }
