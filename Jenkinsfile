@@ -13,15 +13,15 @@ pipeline  {
     stage('Upload to Nexus') {
      steps {
      
-      nexusArtifactUploader artifacts: [[artifactId: 'CustoSales', classifier: 'All', file: 'custosales-0.0.10.tgz', type: 'tgz']], 
+      nexusArtifactUploader artifacts: [[artifactId: 'CustoSales-dev', classifier: 'All', file: 'custosales-0.0.10.tgz', type: 'tgz']], 
        credentialsId: '27c5f993-86c4-4494-bc35-932e51916616', 
-       groupId: 'custosales', 
+       groupId: 'CustoSales', 
        nexusUrl: 'noderia.com:8081', 
        nexusVersion: 'nexus3', 
        protocol: 'http', 
        repository: 'CustSales-dev', 
        version: '0.0.10'
-     
+      
      }
     }
    
