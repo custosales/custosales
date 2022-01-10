@@ -14,7 +14,7 @@ pipeline  {
      steps {
      
       nexusArtifactUploader artifacts: [[artifactId: 'CustoSales-dev', classifier: 'all', file: 'custosales-0.0.10.tgz', type: 'tgz']], 
-       credentialsId: '27c5f993-86c4-4494-bc35-932e51916616', 
+       credentialsId: 'c9b3d9ca-d42d-4688-9f04-5d63007b1332', 
        groupId: 'CustoSales', 
        nexusUrl: 'noderia.com:8081', 
        nexusVersion: 'nexus3', 
