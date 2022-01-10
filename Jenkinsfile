@@ -19,7 +19,7 @@ pipeline  {
        nexusUrl: 'noderia.com:8081', 
        nexusVersion: 'nexus3', 
        protocol: 'http', 
-       repository: 'CustSales-dev/', 
+       repository: 'CustSales-dev', 
        version: '0.0.10'
       
      }
