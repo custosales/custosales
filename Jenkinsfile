@@ -7,10 +7,18 @@ pipeline {
 
    agent {
      label "master"
-   }
-  
+   } 
+   
   stages {
    
+   stage("npm install") {
+    steps { 
+    sh 'npm install'
+    }
+   }
+  
+     
+     
    stage("Make tar.gz") {
     steps { 
     sh 'tar -czf custosales-0.0.10.tgz *'
