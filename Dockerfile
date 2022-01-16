@@ -1,7 +1,7 @@
 FROM readytalk/nodejs
 EXPOSE 3000
-ADD custosales-0.0.10.tgz custosales-0.0.10.tgz
-RUN ["tar","xzf","custosales-0.0.10.tgz"]
-RUN ['cd','custosales']
-RUN ['npm','i']
+ADD * /
+RUN ["/bin/bash","tar","xzf","custosales-0.0.10.tgz"]
+RUN ["/bin/bash","cd",custosales"]
+RUN ["/bin/bash","npm","install"]
 ENTRYPOINT ['/custosales/npm','start']
