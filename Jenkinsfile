@@ -57,7 +57,7 @@ pipeline {
           stage('Message Mattermost') {
                steps {
     
-mattermostSend channel: 'custosalessupport@custosales,back-end,town-square', endpoint: 'http://mattermost.custosales.com:8065/hooks/mrdop611a3ns3qadqciy6qywjo', message: "Bare Hyggelig!  From CustoSales Dev Team \n - Jenkins says:  Job Name: ${env.JOB_NAME}   Build Number:  ${env.BUILD_NUMBER}  :white_check_mark:", text: "### New version on github.com and hub.docker.com"
+mattermostSend channel: 'custosalessupport@custosales,back-end,town-square', endpoint: 'http://mattermost.custosales.com:8065/hooks/mrdop611a3ns3qadqciy6qywjo', message: "### Bare Hyggelig!  From CustoSales Dev Team \n ## - Jenkins says:  Job Name: ${env.JOB_NAME}   Build Number:  ${env.BUILD_NUMBER}  :white_check_mark:", text: "### New version on github.com and hub.docker.com"
 
                }
               }
