@@ -1,15 +1,19 @@
-FROM node:latest
-USER root
-RUN apt-get update
-RUN apt install -y postgresql
-EXPOSE 3000
+FROM postgres:13
+ENV POSTGRES_PASSWORD custosales
+ENV POSTGRES_DB custosales
 RUN ["mkdir","custosales"]
 ADD * /custosales/
 WORKDIR "/custosales"
-RUN ["pg_ctlcluster", "13", "main", "start"]
+COPY install/custosales_all_pg.sql /docker-entrypoint-initdb.d/
 USER postgres
-RUN ["psql", "-c", "create user custosales with password 'custosales'"]
-RUN ["psql", "-c", "create database custosales owner custosales"]
-RUN ["psql", "custosales -f install/custosales_all_pg.sql"]
+CMD psql -c "create user custosales with password 'custosales'";
+CMD psql -c "alter database custosales owner custosales"; 
+
+FROM node:latest
 USER root
-ENTRYPOINT ["pg_ctlcluster", "13", "main", "start", "&&", "npm", "start"]
+RUN apt-get update
+
+EXPOSE 3000
+
+ENTRYPOINT ["npm","start"]
+
