@@ -18,10 +18,9 @@ pipeline {
       }
     }
 
-    stage('Make and save artifact') {
+    stage('Make tar.gz') {
       steps {
         sh 'tar -czf custosales-0.0.1.tgz *'
-        archiveArtifacts artifacts: 'custosales-0.0.1.tgz', followSymlinks: false
       }
     }
 
@@ -54,6 +53,12 @@ pipeline {
       steps {
         mattermostSend channel: 'custosalessupport@custosales,back-end,town-square', endpoint: 'http://mattermost.custosales.com:8065/hooks/7htswxrystygiyaq17mf1cdx3e', message: "### Bare Hyggelig!  From CustoSales Dev Team \n  - Jenkins says:  Job Name: ${env.JOB_NAME}   Build Number:  ${env.BUILD_NUMBER}  :tada:", text: '### New version on github.com and hub.docker.com  :white_check_mark:'
       }
+    }
+
+    post {
+        always {
+        archiveArtifacts artifacts: 'custosales-0.0.1.tgz', followSymlinks: false
+        }
     }
 
   }
