@@ -1,6 +1,6 @@
 FROM node:latest
 USER root
-RUN apt-get update && apt-get install -y npm postgresql portsgresql-contrib
+RUN apt-get update && apt-get install -y npm postgresql postgresql-contrib
 RUN systemctl enable postgresql
 RUN service postgresql start
 EXPOSE 3000
