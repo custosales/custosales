@@ -59,7 +59,7 @@ pipeline {
 
   post {
         always {
-        archiveArtifacts artifacts: 'custosales-0.0.1.tgz', fingerprint: true
+        archiveArtifacts artifacts: "custosales-0.0.${env.BUILD_NUMBER}.tgz", fingerprint: true
         }
   }
 }
