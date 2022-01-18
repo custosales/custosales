@@ -1,6 +1,6 @@
 FROM node:latest
 USER root
-RUN apt-get update && apt-get install -y npm 
+RUN apt-get update
 RUN apt install -y postgresql postgresql-contrib
 RUN pg_ctlcluster 13 main start
 EXPOSE 3000
