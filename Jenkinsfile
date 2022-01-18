@@ -15,6 +15,7 @@ pipeline {
         configFileProvider([configFile(fileId: 'b4d70ee1-e2d9-407b-b6de-61fc3745ae73', targetLocation: '.env')]) {
         }
         sh 'npm install'
+        sleep 5
       }
     }
 
