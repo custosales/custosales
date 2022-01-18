@@ -20,7 +20,7 @@ pipeline {
 
     stage('Make tar.gz') {
       steps {
-        sh 'tar -czf custosales-0.0.10.tgz *'
+        sh 'tar -czf custosales-0.0.1.tgz *'
       }
     }
 
@@ -29,7 +29,7 @@ pipeline {
         archiveArtifacts artifacts: 'custosales-0.0.1.tgz', followSymlinks: false
       }
     }
-    
+
     stage('Build docker image') {
       steps {
         script {
