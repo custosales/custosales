@@ -3,7 +3,7 @@
 --
 
 -- Dumped from database version 13.5
--- Dumped by pg_dump version 13.5 (Ubuntu 13.5-0ubuntu0.21.10.1)
+-- Dumped by pg_dump version 13.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -205,7 +205,10 @@ CREATE TABLE public.company_status (
     company_status_id integer NOT NULL,
     company_status_name text,
     company_status_description text,
-    company_status_icon text
+    company_status_icon text,
+    customer boolean,
+    partner boolean,
+    supplier boolean
 );
 
 
@@ -967,6 +970,7 @@ COPY public.calls (call_id, company_regnumber, contact_id, contact_time, result,
 
 COPY public.companies (company_id, company_name, company_status_id, company_type, company_email, company_phone, company_address, company_zip, company_city, company_county, company_date_registered, company_manager, branch_code, branch_text, last_contacted, contact_again, currency_id, company_comments, reg_date, sales_rep_id, calling_list_id, company_web, company_regnumber) FROM stdin;
 1	ITfakultetet AS	\N	AS	admin@itfakultetet.no	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2021-11-29 02:05:27.593651	\N	\N	web.itfakultetet.no	\N
+2	Testkunde Firma	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
 \.
 
 
@@ -974,11 +978,11 @@ COPY public.companies (company_id, company_name, company_status_id, company_type
 -- Data for Name: company_status; Type: TABLE DATA; Schema: public; Owner: custosales
 --
 
-COPY public.company_status (company_status_id, company_status_name, company_status_description, company_status_icon) FROM stdin;
-1	Egen	Egne selskaper	fa-folder blue
-2	Kunde	Kundeselskaper	fa-folder yellow
-3	Leverandør	Leverandørselskaper	fa-folder silver
-4	Partner	Partnerselskaper	fa-folder beige
+COPY public.company_status (company_status_id, company_status_name, company_status_description, company_status_icon, customer, partner, supplier) FROM stdin;
+1	Egen	Egne selskaper	fa-folder blue	\N	\N	\N
+2	Kunde	Kundeselskaper	fa-folder yellow	t	\N	\N
+4	Partner	Partnerselskaper	fa-folder beige	\N	t	\N
+3	Leverandør	Leverandørselskaper	fa-folder silver	\N	\N	t
 \.
 
 
@@ -1190,6 +1194,7 @@ COPY public.users (user_id, username, first_name, last_name, department_id, user
 7	test	test	test	4		$2b$10$wMI0uB67kaZ7z1PSOXZNbeQMPmSw5rEg.8WqlR6jM1.MSOoMUtHGy	t	\N	\N	\N	\N					t	\N	\N	0	1		1
 8	nytest	nytest	yes	4		$2b$10$72UaQxGZOU/T702QmYYceOifW5Bu/9e4oCiBRGYba5Rco7mugUw.6	t	\N	\N	\N	\N					t	\N	\N	2	1	Dette er en kommentar	5
 9	trude	Trude	Lutt	4	trude@lutt.com	$2b$10$hYURFE9Vwi4eKAs1bG08GeBIzuneQ.KkjpHNX2YkT69VUnZs99cbi	f	\N	\N	\N	\N					f	\N	\N	0	1	dette er en kommentar	1
+10	ola	ola	ola	3	ola@gmail.com	$2b$10$KTmOZE9m2J4hYU9v86K2COTgO3LyHMkBfRPxa3qiWf0RhXitTls7.	t	2020-12-12	\N	\N	\N	ola	ola	ola	ola	t	\N	\N	2	1		10
 \.
 
 
@@ -1242,7 +1247,7 @@ SELECT pg_catalog.setval('public.calls_call_id_seq', 1, false);
 -- Name: companies_company_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
-SELECT pg_catalog.setval('public.companies_company_id_seq', 1, true);
+SELECT pg_catalog.setval('public.companies_company_id_seq', 2, true);
 
 
 --
@@ -1382,7 +1387,7 @@ SELECT pg_catalog.setval('public.titles_title_id_seq', 11, true);
 -- Name: users_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: custosales
 --
 
-SELECT pg_catalog.setval('public.users_user_id_seq', 9, true);
+SELECT pg_catalog.setval('public.users_user_id_seq', 10, true);
 
 
 --
