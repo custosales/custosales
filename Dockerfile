@@ -2,7 +2,7 @@ FROM node:latest
 USER root
 RUN apt-get update && apt-get install -y npm postgresql postgresql-contrib
 RUN systemctl enable postgresql
-RUN service postgresql start
+RUN ["pg_ctlcluster","13","main","start"]
 EXPOSE 3000
 RUN ["mkdir","custosales"]
 ADD * /custosales/
