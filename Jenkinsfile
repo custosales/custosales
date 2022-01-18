@@ -18,14 +18,9 @@ pipeline {
       }
     }
 
-    stage('Make tar.gz') {
+    stage('Make and save artifact') {
       steps {
         sh 'tar -czf custosales-0.0.1.tgz *'
-      }
-    }
-
-    stage('Save artifact') {
-      steps {
         archiveArtifacts artifacts: 'custosales-0.0.1.tgz', followSymlinks: false
       }
     }
