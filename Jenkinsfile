@@ -59,7 +59,7 @@ pipeline {
 
   post {
         always {
-        archiveArtifacts artifacts: 'custosales-0.0.1.tgz', followSymlinks: false
+        archiveArtifacts artifacts: 'custosales-0.0.1.tgz', fingerprint: true
         }
   }
 }
