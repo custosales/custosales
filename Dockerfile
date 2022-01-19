@@ -1,11 +1,11 @@
-FROM postgres:13
+FROM postgres:14
 ENV POSTGRES_PASSWORD custosales
 ENV POSTGRES_DB custosales
 RUN apt-get update
 RUN apt-get install -y postgresql-contrib postgresql-client
 RUN ["mkdir","custosales"]
 COPY install/custosales_all_pg.sql /custosales/
-RUN pg_ctlcluster 13 main start
+RUN pg_ctlcluster 14 main start
 USER postgres
 RUN psql -c create user custosales with password 'custosales'
 RUN create database custosales owner custosales
