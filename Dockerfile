@@ -4,8 +4,7 @@ ENV POSTGRES_DB custosales
 RUN ["mkdir","custosales"]
 COPY install/custosales_all_pg.sql /docker-entrypoint-initdb.d/
 USER postgres
-CMD psql -c "create user custosales with password 'custosales'";
-CMD psql -c "alter database custosales owner custosales"; 
+CMD psql -c "create user custosales with password 'custosales'; alter database custosales owner custosales;";
 
 FROM node:latest
 USER root
