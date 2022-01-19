@@ -7,12 +7,9 @@ RUN ["mkdir","custosales"]
 COPY install/custosales_all_pg.sql /custosales/
 RUN pg_lsclusters
 RUN pg_createcluster 14 'main'
-RUN pg_ctlcluster 14 main start
-CMD pg_ctlcluster 14 main start
 USER postgres
-RUN psql -c "create user custosales with password 'custosales'"
-RUN psql -c "create database custosales owner custosales"
-RUN psql -d custosales -f custosales_all_pg.sql
+CMD pg_ctlcluster 14 main start && psql -U postgres -c "create user custosales with password 'custosales'" && psql -U postgres -c "create database custosales owner custosales" && psql -U postgres -d custosales -f custosales_all_pg.sql
+
 
 
 FROM node:latest
