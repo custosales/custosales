@@ -7,7 +7,7 @@ EXPOSE 3000
 
 
 RUN apt-get update
-RUN apt-get install -y postgresql-server postgresql-contrib 
+RUN apt-get install -y postgresql postgresql-contrib 
 RUN apt-get install -y postgresql-client
 RUN pg_lsclusters
 RUN pg_createcluster 14 'main'
