@@ -5,10 +5,11 @@ RUN apt-get update
 RUN apt-get install -y postgresql-contrib postgresql-client
 RUN ["mkdir","custosales"]
 COPY install/custosales_all_pg.sql /custosales/
+RUN pg_createcluster 14 'main' --start
 CMD pg_ctlcluster 14 main start
 USER postgres
-RUN psql -c create user custosales with password 'custosales'
-RUN create database custosales owner custosales
+RUN psql -c "create user custosales with password 'custosales'"
+RUN psql -c "create database custosales owner custosales"
 RUN psql -d custosales -f custosales_all_pg.sql
 
 
