@@ -2,7 +2,8 @@ FROM postgres:14
 ENV POSTGRES_PASSWORD custosales
 ENV POSTGRES_DB custosales
 RUN apt-get update
-RUN apt-get install -y postgresql-contrib postgresql-client
+RUN apt-get install -y postgresql-contrib 
+RUN apt-get install -y postgresql-client
 RUN ["mkdir","custosales"]
 COPY install/custosales_all_pg.sql /custosales/
 RUN pg_lsclusters
