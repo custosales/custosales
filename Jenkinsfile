@@ -48,9 +48,10 @@ pipeline {
       }
     }
 
-    stage('Message Mattermost') {
+    stage('Message Mattermost & mail Terje') {
       steps {
         mattermostSend channel: 'custosalessupport@custosales,back-end,town-square', endpoint: 'http://mattermost.custosales.com:8065/hooks/7htswxrystygiyaq17mf1cdx3e', message: "### Bare Hyggelig!  From CustoSales Dev Team \n  - Jenkins says:  Job Name: ${env.JOB_NAME}   Build Number:  ${env.BUILD_NUMBER}  :tada:", text: '### New version on github.com and hub.docker.com  :white_check_mark:'
+        emailext body: "Dettet er en mail fra Jenkins pipeline\n Jenkins says:  Job Name: ${env.JOB_NAME}   Build Number:  ${env.BUILD_NUMBER} gikk bra!", subject: 'CustoSales Build', to: 'terje@itfakultetet.no'
       }
     }
   }
