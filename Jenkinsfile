@@ -45,13 +45,17 @@ pipeline {
     stage('Message Mattermost & mail Terje') {
       steps {
         mattermostSend channel: 'custosalessupport@custosales,back-end,town-square', endpoint: 'http://mattermost.custosales.com:8065/hooks/7htswxrystygiyaq17mf1cdx3e', message: "### Bare Hyggelig!  From CustoSales Dev Team \n  - Jenkins says:  Job Name: ${env.JOB_NAME}   Build Number:  ${env.BUILD_NUMBER}  :tada:", text: '### New version on github.com and hub.docker.com  :white_check_mark:'
-        emailext body: "Dette er en mail fra Jenkins pipeline\n Jenkins says:  Job Name: ${env.JOB_NAME}   \nBuild Number:  ${env.BUILD_NUMBER} gikk bra!", subject: 'CustoSales Build', to: 'terje@itfakultetet.no'
+        emailext body: "Dette er en mail fra Jenkins pipeline\n Jenkins says:  Job Name: ${env.JOB_NAME}   \nBuild Number:  ${env.BUILD_NUMBER} gikk bra!", subject: 'CustoSales Build Success', to: 'terje@itfakultetet.no'
       }
     }
   }
 
   post {
-        always {
+    
+    failure {
+         emailext body: "Dette er en mail fra Jenkins pipeline\n Jenkins says:  Job Name: ${env.JOB_NAME}   \nBuild Number:  ${env.BUILD_NUMBER} mislyktes!", subject: 'CustoSales Build Failed', to: 'terje@itfakultetet.no'
+    }
+    always {
         archiveArtifacts artifacts: "custosales-0.0.${env.BUILD_NUMBER}.tgz", fingerprint: true
         sh "docker rmi $imagename:$BUILD_NUMBER"
         sh "docker rmi $imagename:latest"
