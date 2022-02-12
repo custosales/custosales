@@ -18,7 +18,7 @@ pipeline {
 
     stage('Make tar.gz') {
       steps {
-        sh "rm *.tgz"
+        sh "rm *.tgz || true"
         sh "tar -czf custosales-0.0.${env.BUILD_NUMBER}.tgz *"
       }
     }
