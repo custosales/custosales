@@ -57,8 +57,8 @@ pipeline {
     }
     always {
         archiveArtifacts artifacts: "custosales-0.0.${env.BUILD_NUMBER}.tgz", fingerprint: true
-        sh "docker rmi $imagename:$BUILD_NUMBER"
-        sh "docker rmi $imagename:latest"
+        sh "docker rmi $imagename:$BUILD_NUMBER || true"
+        sh "docker rmi $imagename:latest || true"
         }
   }
 }
