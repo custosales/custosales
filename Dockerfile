@@ -12,11 +12,7 @@ RUN apt-get install -y postgresql-client
 RUN pg_lsclusters
 # RUN pg_createcluster 14 'main'
 USER postgres
-<<<<<<< HEAD
-CMD pg_ctlcluster 13 main start && psql -U postgres -c "create user custosales with password 'custosales'" && psql -U postgres -c "create database custosales owner custosales" && psql -U postgres -d custosales -f install/custosales_all_pg.sql
-=======
 CMD pg_ctlcluster 14 main start && psql -U postgres -c "create user custosales with password 'custosales'" && psql -U postgres -c "create database custosales owner custosales" && psql -U postgres -d custosales -f custosales_all_pg.sql
->>>>>>> 589f0a28463f973abf6b32565caf6a6d5793b1e0
 
 
 USER root

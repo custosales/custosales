@@ -2,9 +2,9 @@
 const testPromise = () => {
   return new Promise((resolve, reject) => {
     try {
-      let a = 1001;
-      throw new Error("This went wrong");
-      setTimeout(() => resolve(a), 5000);
+      let a = 100;
+      //throw new Error("This went wrong");
+      setTimeout(() => resolve(a), 1000);
     } catch (error) {
       reject(error);
     }
@@ -25,19 +25,24 @@ const asyncTest = async () => {
   }
 }
 
-let url = 'https://google.com';
+let url = 'https://berg-hansen.info';
 
 const promiseFetch = () => {
   fetch(url)
-    .then(response => response.json())
-    .then(json => console.log(json));
+    .then(response => response.text())
+    .then(text => console.log(text,"_".repeat(80)));
 }
 
 const asyncFetch = async () => {
   const request = await fetch(url);
-  const json = await request.json();
-  console.log(json);
+  console.log(await request.text());
 }
+
+
+promiseFetch();
+
+asyncFetch();
+//promiseFetch();
 
 // const promise1 = new Promise((resolve, reject) => {
 //   resolve(1 + 5);
